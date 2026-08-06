@@ -1,4 +1,5 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using HuongQueViet.Data;
 using HuongQueViet.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,10 +8,11 @@ namespace HuongQueViet.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
+		private readonly AppDbContext _context; // khai báo biến _context
+		private readonly ILogger<HomeController> _logger;
+		public HomeController(AppDbContext context, ILogger<HomeController> logger) // Thêm AppDbContext vào đây
+		{
+            _context = context; //Gán giá trị
             _logger = logger;
         }
 

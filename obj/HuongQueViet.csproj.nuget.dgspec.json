@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\HuongQueViet.csproj": {}
+    "C:\\FINAL PTUD\\NKHHuongQueViet\\HuongQueViet.csproj": {}
   },
   "projects": {
-    "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\HuongQueViet.csproj": {
+    "C:\\FINAL PTUD\\NKHHuongQueViet\\HuongQueViet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\HuongQueViet.csproj",
+        "projectUniqueName": "C:\\FINAL PTUD\\NKHHuongQueViet\\HuongQueViet.csproj",
         "projectName": "HuongQueViet",
-        "projectPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\HuongQueViet.csproj",
-        "packagesPath": "C:\\Users\\takan\\.nuget\\packages\\",
-        "outputPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\obj\\",
+        "projectPath": "C:\\FINAL PTUD\\NKHHuongQueViet\\HuongQueViet.csproj",
+        "packagesPath": "C:\\Users\\Gigabyte\\.nuget\\packages\\",
+        "outputPath": "C:\\FINAL PTUD\\NKHHuongQueViet\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\takan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Gigabyte\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,8 +39,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -70,7 +65,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.26, )"
+              "version": "[8.0.29, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -96,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

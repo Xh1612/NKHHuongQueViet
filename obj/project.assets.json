@@ -1404,12 +1404,12 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Design/8.0.26": {
+      "Microsoft.EntityFrameworkCore.Design/8.0.29": {
         "type": "package",
         "dependencies": {
           "Humanizer.Core": "2.14.1",
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.5.0",
-          "Microsoft.EntityFrameworkCore.Relational": "8.0.26",
+          "Microsoft.EntityFrameworkCore.Relational": "8.0.29",
           "Microsoft.Extensions.DependencyModel": "8.0.2",
           "Mono.TextTemplating": "2.2.1"
         },
@@ -1462,10 +1462,10 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/8.0.26": {
+      "Microsoft.EntityFrameworkCore.Tools/8.0.29": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "8.0.26"
+          "Microsoft.EntityFrameworkCore.Design": "8.0.29"
         },
         "compile": {
           "lib/net8.0/_._": {}
@@ -5124,10 +5124,10 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/8.0.26": {
-      "sha512": "XSH+wJmfNBO5eJJdqRGYhHxILGiq1Fl3xkXa3RT+jk/vLIh7Rs5aPwrajoq//TivEyrSUwGg1BfsI2IDVRtp7A==",
+    "Microsoft.EntityFrameworkCore.Design/8.0.29": {
+      "sha512": "109wTzveE4yG4aBbAgspGPd3DgVxqmDPyn3duOIgPemQkdm8Y+g6ZSQngvOou3YwgLEYat1+JHVyzdRbLp24BQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/8.0.26",
+      "path": "microsoft.entityframeworkcore.design/8.0.29",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5136,7 +5136,7 @@
         "build/net8.0/Microsoft.EntityFrameworkCore.Design.props",
         "lib/net8.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/net8.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.8.0.26.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.8.0.29.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
@@ -5170,10 +5170,10 @@
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/8.0.26": {
-      "sha512": "s2GxoyfDWIg57LUXzxJkKp2vIch3lUQ/qNrkEO00mPYaMjICueBMXkC1T0HqiKr1CUfR0M1jI/yhvt7GAo7WJA==",
+    "Microsoft.EntityFrameworkCore.Tools/8.0.29": {
+      "sha512": "+WAOvbMU0D1vF+b4KCMzOuFq2X8cDAflQdHsxInO6tMyOxXvnsLFa1nKlxV2wk0LPAkrv+4MUL4wJPYLBBySDw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/8.0.26",
+      "path": "microsoft.entityframeworkcore.tools/8.0.29",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -5181,7 +5181,7 @@
         "Icon.png",
         "docs/PACKAGE.md",
         "lib/net8.0/_._",
-        "microsoft.entityframeworkcore.tools.8.0.26.nupkg.sha512",
+        "microsoft.entityframeworkcore.tools.8.0.29.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PS2.psd1",
         "tools/EntityFrameworkCore.PS2.psm1",
@@ -7788,29 +7788,24 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.29",
       "Microsoft.AspNetCore.Identity.UI >= 8.0.29",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.26",
-      "Microsoft.EntityFrameworkCore.Tools >= 8.0.26",
+      "Microsoft.EntityFrameworkCore.Tools >= 8.0.29",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.23"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\takan\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Gigabyte\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\HuongQueViet.csproj",
+      "projectUniqueName": "C:\\FINAL PTUD\\NKHHuongQueViet\\HuongQueViet.csproj",
       "projectName": "HuongQueViet",
-      "projectPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\HuongQueViet.csproj",
-      "packagesPath": "C:\\Users\\takan\\.nuget\\packages\\",
-      "outputPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\obj\\",
+      "projectPath": "C:\\FINAL PTUD\\NKHHuongQueViet\\HuongQueViet.csproj",
+      "packagesPath": "C:\\Users\\Gigabyte\\.nuget\\packages\\",
+      "outputPath": "C:\\FINAL PTUD\\NKHHuongQueViet\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\takan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Gigabyte\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7835,8 +7830,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -7862,7 +7856,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.26, )"
+            "version": "[8.0.29, )"
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
@@ -7888,7 +7882,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

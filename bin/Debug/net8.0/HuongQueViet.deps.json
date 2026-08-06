@@ -12,7 +12,7 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.29",
           "Microsoft.AspNetCore.Identity.UI": "8.0.29",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.26",
-          "Microsoft.EntityFrameworkCore.Tools": "8.0.26",
+          "Microsoft.EntityFrameworkCore.Tools": "8.0.29",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.23"
         },
         "runtime": {
@@ -1218,7 +1218,7 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/8.0.29": {},
-      "Microsoft.EntityFrameworkCore.Design/8.0.26": {
+      "Microsoft.EntityFrameworkCore.Design/8.0.29": {
         "dependencies": {
           "Humanizer.Core": "2.14.1",
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.8.0",
@@ -1228,8 +1228,8 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.EntityFrameworkCore.Design.dll": {
-            "assemblyVersion": "8.0.26.0",
-            "fileVersion": "8.0.2626.16905"
+            "assemblyVersion": "8.0.29.0",
+            "fileVersion": "8.0.2926.32502"
           }
         }
       },
@@ -1258,9 +1258,9 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/8.0.26": {
+      "Microsoft.EntityFrameworkCore.Tools/8.0.29": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "8.0.26"
+          "Microsoft.EntityFrameworkCore.Design": "8.0.29"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
@@ -1547,7 +1547,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore/8.0.23": {
         "dependencies": {
           "Microsoft.DotNet.Scaffolding.Shared": "8.0.23",
-          "Microsoft.EntityFrameworkCore.Design": "8.0.26",
+          "Microsoft.EntityFrameworkCore.Design": "8.0.29",
           "Microsoft.VisualStudio.Web.CodeGeneration.Core": "8.0.23"
         },
         "runtime": {
@@ -1816,7 +1816,14 @@
         }
       },
       "System.Diagnostics.EventLog/8.0.0": {},
-      "System.Formats.Asn1/8.0.2": {},
+      "System.Formats.Asn1/8.0.2": {
+        "runtime": {
+          "lib/net8.0/System.Formats.Asn1.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1325.6609"
+          }
+        }
+      },
       "System.IdentityModel.Tokens.Jwt/6.35.0": {
         "dependencies": {
           "Microsoft.IdentityModel.JsonWebTokens": "6.35.0",
@@ -1919,7 +1926,14 @@
         }
       },
       "System.Text.Encodings.Web/6.0.1": {},
-      "System.Text.Json/8.0.6": {},
+      "System.Text.Json/8.0.6": {
+        "runtime": {
+          "lib/net8.0/System.Text.Json.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1825.31117"
+          }
+        }
+      },
       "System.Threading.Channels/7.0.0": {},
       "System.Threading.Tasks.Extensions/4.5.4": {}
     }
@@ -2490,12 +2504,12 @@
       "path": "microsoft.entityframeworkcore.analyzers/8.0.29",
       "hashPath": "microsoft.entityframeworkcore.analyzers.8.0.29.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Design/8.0.26": {
+    "Microsoft.EntityFrameworkCore.Design/8.0.29": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-XSH+wJmfNBO5eJJdqRGYhHxILGiq1Fl3xkXa3RT+jk/vLIh7Rs5aPwrajoq//TivEyrSUwGg1BfsI2IDVRtp7A==",
-      "path": "microsoft.entityframeworkcore.design/8.0.26",
-      "hashPath": "microsoft.entityframeworkcore.design.8.0.26.nupkg.sha512"
+      "sha512": "sha512-109wTzveE4yG4aBbAgspGPd3DgVxqmDPyn3duOIgPemQkdm8Y+g6ZSQngvOou3YwgLEYat1+JHVyzdRbLp24BQ==",
+      "path": "microsoft.entityframeworkcore.design/8.0.29",
+      "hashPath": "microsoft.entityframeworkcore.design.8.0.29.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/8.0.29": {
       "type": "package",
@@ -2511,12 +2525,12 @@
       "path": "microsoft.entityframeworkcore.sqlserver/8.0.26",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.8.0.26.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Tools/8.0.26": {
+    "Microsoft.EntityFrameworkCore.Tools/8.0.29": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-s2GxoyfDWIg57LUXzxJkKp2vIch3lUQ/qNrkEO00mPYaMjICueBMXkC1T0HqiKr1CUfR0M1jI/yhvt7GAo7WJA==",
-      "path": "microsoft.entityframeworkcore.tools/8.0.26",
-      "hashPath": "microsoft.entityframeworkcore.tools.8.0.26.nupkg.sha512"
+      "sha512": "sha512-+WAOvbMU0D1vF+b4KCMzOuFq2X8cDAflQdHsxInO6tMyOxXvnsLFa1nKlxV2wk0LPAkrv+4MUL4wJPYLBBySDw==",
+      "path": "microsoft.entityframeworkcore.tools/8.0.29",
+      "hashPath": "microsoft.entityframeworkcore.tools.8.0.29.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
       "type": "package",
