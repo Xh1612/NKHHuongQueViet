@@ -1,0 +1,31 @@
+﻿@model List<Order>
+<h3>Đơn hàng cần xử lý</h3>
+<table class="table">
+    <thead><tr><th>Order ID</th><th>Ngày đặt</th><th>Trạng thái</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.OrderDate.ToString("dd/MM HH:mm")</td>
+                <td>@o.Status</td>
+                <td>
+                    @if (o.Status == OrderStatus.Pending)
+                    {
+                        <form method="post" asp-action="Advance" style="display:inline">
+                            <input type="hidden" name="orderId" value="@o.Id" /><input type="hidden" name="toStatus" value="Confirmed" />
+                            <button class="btn btn-sm btn-success">Xác nhận</button>
+                        </form>
+                    }
+                    @if (o.Status == OrderStatus.Confirmed)
+                    {
+                        <form method="post" asp-action="Advance" style="display:inline">
+                            <input type="hidden" name="orderId" value="@o.Id" /><input type="hidden" name="toStatus" value="Preparing" />
+                            <button class="btn btn-sm btn-warning">Bắt đầu chuẩn bị</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

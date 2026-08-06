@@ -1,0 +1,24 @@
+﻿@model List<Product>
+<h3>Quản lý sản phẩm</h3>
+<a asp-action="Create" class="btn btn-primary mb-3">+ Thêm sản phẩm</a>
+<table class="table">
+    <thead><tr><th>Id</th><th>Tên</th><th>Giá</th><th>Tồn kho</th><th>Danh mục</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Price.ToString("N0") đ</td>
+                <td>@p.StockQuantity</td>
+                <td>@p.Category?.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@p.Id">Sửa</a> |
+                    <form method="post" asp-action="Delete" asp-route-id="@p.Id" style="display:inline" onsubmit="return confirm('Xóa sản phẩm này?');">
+                        <button type="submit" class="btn btn-link text-danger p-0">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

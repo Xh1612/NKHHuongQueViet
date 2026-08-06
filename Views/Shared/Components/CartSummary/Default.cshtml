@@ -1,0 +1,5 @@
+﻿@model int
+<a asp-controller="Cart" asp-action="Index">Giỏ hàng @if (Model > 0) {
+<span class="icon-gio">@Model</span>
+}
+</a>

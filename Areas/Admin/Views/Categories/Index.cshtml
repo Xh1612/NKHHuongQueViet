@@ -1,0 +1,21 @@
+﻿@model List<Category>
+<h3>Quản lý danh mục</h3>
+<a asp-action="Create" class="btn btn-primary mb-3">+ Thêm danh mục</a>
+<table class="table">
+    <thead><tr><th>Id</th><th>Tên</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@c.Id">Sửa</a> |
+                    <form method="post" asp-action="Delete" asp-route-id="@c.Id" style="display:inline" onsubmit="return confirm('Xóa danh mục này?');">
+                        <button type="submit" class="btn btn-link text-danger p-0">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

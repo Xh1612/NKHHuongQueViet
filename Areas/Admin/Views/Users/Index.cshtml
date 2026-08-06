@@ -1,0 +1,32 @@
+﻿@model List<UserListViewModel>
+<h3>Quản lý người dùng</h3>
+<table class="table">
+    <thead><tr><th>Email</th><th>Vai trò</th><th>Trạng thái</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Email</td>
+                <td>
+                    <form method="post" asp-action="ChangeRole" style="display:flex; gap:0.4rem;">
+                        <input type="hidden" name="userId" value="@u.Id" />
+                        <select name="newRole" class="form-select form-select-sm">
+                            @foreach (var r in new[] { "Admin", "Staff", "Shipper", "Customer" })
+                            {
+                                <option value="@r" selected="@(u.Roles.Contains(r))">@r</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-outline-primary">Đổi</button>
+                    </form>
+                </td>
+                <td>@(u.IsLockedOut ? "Đã khóa" : "Hoạt động")</td>
+                <td>
+                    <form method="post" asp-action="ToggleLock">
+                        <input type="hidden" name="userId" value="@u.Id" />
+                        <button type="submit" class="btn btn-sm @(u.IsLockedOut ? "btn-success" : "btn-danger")">@(u.IsLockedOut ? "Mở khóa" : "Khóa")</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

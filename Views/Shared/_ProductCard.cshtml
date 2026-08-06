@@ -1,0 +1,17 @@
+﻿@model Product
+<div class="card-mon">
+    <div class="anh" style="background: @(string.IsNullOrEmpty(Model.ImageUrl) ? "#EDE3C8" : $"url('{Model.ImageUrl}') center/cover")"></div>
+    <div class="noi-dung">
+        <p class="ten-mon">@Model.Name</p>
+        @if (Model.IsSpicy)
+        {
+            <span class="badge-cay">Vị cay</span>
+        }
+        <p class="gia">@Model.Price.ToString("N0") đ</p>
+        <form method="post" asp-controller="Cart" asp-action="Add">
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <input type="hidden" name="quantity" value="1" />
+            <button type="submit" class="btn-dau btn-them">Thêm vào giỏ</button>
+        </form>
+    </div>
+</div>

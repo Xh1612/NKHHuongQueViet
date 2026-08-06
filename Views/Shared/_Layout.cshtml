@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HuongQueViet</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HuongQueViet.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:wght@600;700;900&display=swap" rel="stylesheet">
+    <link href="~/css/theme.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
+            <a asp-controller="Menu" asp-action="Index">Thực đơn</a>
+            <vc:cart-summary></vc:cart-summary>
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <a asp-controller="Orders" asp-action="Index">Đơn hàng của tôi</a>
+                <a asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản</a>
+                @if (User.IsInRole("Admin") || User.IsInRole("Staff") || User.IsInRole("Shipper"))
+                {
+                    <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Quản trị</a>
+                }
+            }
+            else
+            {
+                <a asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
+            }
+        </nav>
+    </header>
+    <main>@RenderBody()</main>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - HuongQueViet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

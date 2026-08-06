@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<section class="hero-hqv vung-toi">
+    <div>
+        <h1>Hương vị quê nhà,<br>giao tận cửa nhà bạn</h1>
+        <p>Phở, bún, cơm, gỏi cuốn nấu mỗi sáng theo công thức gia truyền.</p>
+        <a asp-controller="Menu" asp-action="Index" class="btn-dau">Xem thực đơn</a>
+    </div>
+</section>
+
+<section class="khu-noi-dung">
+    <h2>Món nổi bật</h2>
+    <div class="luoi-mon">
+        @foreach (var p in (List<Product>)ViewBag.Featured)
+        {
+            <partial name="_ProductCard" model="p" />
+        }
+    </div>
+</section>
+
+<section class="khu-noi-dung">
+    <h2>Món mới trong tuần</h2>
+    <div class="luoi-mon">
+        @foreach (var p in (List<Product>)ViewBag.Newest)
+        {
+            <partial name="_ProductCard" model="p" />
+        }
+    </div>
+</section>

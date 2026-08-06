@@ -1,0 +1,29 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Thực đơn";
+}
+
+<h1>Thực đơn</h1>
+
+<form method="get" style="margin-bottom:1rem; display:flex; gap:0.5rem;">
+    <input type="text" name="keyword" value="@ViewBag.Keyword" placeholder="Tìm món ăn..." />
+    <button type="submit">Tìm</button>
+    <a asp-action="AdvancedSearch">Tìm nâng cao →</a>
+</form>
+
+<div style="margin-bottom:1rem;">
+    <a asp-action="Index">Tất cả</a>
+    @foreach (var c in (List<Category>)ViewBag.Categories)
+    {
+        <text> | <a asp-action="Index" asp-route-categoryId="@c.Id">@c.Name</a></text>
+    }
+</div>
+
+<section class="khu-noi-dung">
+    <div class="luoi-mon">
+        @foreach (var p in Model)
+        {
+            <partial name="_ProductCard" model="p" />
+        }
+    </div>
+</section>

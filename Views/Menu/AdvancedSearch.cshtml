@@ -1,0 +1,30 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Tìm kiếm nâng cao";
+}
+
+<h1>Tìm kiếm nâng cao</h1>
+
+<form method="get" style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-bottom:2rem;">
+    <input type="text" name="keyword" placeholder="Từ khóa" />
+    <select name="categoryId">
+        <option value="">-- Danh mục --</option>
+        @foreach (var c in (List<Category>)ViewBag.Categories)
+        {
+            <option value="@c.Id">@c.Name</option>
+        }
+    </select>
+    <input type="number" name="minPrice" placeholder="Giá từ" />
+    <input type="number" name="maxPrice" placeholder="Giá đến" />
+    <label><input type="checkbox" name="isSpicy" value="true" /> Chỉ món cay</label>
+    <button type="submit">Lọc kết quả</button>
+</form>
+
+<section class="khu-noi-dung">
+    <div class="luoi-mon">
+        @foreach (var p in Model)
+        {
+            <partial name="_ProductCard" model="p" />
+        }
+    </div>
+</section>

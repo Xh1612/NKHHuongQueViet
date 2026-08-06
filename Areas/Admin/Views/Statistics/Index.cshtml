@@ -1,0 +1,28 @@
+﻿@model StatisticsViewModel
+<h3>Tổng quan</h3>
+<p><strong>Tổng doanh thu:</strong> @Model.TotalRevenue.ToString("N0") đ &nbsp; <strong>Tổng số đơn:</strong> @Model.TotalOrders</p>
+
+<h4>Đơn hàng theo trạng thái</h4>
+<table class="table table-sm w-50">
+    <thead><tr><th>Trạng thái</th><th>Số lượng</th></tr></thead>
+    <tbody>@foreach (var s in Model.OrdersByStatus) {
+    <tr><td>@s.Status</td><td>@s.Count</td></tr>
+        }
+</tbody>
+</table>
+
+<div class="row mt-4">
+    <div class="col-md-6"><h4>Doanh thu 7 ngày gần nhất</h4><canvas id="revenueChart"></canvas></div>
+    <div class="col-md-6"><h4>Top 5 sản phẩm bán chạy</h4><canvas id="topProductsChart"></canvas></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const revenueLabels = @Html.Raw(Json.Serialize(Model.RevenueByDay.Select(x => x.Date.ToString("dd/MM"))));
+    const revenueData = @Html.Raw(Json.Serialize(Model.RevenueByDay.Select(x => x.Revenue)));
+    new Chart(document.getElementById('revenueChart'), { type: 'line', data: { labels: revenueLabels, datasets: [{ label: 'Doanh thu (đ)', data: revenueData, borderColor: '#B71C1C', tension: 0.3 }] } });
+
+    const productLabels = @Html.Raw(Json.Serialize(Model.TopProducts.Select(x => x.ProductName)));
+    const productData = @Html.Raw(Json.Serialize(Model.TopProducts.Select(x => x.QuantitySold)));
+    new Chart(document.getElementById('topProductsChart'), { type: 'bar', data: { labels: productLabels, datasets: [{ label: 'Đã bán', data: productData, backgroundColor: '#2E7D32' }] } });
+</script>

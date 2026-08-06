@@ -1,0 +1,20 @@
+﻿@model Product
+<h1>@Model.Name</h1>
+<p>@Model.Description</p>
+<p class="gia">@Model.Price.ToString("N0") đ</p>
+
+<h4>⭐ @ViewBag.AverageRating / 5 (@((List<Review>)ViewBag.Reviews).Count đánh giá)</h4>
+@foreach (var r in (List<Review>)ViewBag.Reviews)
+{
+    <div><strong>@r.Rating/5</strong> — @r.Comment <span>(@r.CreatedAt.ToString("dd/MM/yyyy"))</span></div>
+}
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <form method="post" asp-controller="Reviews" asp-action="Create">
+        <input type="hidden" name="productId" value="@Model.Id" />
+        <select name="rating"><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option></select>
+        <input type="text" name="comment" placeholder="Nhận xét của bạn" />
+        <button type="submit">Gửi đánh giá</button>
+    </form>
+}

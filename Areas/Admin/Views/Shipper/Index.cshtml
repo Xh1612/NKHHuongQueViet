@@ -1,0 +1,16 @@
+﻿@model List<Order>
+<h3>Đơn hàng cần giao</h3>
+@foreach (var o in Model)
+{
+    <div style="margin-bottom:0.5rem;">
+        Đơn #@o.Id — @o.Status — @o.Address?.Street, @o.Address?.District
+        @if (o.Status == OrderStatus.Preparing)
+        {
+            <form method="post" asp-action="PickUp" style="display:inline"><input type="hidden" name="orderId" value="@o.Id" /><button>Nhận đơn</button></form>
+        }
+        @if (o.Status == OrderStatus.Delivering)
+        {
+            <form method="post" asp-action="CompleteDelivery" style="display:inline"><input type="hidden" name="orderId" value="@o.Id" /><button>Hoàn thành</button></form>
+        }
+    </div>
+}

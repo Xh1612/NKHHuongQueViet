@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] - Quản trị</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[email protected]/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <span class="navbar-brand">Hương Quê Việt — Quản trị</span>
+        <div>
+            <a class="text-white me-3" asp-area="Admin" asp-controller="Staff" asp-action="Index">Đơn hàng</a>
+            <a class="text-white me-3" asp-area="Admin" asp-controller="Products" asp-action="Index">Sản phẩm</a>
+            <a class="text-white me-3" asp-area="Admin" asp-controller="Categories" asp-action="Index">Danh mục</a>
+            <a class="text-white me-3" asp-area="Admin" asp-controller="Users" asp-action="Index">Người dùng</a>
+            <a class="text-white me-3" asp-area="Admin" asp-controller="Ingredients" asp-action="Index">Nguyên liệu</a>
+            <a class="text-white" asp-area="Admin" asp-controller="Statistics" asp-action="Index">Thống kê</a>
+        </div>
+    </nav>
+    <div class="container my-4">@RenderBody()</div>
+</body>
+</html>

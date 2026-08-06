@@ -1,0 +1,11 @@
+﻿@model Address
+<h1>Thêm địa chỉ giao hàng</h1>
+<form method="post">
+    <input name="Province" placeholder="Tỉnh/Thành phố" required /><br />
+    <input name="District" placeholder="Quận/Huyện" required /><br />
+    <input name="Ward" placeholder="Phường/Xã" required /><br />
+    <input name="Street" placeholder="Số nhà, đường" required /><br />
+    <input name="Lat" type="number" step="0.000001" placeholder="Vĩ độ (Lat)" required /><br />
+    <input name="Lng" type="number" step="0.000001" placeholder="Kinh độ (Lng)" required /><br />
+    <button type="submit">Lưu địa chỉ</button>
+</form>
