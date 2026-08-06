@@ -1,4 +1,6 @@
-﻿@model StatisticsViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@using HuongQueViet.Models
+@model StatisticsViewModel
 <h3>Tổng quan</h3>
 <p><strong>Tổng doanh thu:</strong> @Model.TotalRevenue.ToString("N0") đ &nbsp; <strong>Tổng số đơn:</strong> @Model.TotalOrders</p>
 

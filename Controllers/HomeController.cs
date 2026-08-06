@@ -3,6 +3,7 @@ using HuongQueViet.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace HuongQueViet.Controllers
 {
     public class HomeController : Controller

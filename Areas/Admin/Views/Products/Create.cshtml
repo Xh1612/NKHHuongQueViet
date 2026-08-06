@@ -1,4 +1,6 @@
-﻿@model Product
+﻿@using Microsoft.AspNetCore.Identity
+@using HuongQueViet.Models
+@model Product
 <form method="post" enctype="multipart/form-data">
     <div class="mb-2"><label>Tên sản phẩm</label><input asp-for="Name" class="form-control" required /></div>
     <div class="mb-2"><label>Mô tả</label><textarea asp-for="Description" class="form-control"></textarea></div>
