@@ -524,3 +524,9 @@ C:\FINAL PTUD\NKHHuongQueViet\obj\Debug\net8.0\refint\HuongQueViet.dll
 C:\FINAL PTUD\NKHHuongQueViet\obj\Debug\net8.0\HuongQueViet.pdb
 C:\FINAL PTUD\NKHHuongQueViet\obj\Debug\net8.0\HuongQueViet.genruntimeconfig.cache
 C:\FINAL PTUD\NKHHuongQueViet\obj\Debug\net8.0\ref\HuongQueViet.dll
+C:\FINAL PTUD\NKHHuongQueViet\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\FINAL PTUD\NKHHuongQueViet\obj\Debug\net8.0\HuongQueViet.csproj.GenerateResource.cache
+C:\FINAL PTUD\NKHHuongQueViet\obj\Debug\net8.0\HuongQueViet.Resources.SharedResources.resources
+C:\FINAL PTUD\NKHHuongQueViet\obj\Debug\net8.0\HuongQueViet.Resources.SharedResources.en.resources
+C:\FINAL PTUD\NKHHuongQueViet\bin\Debug\net8.0\en\HuongQueViet.resources.dll
+C:\FINAL PTUD\NKHHuongQueViet\obj\Debug\net8.0\en\HuongQueViet.resources.dll

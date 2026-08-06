@@ -1,9 +1,14 @@
+﻿using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 using HuongQueViet.Data;
 using HuongQueViet.Hubs;
 using HuongQueViet.Models;
 using HuongQueViet.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +31,40 @@ builder.Services.AddSignalR();
 //coup
 builder.Services.AddScoped<ICouponService, CouponService>();
 
+// Thêm dòng này
+// Đăng ký Email, MockSms và Notification Service vào DI Container
+builder.Services.AddTransient<EmailService>();
+builder.Services.AddTransient<MockSmsService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+//thêm đoạn này
+builder.Services.AddAuthentication(options =>
+{
+	options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+	options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+	options.TokenValidationParameters = new TokenValidationParameters
+	{
+		ValidateIssuer = true,
+		ValidateAudience = true,
+		ValidateLifetime = true,
+		ValidateIssuerSigningKey = true,
+		ValidIssuer = builder.Configuration["Jwt:Issuer"],
+		ValidAudience = builder.Configuration["Jwt:Audience"],
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+	};
+});
+//thêm đoạn này
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+	var cultures = new[] { new CultureInfo("vi-VN"), new CultureInfo("en-US") };
+	options.DefaultRequestCulture = new RequestCulture("vi-VN");
+	options.SupportedCultures = cultures;
+	options.SupportedUICultures = cultures;
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -45,6 +84,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseRequestLocalization();
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
