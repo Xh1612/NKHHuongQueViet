@@ -24,9 +24,17 @@
                 {
                     <a asp-controller="Orders" asp-action="Index">Đơn hàng của tôi</a>
                     <a asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản</a>
-                    @if (User.IsInRole("Admin") || User.IsInRole("Staff") || User.IsInRole("Shipper"))
+                    @if (User.IsInRole("Admin"))
                     {
                         <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Quản trị</a>
+                    }
+                    else if (User.IsInRole("Staff"))
+                    {
+                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Đơn hàng cần xử lý</a>
+                    }
+                    else if (User.IsInRole("Shipper"))
+                    {
+                        <a asp-area="Admin" asp-controller="Shipper" asp-action="Index">Đơn hàng cần giao</a>
                     }
                 }
                 else
