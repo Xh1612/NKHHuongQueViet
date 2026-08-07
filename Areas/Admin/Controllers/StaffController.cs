@@ -24,10 +24,56 @@ public class StaffController : Controller
         _context = context; _hub = hub; _userManager = userManager; _notificationService = notificationService;
     }
 
-    public async Task<IActionResult> Index() => View(await _context.Orders
-        .Include(o => o.OrderItems).ThenInclude(oi => oi.Product)
-        .Where(o => o.Status == OrderStatus.Pending || o.Status == OrderStatus.Confirmed || o.Status == OrderStatus.Preparing)
-        .OrderBy(o => o.OrderDate).ToListAsync());
+    public async Task<IActionResult> Index()
+    {
+        var orders = await _context.Orders
+            .Include(o => o.Address)
+            .Include(o => o.OrderItems).ThenInclude(oi => oi.Product)
+            .Where(o => o.Status == OrderStatus.Pending || o.Status == OrderStatus.Confirmed || o.Status == OrderStatus.Preparing)
+            .OrderBy(o => o.OrderDate)
+            .ToListAsync();
+
+        // Lấy thông tin khách hàng theo lô, tránh N+1 query
+        var userIds = orders.Select(o => o.UserId).Distinct().ToList();
+        var users = await _context.Users
+            .Where(u => userIds.Contains(u.Id))
+            .ToDictionaryAsync(u => u.Id, u => u);
+
+        var vm = orders.Select(o =>
+        {
+            users.TryGetValue(o.UserId, out var user);
+            return new StaffOrderViewModel
+            {
+                Id = o.Id,
+                Status = o.Status,
+                OrderDate = o.OrderDate,
+
+                CustomerName = user?.FullName ?? user?.UserName ?? "(Không rõ)",
+                CustomerPhone = user?.PhoneNumber ?? "",
+
+                Street = o.Address?.Street ?? "",
+                Ward = o.Address?.Ward ?? "",
+                District = o.Address?.District ?? "",
+                Province = o.Address?.Province ?? "",
+
+                TotalAmount = o.TotalAmount,
+                ShippingFee = o.ShippingFee,
+                DiscountAmount = o.DiscountAmount,
+                PaymentMethod = o.PaymentMethod,
+                IsPaid = o.IsPaid,
+                CouponCode = o.CouponCode,
+
+                Items = o.OrderItems.Select(oi => new StaffOrderItemViewModel
+                {
+                    ProductName = oi.Product?.Name ?? "(Sản phẩm đã xóa)",
+                    Quantity = oi.Quantity,
+                    UnitPrice = oi.UnitPrice
+                }).ToList()
+            };
+        }).ToList();
+
+        return View(vm);
+    }
 
     [HttpPost]
     public async Task<IActionResult> Advance(int orderId, OrderStatus toStatus)
@@ -42,7 +88,6 @@ public class StaffController : Controller
         order.Status = toStatus;
         await _context.SaveChangesAsync();
         await _hub.Clients.Group($"order-{order.Id}").SendAsync("StatusUpdated", order.Status.ToString());
-
         try
         {
             var user = await _userManager.FindByIdAsync(order.UserId);
