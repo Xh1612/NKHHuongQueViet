@@ -1,4 +1,9 @@
-﻿@model List<CartItem>
+﻿@if (TempData["Error"] != null)
+{
+    <div style="color:red; margin-bottom:1rem;">@TempData["Error"]</div>
+}
+
+@model List<CartItem>
 <h1>Xác nhận đơn hàng</h1>
 @if (!ViewData.ModelState.IsValid)
 {

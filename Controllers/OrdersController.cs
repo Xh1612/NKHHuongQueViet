@@ -1,154 +1,191 @@
 ﻿using System.Security.Claims;
 using System.Text.Json;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity; // [THÊM] Cần thiết để quản lý và tìm thông tin User
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using HuongQueViet.Data;
 using HuongQueViet.Helpers;
 using HuongQueViet.Models;
-using HuongQueViet.Services; // [Thêm] Cần thiết để gọi dịch vụ gửi thông báo INotificationService
+using HuongQueViet.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace HuongQueViet.Controllers
+[Authorize]
+public class OrdersController : Controller
 {
-    [Authorize]
-    public class OrdersController : Controller
+    private readonly AppDbContext _context;
+    private readonly IConfiguration _config;
+    private readonly ICouponService _couponService;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly INotificationService _notificationService;
+    private const string CartSessionKey = "Cart";
+
+    public OrdersController(AppDbContext context, IConfiguration config, ICouponService couponService,
+        UserManager<ApplicationUser> userManager, INotificationService notificationService)
     {
-        private readonly AppDbContext _context;
-        private readonly IConfiguration _config;
-        // [THÊM]: Khai báo 2 biến private để chứa dịch vụ thông báo và quản lý người dùng
-        private readonly INotificationService _notificationService;
-        private readonly UserManager<ApplicationUser> _userManager;
+        _context = context;
+        _config = config;
+        _couponService = couponService;
+        _userManager = userManager;
+        _notificationService = notificationService;
+    }
 
-        private const string CartSessionKey = "Cart";
-        // [THÊM]: Inject thêm INotificationService và UserManager<ApplicationUser> vào Constructor
+    private List<CartItem> GetCart()
+    {
+        var json = HttpContext.Session.GetString(CartSessionKey);
+        return json == null ? new List<CartItem>() : JsonSerializer.Deserialize<List<CartItem>>(json)!;
+    }
 
-        public OrdersController(
-            AppDbContext context,
-            IConfiguration config,
-            INotificationService notificationService, // [THÊM]
-            UserManager<ApplicationUser> userManager)   // [THÊM]
+    public async Task<IActionResult> Index()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var orders = await _context.Orders.Where(o => o.UserId == userId).OrderByDescending(o => o.OrderDate).ToListAsync();
+        return View(orders);
+    }
 
+    [HttpGet]
+    public async Task<IActionResult> Checkout()
+    {
+        var cart = GetCart();
+        if (!cart.Any()) return RedirectToAction("Index", "Cart");
+        ViewBag.Addresses = await _context.Addresses
+            .Where(a => a.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).ToListAsync();
+        return View(cart);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Checkout(int addressId, string paymentMethod, string? couponCode)
+    {
+        var cart = GetCart();
+        if (!cart.Any()) return RedirectToAction("Index", "Cart");
+
+        var address = await _context.Addresses.FindAsync(addressId);
+        if (address == null)
         {
-            _context = context; _config = config;
-            _notificationService = notificationService; // [THÊM]
-            _userManager = userManager;                 // [THÊM]
+            TempData["Error"] = "Vui lòng chọn địa chỉ giao hàng";
+            return RedirectToAction("Checkout");
         }
 
-        private List<CartItem> GetCart()
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        using var transaction = await _context.Database.BeginTransactionAsync();
+        try
         {
-            var json = HttpContext.Session.GetString(CartSessionKey);
-            return json == null ? new List<CartItem>() : JsonSerializer.Deserialize<List<CartItem>>(json)!;
-        }
+            var zone = await _context.DeliveryZones.FirstOrDefaultAsync(z => z.Province == address.Province && z.District == address.District);
+            var distanceKm = DistanceHelper.CalculateKm(
+                _config.GetValue<double>("RestaurantLocation:Lat"), _config.GetValue<double>("RestaurantLocation:Lng"),
+                address.Lat, address.Lng);
+            decimal shippingFee = zone != null ? zone.BaseFee + zone.FeePerKm * (decimal)distanceKm : 25000;
 
-        public async Task<IActionResult> Index()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return View(await _context.Orders.Where(o => o.UserId == userId).OrderByDescending(o => o.OrderDate).ToListAsync());
-        }
+            var order = new Order
+            {
+                UserId = userId!,
+                AddressId = address.Id,
+                OrderDate = DateTime.Now,
+                Status = OrderStatus.Pending,
+                PaymentMethod = paymentMethod,
+                ShippingFee = Math.Round(shippingFee, 0),
+                ETA = DateTime.Now.AddMinutes(45)
+            };
 
-        [HttpGet]
-        public async Task<IActionResult> Checkout()
-        {
-            var cart = GetCart();
-            if (!cart.Any()) return RedirectToAction("Index", "Cart");
-            ViewBag.Addresses = await _context.Addresses.Where(a => a.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).ToListAsync();
-            return View(cart);
-        }
+            decimal itemsTotal = 0;
+            foreach (var item in cart)
+            {
+                var product = await _context.Products.FindAsync(item.ProductId);
+                if (product == null) throw new InvalidOperationException($"Sản phẩm {item.ProductName} không tồn tại");
 
-        [HttpPost]
-        public async Task<IActionResult> Checkout(int addressId, string paymentMethod)
-        {
-            var cart = GetCart();
-            if (!cart.Any()) return RedirectToAction("Index", "Cart");
+                var recipe = await _context.ProductIngredients.Include(pi => pi.Ingredient)
+                    .Where(pi => pi.ProductId == item.ProductId).ToListAsync();
 
-            var address = await _context.Addresses.FindAsync(addressId);
-            if (address == null) { ModelState.AddModelError("", "Vui lòng chọn địa chỉ giao hàng"); return RedirectToAction("Checkout"); }
+                if (recipe.Any())
+                {
+                    foreach (var pi in recipe)
+                    {
+                        var needed = pi.QuantityNeeded * item.Quantity;
+                        if (pi.Ingredient!.StockQuantity < needed)
+                            throw new InvalidOperationException($"Nguyên liệu '{pi.Ingredient.Name}' không đủ để làm {item.ProductName}");
+                    }
+                    foreach (var pi in recipe)
+                    {
+                        var used = pi.QuantityNeeded * item.Quantity;
+                        pi.Ingredient!.StockQuantity -= used;
+                        _context.InventoryLogs.Add(new InventoryLog { IngredientId = pi.IngredientId, Change = -used, Reason = $"Chế biến {item.ProductName}" });
+                    }
+                }
+                else
+                {
+                    if (product.StockQuantity < item.Quantity) throw new InvalidOperationException($"Sản phẩm {item.ProductName} không đủ tồn kho");
+                    product.StockQuantity -= item.Quantity;
+                }
 
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            using var transaction = await _context.Database.BeginTransactionAsync();
+                order.OrderItems.Add(new OrderItem { ProductId = item.ProductId, Quantity = item.Quantity, UnitPrice = item.UnitPrice });
+                itemsTotal += item.SubTotal;
+            }
+
+            decimal discount = 0;
+            if (!string.IsNullOrEmpty(couponCode))
+            {
+                var (isValid, message, discountAmount) = await _couponService.ValidateAndCalculate(couponCode, itemsTotal);
+                if (!isValid)
+                {
+                    await transaction.RollbackAsync();
+                    TempData["Error"] = message;
+                    return RedirectToAction("Checkout");
+                }
+                discount = discountAmount;
+                order.CouponCode = couponCode;
+                order.DiscountAmount = discount;
+            }
+
+            order.TotalAmount = itemsTotal + order.ShippingFee - discount;
+
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+            HttpContext.Session.Remove(CartSessionKey);
+
+            // Đơn đã commit xong ở trên rồi — lỗi gửi thông báo (email sai định dạng, SMTP chưa cấu hình...)
+            // chỉ ghi log, KHÔNG được ném lại, nếu không sẽ làm đơn đã thành công bị báo nhầm là thất bại.
             try
             {
-                var zone = await _context.DeliveryZones.FirstOrDefaultAsync(z => z.Province == address.Province && z.District == address.District);
-                var distanceKm = DistanceHelper.CalculateKm(
-                    _config.GetValue<double>("RestaurantLocation:Lat"), _config.GetValue<double>("RestaurantLocation:Lng"),
-                    address.Lat, address.Lng);
-                decimal shippingFee = zone != null ? zone.BaseFee + zone.FeePerKm * (decimal)distanceKm : 25000;
-
-                var order = new Order
-                {
-                    UserId = userId!,
-                    AddressId = address.Id,
-                    OrderDate = DateTime.Now,
-                    Status = OrderStatus.Pending,
-                    PaymentMethod = paymentMethod,
-                    ShippingFee = Math.Round(shippingFee, 0),
-                    ETA = DateTime.Now.AddMinutes(45)
-                };
-
-                decimal itemsTotal = 0;
-                foreach (var item in cart)
-                {
-                    var product = await _context.Products.FindAsync(item.ProductId);
-                    if (product == null || product.StockQuantity < item.Quantity)
-                        throw new InvalidOperationException($"Sản phẩm {item.ProductName} không đủ tồn kho");
-
-                    product.StockQuantity -= item.Quantity;
-                    order.OrderItems.Add(new OrderItem { ProductId = item.ProductId, Quantity = item.Quantity, UnitPrice = item.UnitPrice });
-                    itemsTotal += item.SubTotal;
-                }
-                order.TotalAmount = itemsTotal + order.ShippingFee;
-
-                _context.Orders.Add(order);
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-
-                // Xóa giỏ hàng sau khi đặt thành công
-                HttpContext.Session.Remove(CartSessionKey);
-
-                // =========================================================================
-                // [THÊM]: TỰ ĐỘNG GỬI THÔNG BÁO EMAIL & MOCK SMS KHI TẠO ĐƠN THÀNH CÔNG
-                // =========================================================================
                 var currentUser = await _userManager.FindByIdAsync(userId!);
-                if (currentUser != null && !string.IsNullOrEmpty(currentUser.Email))
+                if (currentUser != null)
                 {
-                    await _notificationService.NotifyOrderPlaced(
-                        order,
-                        currentUser.Email,
-                        currentUser.PhoneNumber ?? "0900000000"
-                    );
+                    await _notificationService.NotifyOrderPlaced(order, currentUser.Email!, currentUser.PhoneNumber ?? "");
                 }
-                // =========================================================================
-
-                return RedirectToAction("Confirmation", new { id = order.Id });
             }
-            catch (Exception ex)
+            catch (Exception notifyEx)
             {
-                await transaction.RollbackAsync();
-                ModelState.AddModelError("", ex.Message);
-                return RedirectToAction("Checkout");
+                Console.WriteLine($"[Cảnh báo] Gửi thông báo cho đơn #{order.Id} thất bại: {notifyEx.Message}");
             }
-        }
 
-        public async Task<IActionResult> Confirmation(int id)
-        {
-            var order = await _context.Orders.Include(o => o.OrderItems).ThenInclude(oi => oi.Product).FirstOrDefaultAsync(o => o.Id == id);
-            return View(order);
+            if (paymentMethod == "VNPay") return RedirectToAction("Create", "Payment", new { orderId = order.Id });
+            return RedirectToAction("Confirmation", new { id = order.Id });
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Cancel(int id)
+        catch (Exception ex)
         {
-            var order = await _context.Orders.FindAsync(id);
-            if (order == null) return NotFound();
-            if (order.Status != OrderStatus.Pending && order.Status != OrderStatus.Confirmed)
-            {
-                TempData["Error"] = "Đơn hàng đã được chuẩn bị/giao, không thể hủy";
-                return RedirectToAction("Confirmation", new { id });
-            }
-            order.Status = OrderStatus.Cancelled;
-            await _context.SaveChangesAsync();
+            try { await transaction.RollbackAsync(); } catch { /* transaction có thể đã tự đóng do lỗi trước đó, bỏ qua */ }
+            TempData["Error"] = ex.Message;
+            return RedirectToAction("Checkout");
+        }
+    }
+
+    public async Task<IActionResult> Confirmation(int id)
+    {
+        var order = await _context.Orders.Include(o => o.OrderItems).ThenInclude(oi => oi.Product).FirstOrDefaultAsync(o => o.Id == id);
+        return View(order);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Cancel(int id)
+    {
+        var order = await _context.Orders.FindAsync(id);
+        if (order == null) return NotFound();
+        if (!OrderStatusMachine.CanTransition(order.Status, OrderStatus.Cancelled))
+        {
+            TempData["Error"] = "Đơn hàng đã được chuẩn bị/giao, không thể hủy";
             return RedirectToAction("Confirmation", new { id });
         }
+        order.Status = OrderStatus.Cancelled;
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Confirmation", new { id });
     }
 }
