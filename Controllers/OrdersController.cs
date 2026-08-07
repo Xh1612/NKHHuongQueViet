@@ -1,11 +1,13 @@
 ﻿using System.Security.Claims;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity; // [THÊM] Cần thiết để quản lý và tìm thông tin User
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HuongQueViet.Data;
 using HuongQueViet.Helpers;
 using HuongQueViet.Models;
+using HuongQueViet.Services; // [Thêm] Cần thiết để gọi dịch vụ gửi thông báo INotificationService
 
 namespace HuongQueViet.Controllers
 {
@@ -14,11 +16,23 @@ namespace HuongQueViet.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IConfiguration _config;
-        private const string CartSessionKey = "Cart";
+        // [THÊM]: Khai báo 2 biến private để chứa dịch vụ thông báo và quản lý người dùng
+        private readonly INotificationService _notificationService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public OrdersController(AppDbContext context, IConfiguration config)
+        private const string CartSessionKey = "Cart";
+        // [THÊM]: Inject thêm INotificationService và UserManager<ApplicationUser> vào Constructor
+
+        public OrdersController(
+            AppDbContext context,
+            IConfiguration config,
+            INotificationService notificationService, // [THÊM]
+            UserManager<ApplicationUser> userManager)   // [THÊM]
+
         {
             _context = context; _config = config;
+            _notificationService = notificationService; // [THÊM]
+            _userManager = userManager;                 // [THÊM]
         }
 
         private List<CartItem> GetCart()
@@ -88,7 +102,23 @@ namespace HuongQueViet.Controllers
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
+
+                // Xóa giỏ hàng sau khi đặt thành công
                 HttpContext.Session.Remove(CartSessionKey);
+
+                // =========================================================================
+                // [THÊM]: TỰ ĐỘNG GỬI THÔNG BÁO EMAIL & MOCK SMS KHI TẠO ĐƠN THÀNH CÔNG
+                // =========================================================================
+                var currentUser = await _userManager.FindByIdAsync(userId!);
+                if (currentUser != null && !string.IsNullOrEmpty(currentUser.Email))
+                {
+                    await _notificationService.NotifyOrderPlaced(
+                        order,
+                        currentUser.Email,
+                        currentUser.PhoneNumber ?? "0900000000"
+                    );
+                }
+                // =========================================================================
 
                 return RedirectToAction("Confirmation", new { id = order.Id });
             }

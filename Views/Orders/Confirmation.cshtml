@@ -1,5 +1,8 @@
-﻿@model Order
-<h1>Đơn hàng #@Model.Id</h1>
+﻿@using Microsoft.Extensions.Localization
+@using HuongQueViet.Resources
+@inject IStringLocalizer<SharedResources> Localizer
+@model Order
+<h1>@Localizer["OrderConfirmed"]</h1>
 <p>Trạng thái: <span id="orderStatusBadge">@Model.Status</span></p>
 @foreach (var item in Model.OrderItems)
 {
