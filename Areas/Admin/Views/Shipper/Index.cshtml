@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@* @using Microsoft.AspNetCore.Identity
 @using HuongQueViet.Models
 @model List<Order>
 <h3>Đơn hàng cần giao</h3>
@@ -14,5 +14,96 @@
         {
             <form method="post" asp-action="CompleteDelivery" style="display:inline"><input type="hidden" name="orderId" value="@o.Id" /><button>Hoàn thành</button></form>
         }
+    </div>
+} *@
+
+@using HuongQueViet.Models
+@model List<ShipperOrderViewModel>
+<h3>Đơn hàng cần giao</h3>
+
+@foreach (var o in Model)
+{
+    <div style="border:1px solid #ddd; border-radius:8px; padding:0.75rem; margin-bottom:0.75rem;">
+        <div>
+            <strong>Đơn #@o.Id</strong> — @o.Status
+            <span style="float:right; color:#666;">@o.OrderDate.ToString("HH:mm dd/MM/yyyy")</span>
+        </div>
+
+        <div style="margin-top:0.25rem;">
+            👤 @o.ReceiverName
+            @if (!string.IsNullOrWhiteSpace(o.ReceiverPhone))
+            {
+                <text> — 📞 <a href="tel:@o.ReceiverPhone">@o.ReceiverPhone</a></text>
+            }
+        </div>
+
+        <div>
+            📍 @o.Street, @o.Ward, @o.District, @o.Province
+            @if (o.Lat != 0 && o.Lng != 0)
+            {
+                <a target="_blank" href="https://www.google.com/maps?q=@o.Lat,@o.Lng">(Xem bản đồ)</a>
+            }
+        </div>
+
+        <div style="margin-top:0.25rem;">
+            💰 Tổng tiền: <strong>@o.TotalAmount.ToString("N0") đ</strong>
+            (Phí ship: @o.ShippingFee.ToString("N0") đ
+            @if (o.DiscountAmount > 0)
+            {
+                <text>, giảm giá: @o.DiscountAmount.ToString("N0") đ</text>
+            }
+    )
+        </div>
+
+        <div>
+            Thanh toán: @o.PaymentMethod
+            @if (o.IsPaid)
+            {
+                <span style="color:green;">(Đã thanh toán)</span>
+            }
+            else
+            {
+                <span style="color:red;">(Chưa thanh toán — thu tiền khi giao)</span>
+            }
+            @if (!string.IsNullOrWhiteSpace(o.CouponCode))
+            {
+                <text> — Mã giảm giá: @o.CouponCode</text>
+            }
+        </div>
+
+        @if (o.ETA.HasValue)
+        {
+            <div>⏱ Dự kiến giao: @o.ETA.Value.ToString("HH:mm dd/MM/yyyy")</div>
+        }
+
+        @if (o.Items.Any())
+        {
+            <details style="margin-top:0.25rem;">
+                <summary>Xem món (@o.Items.Count)</summary>
+                <ul>
+                    @foreach (var item in o.Items)
+                    {
+                        <li>@item.ProductName x@item.Quantity — @item.LineTotal.ToString("N0") đ</li>
+                    }
+                </ul>
+            </details>
+        }
+
+        <div style="margin-top:0.5rem;">
+            @if (o.Status == OrderStatus.Preparing)
+            {
+                <form method="post" asp-action="PickUp" style="display:inline">
+                    <input type="hidden" name="orderId" value="@o.Id" />
+                    <button>Nhận đơn</button>
+                </form>
+            }
+            @if (o.Status == OrderStatus.Delivering)
+            {
+                <form method="post" asp-action="CompleteDelivery" style="display:inline">
+                    <input type="hidden" name="orderId" value="@o.Id" />
+                    <button>Hoàn thành</button>
+                </form>
+            }
+        </div>
     </div>
 }
