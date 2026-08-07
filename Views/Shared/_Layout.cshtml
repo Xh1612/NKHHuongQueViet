@@ -12,7 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:wght@600;700;900&display=swap" rel="stylesheet">
     <link href="~/css/theme.css" rel="stylesheet" />
 </head>
-<body>
+<!-- 1. Thêm class d-flex flex-column min-vh-100 vào thẻ body -->
+<body class="d-flex flex-column min-vh-100">
     <header class="vung-toi">
         <nav class="navbar-hqv">
             <a class="logo" asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
@@ -35,8 +36,10 @@
             </div>
         </nav>
     </header>
-    <main>@RenderBody()</main>
-    <footer class="vung-toi" style="padding: 2.5rem 2rem; text-align:center; margin-top: 4rem;">
+    <!-- 2. Thêm class flex-grow-1 vào thẻ main -->
+    <main class="flex-grow-1">@RenderBody()</main>
+    <!-- 3. Thêm class mt-auto vào thẻ footer -->
+    <footer class="vung-toi mt-auto" style="padding: 2.5rem 2rem; text-align:center; margin-top: 4rem;">
         <p style="font-family:'Fraunces',serif; font-size:1.2rem;">Hương Quê Việt</p>
         <p style="opacity:0.7; font-size:0.85rem;">Vị quê trong từng món ăn — © 2026</p>
     </footer>
