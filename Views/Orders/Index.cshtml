@@ -1,6 +1,47 @@
 ﻿@model List<Order>
-<h1>Đơn hàng của tôi</h1>
-@foreach (var o in Model)
-{
-    <div><a asp-action="Confirmation" asp-route-id="@o.Id">Đơn #@o.Id</a> — @o.Status — @o.TotalAmount.ToString("N0") đ</div>
-}
+
+<link rel="stylesheet" href="~/css/theme.css" />
+<link rel="stylesheet" href="~/css/orders-list.css" />
+
+<div class="orders-wrapper">
+
+    <h1>Đơn hàng của tôi</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="orders-empty">
+            <p>Bạn chưa có đơn hàng nào.</p>
+            <a asp-controller="Menu" asp-action="Index">Xem thực đơn →</a>
+        </div>
+    }
+    else
+    {
+        <div class="orders-list">
+            @foreach (var o in Model)
+            {
+                var statusClass = o.Status switch
+                {
+                    OrderStatus.Pending => "status-pending",
+                    OrderStatus.Confirmed => "status-confirmed",
+                    OrderStatus.Preparing => "status-preparing",
+                    OrderStatus.Delivering => "status-delivering",
+                    OrderStatus.Completed => "status-completed",
+                    OrderStatus.Cancelled => "status-cancelled",
+                    _ => "status-pending"
+                };
+
+                <a class="order-card" asp-action="Confirmation" asp-route-id="@o.Id">
+                    <div class="order-card-left">
+                        <span class="order-card-id">Đơn #@o.Id</span>
+                        <span class="order-card-status @statusClass">@o.Status</span>
+                    </div>
+                    <div class="order-card-right">
+                        <span class="order-card-total">@o.TotalAmount.ToString("N0") đ</span>
+                        <span class="order-card-arrow">›</span>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+
+</div>

@@ -2,22 +2,79 @@
 @using HuongQueViet.Resources
 @inject IStringLocalizer<SharedResources> Localizer
 @model Order
-<h1>@Localizer["OrderConfirmed"]</h1>
-<p>Trạng thái: <span id="orderStatusBadge">@Model.Status</span></p>
-@foreach (var item in Model.OrderItems)
-{
-    <div>@item.Product?.Name × @item.Quantity — @((item.UnitPrice * item.Quantity).ToString("N0")) đ</div>
-}
-<p><strong>Tổng cộng: @Model.TotalAmount.ToString("N0") đ</strong></p>
 
-@if (Model.Status == OrderStatus.Pending || Model.Status == OrderStatus.Confirmed)
-{
-    <form method="post" asp-action="Cancel" asp-route-id="@Model.Id"><button type="submit">Hủy đơn hàng</button></form>
+<link rel="stylesheet" href="~/css/theme.css" />
+<link rel="stylesheet" href="~/css/confirmation.css" />
+
+@{
+    var statusClass = Model.Status switch
+    {
+        OrderStatus.Pending => "status-pending",
+        OrderStatus.Confirmed => "status-confirmed",
+        OrderStatus.Preparing => "status-preparing",
+        OrderStatus.Delivering => "status-delivering",
+        OrderStatus.Completed => "status-completed",
+        OrderStatus.Cancelled => "status-cancelled",
+        _ => "status-pending"
+    };
 }
+
+<div class="confirm-wrapper">
+
+    <div class="confirm-header">
+        <div class="confirm-icon">✓</div>
+        <h1>@Localizer["OrderConfirmed"]</h1>
+        <div class="confirm-status-row">
+            <span id="orderStatusBadge" class="order-card-status @statusClass" data-status="@statusClass">@Model.Status</span>
+        </div>
+    </div>
+
+    <div class="confirm-section">
+        <h4>Chi tiết đơn hàng</h4>
+        @foreach (var item in Model.OrderItems)
+        {
+            <div class="confirm-item">
+                <div class="confirm-item-info">
+                    <span class="confirm-item-name">@item.Product?.Name</span>
+                    <span class="confirm-item-qty">Số lượng: @item.Quantity</span>
+                </div>
+                <span class="confirm-item-price">@((item.UnitPrice * item.Quantity).ToString("N0")) đ</span>
+            </div>
+        }
+    </div>
+
+    <div class="confirm-total">
+        <span class="confirm-total-label">Tổng cộng</span>
+        <span class="confirm-total-value">@Model.TotalAmount.ToString("N0") đ</span>
+    </div>
+
+    @if (Model.Status == OrderStatus.Pending || Model.Status == OrderStatus.Confirmed)
+    {
+        <form class="confirm-cancel-form" method="post" asp-action="Cancel" asp-route-id="@Model.Id">
+            <button type="submit" class="btn-huy">Hủy đơn hàng</button>
+        </form>
+    }
+
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
 <script>
+    const statusClassMap = {
+        "Pending": "status-pending",
+        "Confirmed": "status-confirmed",
+        "Preparing": "status-preparing",
+        "Delivering": "status-delivering",
+        "Completed": "status-completed",
+        "Cancelled": "status-cancelled"
+    };
+
     const connection = new signalR.HubConnectionBuilder().withUrl("/orderStatusHub").build();
-    connection.on("StatusUpdated", (newStatus) => { document.getElementById("orderStatusBadge").innerText = newStatus; });
+
+    connection.on("StatusUpdated", (newStatus) => {
+        const badge = document.getElementById("orderStatusBadge");
+        badge.innerText = newStatus;
+        badge.className = "order-card-status " + (statusClassMap[newStatus] || "status-pending");
+    });
+
     connection.start().then(() => connection.invoke("JoinOrderGroup", @Model.Id));
 </script>

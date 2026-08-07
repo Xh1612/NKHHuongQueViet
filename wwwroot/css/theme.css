@@ -948,3 +948,640 @@ a {
     box-sizing: border-box;
     text-align: center;
 }
+
+/*Checkout*/
+
+.checkout-wrapper {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+
+    .checkout-wrapper h1 {
+        font-size: 1.6rem;
+        margin: 0 0 1.5rem;
+    }
+
+.checkout-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(183, 28, 28, 0.08);
+    border: 1px solid rgba(183, 28, 28, 0.25);
+    color: var(--gach-non);
+    font-weight: 600;
+    padding: 0.85rem 1.1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.checkout-validation {
+    background: rgba(183, 28, 28, 0.08);
+    border: 1px solid rgba(183, 28, 28, 0.25);
+    color: var(--gach-non);
+    padding: 0.85rem 1.1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+    .checkout-validation ul {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
+
+.checkout-section {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+    .checkout-section h4 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.05rem;
+        margin: 0 0 1rem;
+        color: var(--than-tre);
+    }
+
+.dia-chi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.dia-chi-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--giay-do-toi);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+    .dia-chi-item:hover {
+        border-color: var(--vang-nghe);
+        background: var(--giay-do);
+    }
+
+    .dia-chi-item input[type="radio"] {
+        margin-top: 0.2rem;
+        width: 1.05rem;
+        height: 1.05rem;
+        accent-color: var(--gach-non);
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .dia-chi-item span {
+        line-height: 1.4;
+        font-size: 0.95rem;
+    }
+
+.them-dia-chi {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 600;
+    color: var(--gach-non);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+    .them-dia-chi:hover {
+        text-decoration: underline;
+    }
+
+.thanh-toan-list {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.thanh-toan-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.2rem;
+    border: 1px solid var(--giay-do-toi);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    flex: 1;
+    min-width: 160px;
+}
+
+    .thanh-toan-item:hover {
+        border-color: var(--vang-nghe);
+    }
+
+    .thanh-toan-item input[type="radio"] {
+        width: 1.05rem;
+        height: 1.05rem;
+        accent-color: var(--gach-non);
+        cursor: pointer;
+    }
+
+.checkout-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--than-tre);
+    border-radius: 12px;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkout-summary-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-summary-label {
+    color: var(--chu-sang);
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+.checkout-summary-note {
+    color: var(--chu-sang);
+    opacity: 0.55;
+    font-size: 0.78rem;
+    margin-top: 0.2rem;
+}
+
+.checkout-summary-total {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--vang-nghe);
+    white-space: nowrap;
+}
+
+.checkout-submit {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.05rem;
+}
+/*address Cre*/
+.address-wrapper {
+    max-width: 560px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+
+    .address-wrapper h1 {
+        font-size: 1.5rem;
+        margin: 0 0 0.4rem;
+    }
+
+.address-subtitle {
+    color: var(--chu-chinh);
+    opacity: 0.65;
+    font-size: 0.92rem;
+    margin: 0 0 1.5rem;
+}
+
+.address-form {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+    padding: 1.75rem 1.75rem 1.5rem;
+}
+
+.address-group {
+    margin-bottom: 1.2rem;
+}
+
+.address-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.address-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--chu-chinh);
+    opacity: 0.75;
+    margin-bottom: 0.4rem;
+}
+
+.address-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--giay-do-toi);
+    border-radius: 8px;
+    background: var(--giay-do);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.95rem;
+    color: var(--chu-chinh);
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+    .address-input::placeholder {
+        color: var(--chu-chinh);
+        opacity: 0.4;
+    }
+
+    .address-input:focus {
+        outline: none;
+        border-color: var(--vang-nghe);
+        background: #fff;
+    }
+
+.address-coords-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--giay-do);
+    border: 1px dashed var(--giay-do-toi);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    color: var(--chu-chinh);
+    opacity: 0.75;
+    margin-bottom: 1.2rem;
+}
+
+.address-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.address-submit {
+    flex: 1;
+    text-align: center;
+}
+
+.address-cancel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+    border-radius: 4px;
+    border: 2px solid var(--giay-do-toi);
+    color: var(--chu-chinh);
+    text-decoration: none;
+    font-weight: 600;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+    .address-cancel:hover {
+        border-color: var(--than-tre);
+        background: var(--giay-do);
+    }
+
+@media (max-width: 520px) {
+    .address-row {
+        grid-template-columns: 1fr;
+    }
+
+    .address-actions {
+        flex-direction: column-reverse;
+    }
+}
+
+/*Order*/
+
+.orders-wrapper {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+
+    .orders-wrapper h1 {
+        font-size: 1.5rem;
+        margin: 0 0 1.5rem;
+    }
+
+.orders-empty {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+    color: var(--chu-chinh);
+}
+
+    .orders-empty p {
+        opacity: 0.7;
+        margin: 0 0 1rem;
+    }
+
+    .orders-empty a {
+        color: var(--gach-non);
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .orders-empty a:hover {
+            text-decoration: underline;
+        }
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.order-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+    padding: 1.1rem 1.4rem;
+    text-decoration: none;
+    color: var(--chu-chinh);
+    transition: transform 0.15s ease;
+}
+
+    .order-card:hover {
+        transform: translateY(-1px);
+    }
+
+.order-card-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.order-card-id {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--than-tre);
+}
+
+.order-card-status {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+}
+
+.status-pending {
+    background: rgba(217, 164, 65, 0.15);
+    color: var(--vang-nghe);
+}
+
+.status-confirmed {
+    background: rgba(46, 125, 50, 0.12);
+    color: var(--la-tre);
+}
+
+.status-preparing {
+    background: rgba(183, 28, 28, 0.08);
+    color: var(--gach-non);
+}
+
+.status-delivering {
+    background: rgba(43, 38, 32, 0.08);
+    color: var(--than-tre);
+}
+
+.status-completed {
+    background: rgba(46, 125, 50, 0.15);
+    color: var(--la-tre);
+}
+
+.status-cancelled {
+    background: rgba(183, 28, 28, 0.1);
+    color: var(--gach-non);
+}
+
+.order-card-right {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+}
+
+.order-card-total {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--gach-non);
+    white-space: nowrap;
+}
+
+.order-card-arrow {
+    color: var(--chu-chinh);
+    opacity: 0.35;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+    .order-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .order-card-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/*Infor*/
+
+.confirm-wrapper {
+    max-width: 640px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+
+.confirm-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.confirm-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(46, 125, 50, 0.12);
+    color: var(--la-tre);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 0.9rem;
+}
+
+.confirm-header h1 {
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+}
+
+.confirm-status-row {
+    display: flex;
+    justify-content: center;
+}
+
+.order-card-status {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.status-pending {
+    background: rgba(217, 164, 65, 0.15);
+    color: var(--vang-nghe);
+}
+
+.status-confirmed {
+    background: rgba(46, 125, 50, 0.12);
+    color: var(--la-tre);
+}
+
+.status-preparing {
+    background: rgba(183, 28, 28, 0.08);
+    color: var(--gach-non);
+}
+
+.status-delivering {
+    background: rgba(43, 38, 32, 0.08);
+    color: var(--than-tre);
+}
+
+.status-completed {
+    background: rgba(46, 125, 50, 0.15);
+    color: var(--la-tre);
+}
+
+.status-cancelled {
+    background: rgba(183, 28, 28, 0.1);
+    color: var(--gach-non);
+}
+
+.confirm-section {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+    .confirm-section h4 {
+        font-family: 'Fraunces', serif;
+        font-size: 1rem;
+        margin: 0 0 1rem;
+        color: var(--than-tre);
+    }
+
+.confirm-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--giay-do-toi);
+}
+
+    .confirm-item:last-of-type {
+        border-bottom: none;
+    }
+
+.confirm-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.confirm-item-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.confirm-item-qty {
+    color: var(--chu-chinh);
+    opacity: 0.6;
+    font-size: 0.82rem;
+    margin-top: 0.15rem;
+}
+
+.confirm-item-price {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--gach-non);
+    white-space: nowrap;
+}
+
+.confirm-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--than-tre);
+    border-radius: 12px;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.confirm-total-label {
+    color: var(--chu-sang);
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+.confirm-total-value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--vang-nghe);
+}
+
+.confirm-cancel-form {
+    text-align: center;
+}
+
+.btn-huy {
+    display: inline-block;
+    background: none;
+    border: 2px solid var(--gach-non);
+    color: var(--gach-non);
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.95rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+    .btn-huy:hover {
+        background: var(--gach-non);
+        color: #fff;
+    }
+
+@media (max-width: 480px) {
+    .confirm-item {
+        align-items: flex-start;
+    }
+}

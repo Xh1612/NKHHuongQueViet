@@ -1,29 +1,63 @@
-﻿@if (TempData["Error"] != null)
-{
-    <div style="color:red; margin-bottom:1rem;">@TempData["Error"]</div>
-}
+﻿@model List<CartItem>
 
-@model List<CartItem>
-<h1>Xác nhận đơn hàng</h1>
-@if (!ViewData.ModelState.IsValid)
-{
-    <div>@Html.ValidationSummary()</div>
-}
+<link rel="stylesheet" href="~/css/theme.css" />
+<link rel="stylesheet" href="~/css/checkout.css" />
 
-<form method="post" asp-action="Checkout">
-    <h4>Giao đến</h4>
-    @foreach (var a in (List<Address>)ViewBag.Addresses)
+<div class="checkout-wrapper">
+
+    <h1>Xác nhận đơn hàng</h1>
+
+    @if (TempData["Error"] != null)
     {
-        <label><input type="radio" name="addressId" value="@a.Id" required /> @a.Street, @a.Ward, @a.District, @a.Province</label>
-    
-        <br />
+        <div class="checkout-alert">⚠ @TempData["Error"]</div>
     }
-    <a asp-controller="Addresses" asp-action="Create">+ Thêm địa chỉ mới</a>
 
-    <h4>Thanh toán</h4>
-    <label><input type="radio" name="paymentMethod" value="COD" checked /> COD</label>
-    <label><input type="radio" name="paymentMethod" value="VNPay" /> VNPay</label>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="checkout-validation">
+            @Html.ValidationSummary()
+        </div>
+    }
 
-    <p><strong>Tạm tính: @Model.Sum(i => i.SubTotal).ToString("N0") đ</strong> (chưa gồm phí ship, tính sau khi chọn địa chỉ)</p>
-    <button type="submit" class="btn-dau">Đặt hàng ngay</button>
-</form>
+    <form method="post" asp-action="Checkout">
+
+        <div class="checkout-section">
+            <h4>Giao đến</h4>
+            <div class="dia-chi-list">
+                @foreach (var a in (List<Address>)ViewBag.Addresses)
+                {
+                    <label class="dia-chi-item">
+                        <input type="radio" name="addressId" value="@a.Id" required />
+                        <span>@a.Street, @a.Ward, @a.District, @a.Province</span>
+                    </label>
+                }
+            </div>
+            <a class="them-dia-chi" asp-controller="Addresses" asp-action="Create">+ Thêm địa chỉ mới</a>
+        </div>
+
+        <div class="checkout-section">
+            <h4>Thanh toán</h4>
+            <div class="thanh-toan-list">
+                <label class="thanh-toan-item">
+                    <input type="radio" name="paymentMethod" value="COD" checked />
+                    COD (Thanh toán khi nhận hàng)
+                </label>
+                <label class="thanh-toan-item">
+                    <input type="radio" name="paymentMethod" value="VNPay" />
+                    VNPay
+                </label>
+            </div>
+        </div>
+
+        <div class="checkout-summary">
+            <div class="checkout-summary-left">
+                <span class="checkout-summary-label">Tạm tính</span>
+                <span class="checkout-summary-note">Chưa gồm phí ship, tính sau khi chọn địa chỉ</span>
+            </div>
+            <span class="checkout-summary-total">@Model.Sum(i => i.SubTotal).ToString("N0") đ</span>
+        </div>
+
+        <button type="submit" class="btn-dau checkout-submit">Đặt hàng ngay</button>
+    </form>
+
+</div>
