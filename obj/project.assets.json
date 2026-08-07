@@ -7799,11 +7799,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\HuongQueViet.csproj",
+      "projectUniqueName": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test\\NKHHuongQueViet\\HuongQueViet.csproj",
       "projectName": "HuongQueViet",
-      "projectPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\HuongQueViet.csproj",
+      "projectPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test\\NKHHuongQueViet\\HuongQueViet.csproj",
       "packagesPath": "C:\\Users\\takan\\.nuget\\packages\\",
-      "outputPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\HuongQueViet\\obj\\",
+      "outputPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test\\NKHHuongQueViet\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

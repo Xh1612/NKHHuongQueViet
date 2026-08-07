@@ -13,37 +13,32 @@
     <link href="~/css/theme.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav>
-            <a asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
-            <a asp-controller="Menu" asp-action="Index">Thực đơn</a>
-            <vc:cart-summary></vc:cart-summary>
-            @if (User.Identity?.IsAuthenticated == true)
-            {
-                <a asp-controller="Orders" asp-action="Index">Đơn hàng của tôi</a>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản</a>
-                @if (User.IsInRole("Admin") || User.IsInRole("Staff") || User.IsInRole("Shipper"))
+    <header class="vung-toi">
+        <nav class="navbar-hqv">
+            <a class="logo" asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
+            <div class="nav-links">
+                <a asp-controller="Menu" asp-action="Index">Thực đơn</a>
+                <vc:cart-summary></vc:cart-summary>
+                @if (User.Identity?.IsAuthenticated == true)
                 {
-                    <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Quản trị</a>
+                    <a asp-controller="Orders" asp-action="Index">Đơn hàng của tôi</a>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản</a>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Staff") || User.IsInRole("Shipper"))
+                    {
+                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Quản trị</a>
+                    }
                 }
-            }
-            else
-            {
-                <a asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
-            }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
+                }
+            </div>
         </nav>
     </header>
     <main>@RenderBody()</main>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - HuongQueViet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <footer class="vung-toi" style="padding: 2.5rem 2rem; text-align:center; margin-top: 4rem;">
+        <p style="font-family:'Fraunces',serif; font-size:1.2rem;">Hương Quê Việt</p>
+        <p style="opacity:0.7; font-size:0.85rem;">Vị quê trong từng món ăn — © 2026</p>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
