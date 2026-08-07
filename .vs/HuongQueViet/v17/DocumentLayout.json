@@ -1,0 +1,215 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\wwwroot\\css\\theme.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:wwwroot\\css\\theme.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\views\\menu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:views\\menu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\views\\menu\\advancedsearch.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:views\\menu\\advancedsearch.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\areas\\admin\\controllers\\shippercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:areas\\admin\\controllers\\shippercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\areas\\admin\\views\\shipper\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:areas\\admin\\views\\shipper\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|d:\\menu\\school\\couse\\v\\mvc\\final\\test3\\nkhhuongqueviet\\areas\\admin\\views\\staff\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88D73012-2B9A-4BD3-8414-47DCEFA0B395}|HuongQueViet.csproj|solutionrelative:areas\\admin\\views\\staff\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 388,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 13,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ecb7191a-597b-41f5-9843-03a4cf275dde}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{4a9b7e51-aa16-11d0-a8c5-00a0c921a4d2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Cart\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Cart\\Index.cshtml",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Cart\\Index.cshtml",
+              "RelativeToolTip": "Views\\Cart\\Index.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-07T16:07:22.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdvancedSearch.cshtml",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Menu\\AdvancedSearch.cshtml",
+              "RelativeDocumentMoniker": "Views\\Menu\\AdvancedSearch.cshtml",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Menu\\AdvancedSearch.cshtml",
+              "RelativeToolTip": "Views\\Menu\\AdvancedSearch.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-07T15:42:26.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "theme.css",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\wwwroot\\css\\theme.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\theme.css",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\wwwroot\\css\\theme.css",
+              "RelativeToolTip": "wwwroot\\css\\theme.css",
+              "ViewState": "AgIAAIUDAAAAAAAAAAAAALUDAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-08-07T15:21:17.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Menu\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Menu\\Index.cshtml",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Menu\\Index.cshtml",
+              "RelativeToolTip": "Views\\Menu\\Index.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-07T15:18:14.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-07T15:15:20.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-07T15:14:41.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ShipperController.cs",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Areas\\Admin\\Controllers\\ShipperController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\ShipperController.cs",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Areas\\Admin\\Controllers\\ShipperController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\ShipperController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAA3wDsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-07T09:39:52.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Areas\\Admin\\Views\\Staff\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Staff\\Index.cshtml",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Areas\\Admin\\Views\\Staff\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Staff\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-07T09:18:31.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Areas\\Admin\\Views\\Shipper\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Shipper\\Index.cshtml",
+              "ToolTip": "D:\\Menu\\School\\Couse\\V\\MVC\\FInal\\Test3\\NKHHuongQueViet\\Areas\\Admin\\Views\\Shipper\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Shipper\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-07T09:18:22.917Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,24 +1,49 @@
 ﻿@model List<CartItem>
-<h1>Giỏ hàng (@Model.Count món)</h1>
-@if (!Model.Any())
-{
-    <p>Giỏ hàng đang trống. <a asp-controller="Menu" asp-action="Index">Xem thực đơn</a></p>
-}
-else
-{
-    @foreach (var item in Model)
+
+<link rel="stylesheet" href="~/css/theme.css" />
+<link rel="stylesheet" href="~/css/cart.css" />
+
+<div class="cart-wrapper">
+
+    <div class="cart-header">
+        <h1>Giỏ hàng</h1>
+        <span>@Model.Count món</span>
+    </div>
+
+    @if (!Model.Any())
     {
-        <div style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid #eee;">
-            <span>@item.ProductName × @item.Quantity</span>
-            <span>
-                @item.SubTotal.ToString("N0") đ
-                <form method="post" asp-action="Remove" asp-controller="Cart" style="display:inline">
-                    <input type="hidden" name="productId" value="@item.ProductId" />
-                    <button type="submit">Xóa</button>
-                </form>
-            </span>
+        <div class="cart-empty">
+            <p>Giỏ hàng đang trống.</p>
+            <a asp-controller="Menu" asp-action="Index">Xem thực đơn →</a>
         </div>
     }
-    <p><strong>Tạm tính: @Model.Sum(i => i.SubTotal).ToString("N0") đ</strong></p>
-    <a asp-controller="Orders" asp-action="Checkout" class="btn-dau">Tiến hành đặt hàng</a>
-}
+    else
+    {
+        <div class="cart-list">
+            @foreach (var item in Model)
+            {
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <span class="cart-item-name">@item.ProductName</span>
+                        <span class="cart-item-qty">Số lượng: @item.Quantity</span>
+                    </div>
+                    <div class="cart-item-right">
+                        <span class="cart-item-price">@item.SubTotal.ToString("N0") đ</span>
+                        <form method="post" asp-action="Remove" asp-controller="Cart">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="btn-remove">Xóa</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="cart-summary">
+            <span class="cart-summary-label">Tạm tính</span>
+            <span class="cart-summary-total">@Model.Sum(i => i.SubTotal).ToString("N0") đ</span>
+        </div>
+
+        <a asp-controller="Orders" asp-action="Checkout" class="btn-dau cart-checkout">Tiến hành đặt hàng</a>
+    }
+
+</div>

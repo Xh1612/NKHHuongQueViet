@@ -3,28 +3,70 @@
     ViewData["Title"] = "Tìm kiếm nâng cao";
 }
 
-<h1>Tìm kiếm nâng cao</h1>
-
-<form method="get" style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-bottom:2rem;">
-    <input type="text" name="keyword" placeholder="Từ khóa" />
-    <select name="categoryId">
-        <option value="">-- Danh mục --</option>
-        @foreach (var c in (List<Category>)ViewBag.Categories)
-        {
-            <option value="@c.Id">@c.Name</option>
-        }
-    </select>
-    <input type="number" name="minPrice" placeholder="Giá từ" />
-    <input type="number" name="maxPrice" placeholder="Giá đến" />
-    <label><input type="checkbox" name="isSpicy" value="true" /> Chỉ món cay</label>
-    <button type="submit">Lọc kết quả</button>
-</form>
+<section class="dau-trang-menu">
+    <div class="noi-dung-dau-trang">
+        <h1 class="tieu-de-menu">Tìm kiếm nâng cao</h1>
+        <p class="gioi-thieu-menu">Lọc chính xác món ăn theo nhu cầu của bạn.</p>
+    </div>
+</section>
 
 <section class="khu-noi-dung">
-    <div class="luoi-mon">
-        @foreach (var p in Model)
-        {
-            <partial name="_ProductCard" model="p" />
-        }
-    </div>
+    <form method="get" class="khung-loc-nang-cao">
+        <div class="truong-loc truong-rong">
+            <label class="nhan-loc">Từ khóa</label>
+            <input type="text" name="keyword" placeholder="Tên món ăn..." class="o-tim" />
+        </div>
+
+        <div class="truong-loc">
+            <label class="nhan-loc">Danh mục</label>
+            <select name="categoryId" class="o-chon">
+                <option value="">-- Tất cả danh mục --</option>
+                @foreach (var c in (List<Category>)ViewBag.Categories)
+                {
+                    <option value="@c.Id">@c.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="truong-loc">
+            <label class="nhan-loc">Giá từ</label>
+            <input type="number" name="minPrice" placeholder="0" class="o-tim" />
+        </div>
+
+        <div class="truong-loc">
+            <label class="nhan-loc">Giá đến</label>
+            <input type="number" name="maxPrice" placeholder="Không giới hạn" class="o-tim" />
+        </div>
+
+        <div class="truong-loc truong-checkbox">
+            <label class="nhan-checkbox">
+                <input type="checkbox" name="isSpicy" value="true" />
+                <span>Chỉ món cay</span>
+            </label>
+        </div>
+
+        <div class="truong-loc truong-nut">
+            <button type="submit" class="btn-dau btn-loc">Lọc kết quả</button>
+        </div>
+    </form>
+
+    @if (Model.Any())
+    {
+        <p class="dem-so-mon">@Model.Count món phù hợp</p>
+
+        <div class="luoi-mon">
+            @foreach (var p in Model)
+            {
+                <partial name="_ProductCard" model="p" />
+            }
+        </div>
+    }
+    else
+    {
+        <div class="trang-thai-rong">
+            <p class="trang-thai-rong-tieu-de">Không tìm thấy món ăn phù hợp</p>
+            <p class="trang-thai-rong-mo-ta">Hãy thử nới rộng tiêu chí lọc, ví dụ bỏ khoảng giá hoặc danh mục.</p>
+            <a asp-action="Index" class="btn-dau">Xem toàn bộ thực đơn</a>
+        </div>
+    }
 </section>

@@ -152,3 +152,799 @@ a {
         text-align: center;
     }
 }
+
+.dau-trang-menu {
+    background: var(--than-tre);
+    padding: 3rem 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.noi-dung-dau-trang {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tieu-de-menu {
+    color: var(--vang-nghe);
+    margin: 0 0 0.5rem;
+}
+
+.gioi-thieu-menu {
+    color: var(--chu-sang);
+    opacity: 0.85;
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.dem-so-mon {
+    color: var(--chu-chinh);
+    opacity: 0.65;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+}
+
+.trang-thai-rong {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+}
+
+.trang-thai-rong-tieu-de {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.4rem;
+    color: var(--than-tre);
+}
+
+.trang-thai-rong-mo-ta {
+    color: var(--chu-chinh);
+    opacity: 0.7;
+    margin: 0 0 1.5rem;
+}
+
+.thanh-tim-mon {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.o-tim {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--giay-do-toi);
+    border-radius: 999px;
+    background: #fff;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+    .o-tim:focus {
+        outline: 2px solid var(--vang-nghe);
+        outline-offset: 2px;
+    }
+
+.btn-tim {
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+.lien-ket-nang-cao {
+    font-weight: 600;
+    color: var(--gach-non);
+    text-decoration: none;
+    white-space: nowrap;
+}
+    .lien-ket-nang-cao:hover {
+        text-decoration: underline;
+    }
+
+.the-loc-danh-muc {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.the-danh-muc {
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--giay-do-toi);
+    background: #fff;
+    color: var(--chu-chinh);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+    .the-danh-muc:hover {
+        border-color: var(--vang-nghe);
+    }
+    .the-danh-muc.dang-chon {
+        background: var(--than-tre);
+        color: var(--chu-sang);
+        border-color: var(--than-tre);
+    }
+
+@media (max-width: 720px) {
+    .thanh-tim-mon {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .lien-ket-nang-cao {
+        text-align: center;
+    }
+}
+
+.dau-trang-menu {
+    background: var(--than-tre);
+    padding: 3rem 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.noi-dung-dau-trang {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tieu-de-menu {
+    color: var(--vang-nghe);
+    margin: 0 0 0.5rem;
+}
+
+.gioi-thieu-menu {
+    color: var(--chu-sang);
+    opacity: 0.85;
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.dem-so-mon {
+    color: var(--chu-chinh);
+    opacity: 0.65;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+}
+
+.trang-thai-rong {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+}
+
+.trang-thai-rong-tieu-de {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.4rem;
+    color: var(--than-tre);
+}
+
+.trang-thai-rong-mo-ta {
+    color: var(--chu-chinh);
+    opacity: 0.7;
+    margin: 0 0 1.5rem;
+}
+
+.thanh-tim-mon {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.o-tim {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--giay-do-toi);
+    border-radius: 999px;
+    background: #fff;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+    .o-tim:focus {
+        outline: 2px solid var(--vang-nghe);
+        outline-offset: 2px;
+    }
+
+.btn-tim {
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+.lien-ket-nang-cao {
+    font-weight: 600;
+    color: var(--gach-non);
+    text-decoration: none;
+    white-space: nowrap;
+}
+    .lien-ket-nang-cao:hover {
+        text-decoration: underline;
+    }
+
+.the-loc-danh-muc {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.the-danh-muc {
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--giay-do-toi);
+    background: #fff;
+    color: var(--chu-chinh);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+    .the-danh-muc:hover {
+        border-color: var(--vang-nghe);
+    }
+    .the-danh-muc.dang-chon {
+        background: var(--than-tre);
+        color: var(--chu-sang);
+        border-color: var(--than-tre);
+    }
+
+@media (max-width: 720px) {
+    .thanh-tim-mon {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .lien-ket-nang-cao {
+        text-align: center;
+    }
+}
+
+/* Add Menu */
+.dau-trang-menu {
+    background: var(--than-tre);
+    padding: 3rem 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.noi-dung-dau-trang {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tieu-de-menu {
+    color: var(--vang-nghe);
+    margin: 0 0 0.5rem;
+}
+
+.gioi-thieu-menu {
+    color: var(--chu-sang);
+    opacity: 0.85;
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.dem-so-mon {
+    color: var(--chu-chinh);
+    opacity: 0.65;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+}
+
+.trang-thai-rong {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+}
+
+.trang-thai-rong-tieu-de {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.4rem;
+    color: var(--than-tre);
+}
+
+.trang-thai-rong-mo-ta {
+    color: var(--chu-chinh);
+    opacity: 0.7;
+    margin: 0 0 1.5rem;
+}
+
+.thanh-tim-mon {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.o-tim {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--giay-do-toi);
+    border-radius: 999px;
+    background: #fff;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+
+    .o-tim:focus {
+        outline: 2px solid var(--vang-nghe);
+        outline-offset: 2px;
+    }
+
+.btn-tim {
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+.lien-ket-nang-cao {
+    font-weight: 600;
+    color: var(--gach-non);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+    .lien-ket-nang-cao:hover {
+        text-decoration: underline;
+    }
+
+.luoi-mon {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 260px));
+    justify-content: start;
+    align-items: start;
+}
+
+.card-mon {
+    height: auto;
+    width: 100%;
+}
+
+.the-loc-danh-muc {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.the-danh-muc {
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--giay-do-toi);
+    background: #fff;
+    color: var(--chu-chinh);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+    .the-danh-muc:hover {
+        border-color: var(--vang-nghe);
+    }
+
+    .the-danh-muc.dang-chon {
+        background: var(--than-tre);
+        color: var(--chu-sang);
+        border-color: var(--than-tre);
+    }
+
+@media (max-width: 720px) {
+    .thanh-tim-mon {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .lien-ket-nang-cao {
+        text-align: center;
+    }
+}
+
+/* Add Advan menu
+*/
+
+.dau-trang-menu {
+    background: var(--than-tre);
+    padding: 3rem 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.noi-dung-dau-trang {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tieu-de-menu {
+    color: var(--vang-nghe);
+    margin: 0 0 0.5rem;
+}
+
+.gioi-thieu-menu {
+    color: var(--chu-sang);
+    opacity: 0.85;
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.dem-so-mon {
+    color: var(--chu-chinh);
+    opacity: 0.65;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+}
+
+.trang-thai-rong {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+}
+
+.trang-thai-rong-tieu-de {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.4rem;
+    color: var(--than-tre);
+}
+
+.trang-thai-rong-mo-ta {
+    color: var(--chu-chinh);
+    opacity: 0.7;
+    margin: 0 0 1.5rem;
+}
+
+.thanh-tim-mon {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.o-tim {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--giay-do-toi);
+    border-radius: 999px;
+    background: #fff;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+    .o-tim:focus {
+        outline: 2px solid var(--vang-nghe);
+        outline-offset: 2px;
+    }
+
+.btn-tim {
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+.lien-ket-nang-cao {
+    font-weight: 600;
+    color: var(--gach-non);
+    text-decoration: none;
+    white-space: nowrap;
+}
+    .lien-ket-nang-cao:hover {
+        text-decoration: underline;
+    }
+
+.khung-loc-nang-cao {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    background: #fff;
+    padding: 1.75rem 2rem;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+    margin-bottom: 2rem;
+    align-items: end;
+}
+
+.truong-loc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.truong-rong {
+    grid-column: span 2;
+}
+
+.nhan-loc {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--chu-chinh);
+    opacity: 0.75;
+}
+
+.o-chon {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--giay-do-toi);
+    border-radius: 8px;
+    background: #fff;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+    .o-chon:focus {
+        outline: 2px solid var(--vang-nghe);
+        outline-offset: 2px;
+    }
+
+.khung-loc-nang-cao .o-tim {
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.truong-checkbox {
+    justify-content: center;
+}
+
+
+.nhan-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+    .nhan-checkbox input {
+        width: 1.1rem;
+        height: 1.1rem;
+        accent-color: var(--gach-non);
+        cursor: pointer;
+    }
+
+.btn-loc {
+    width: 100%;
+    border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+    .khung-loc-nang-cao {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .truong-rong {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 560px) {
+    .khung-loc-nang-cao {
+        grid-template-columns: 1fr;
+    }
+    .truong-rong {
+        grid-column: span 1;
+    }
+}
+
+.luoi-mon {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 260px));
+    justify-content: start;
+    align-items: start;
+}
+
+.card-mon {
+    height: auto;
+    width: 100%;
+}
+
+.the-loc-danh-muc {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.the-danh-muc {
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--giay-do-toi);
+    background: #fff;
+    color: var(--chu-chinh);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+    .the-danh-muc:hover {
+        border-color: var(--vang-nghe);
+    }
+    .the-danh-muc.dang-chon {
+        background: var(--than-tre);
+        color: var(--chu-sang);
+        border-color: var(--than-tre);
+    }
+
+@media (max-width: 720px) {
+    .thanh-tim-mon {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .lien-ket-nang-cao {
+        text-align: center;
+    }
+}
+
+/*Carrt*/
+
+.cart-wrapper {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: var(--chu-chinh);
+}
+
+.cart-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--giay-do-toi);
+    padding-bottom: 0.75rem;
+}
+
+    .cart-header h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .cart-header span {
+        color: var(--chu-chinh);
+        opacity: 0.6;
+        font-size: 0.95rem;
+    }
+
+.cart-empty {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--bong-do);
+    color: var(--chu-chinh);
+}
+
+    .cart-empty p {
+        opacity: 0.7;
+        margin: 0 0 1rem;
+    }
+
+    .cart-empty a {
+        display: inline-block;
+        color: var(--gach-non);
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .cart-empty a:hover {
+            text-decoration: underline;
+        }
+
+.cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    box-shadow: var(--bong-do);
+    transition: transform 0.15s ease;
+}
+
+    .cart-item:hover {
+        transform: translateY(-1px);
+    }
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--chu-chinh);
+}
+
+.cart-item-qty {
+    color: var(--chu-chinh);
+    opacity: 0.6;
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+}
+
+.cart-item-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-item-price {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: var(--gach-non);
+    white-space: nowrap;
+}
+
+.btn-remove {
+    background: none;
+    border: 1px solid var(--giay-do-toi);
+    color: var(--chu-chinh);
+    opacity: 0.6;
+    border-radius: 999px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.85rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+    .btn-remove:hover {
+        border-color: var(--gach-non);
+        color: var(--gach-non);
+        opacity: 1;
+        background: rgba(183, 28, 28, 0.06);
+    }
+
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--than-tre);
+    border-radius: 12px;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 1.25rem;
+}
+
+.cart-summary-label {
+    font-size: 1rem;
+    color: var(--chu-sang);
+    opacity: 0.85;
+}
+
+.cart-summary-total {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--vang-nghe);
+}
+
+.cart-checkout {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}

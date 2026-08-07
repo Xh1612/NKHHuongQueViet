@@ -3,27 +3,46 @@
     ViewData["Title"] = "Thực đơn";
 }
 
-<h1>Thực đơn</h1>
-
-<form method="get" style="margin-bottom:1rem; display:flex; gap:0.5rem;">
-    <input type="text" name="keyword" value="@ViewBag.Keyword" placeholder="Tìm món ăn..." />
-    <button type="submit">Tìm</button>
-    <a asp-action="AdvancedSearch">Tìm nâng cao →</a>
-</form>
-
-<div style="margin-bottom:1rem;">
-    <a asp-action="Index">Tất cả</a>
-    @foreach (var c in (List<Category>)ViewBag.Categories)
-    {
-        <text> | <a asp-action="Index" asp-route-categoryId="@c.Id">@c.Name</a></text>
-    }
-</div>
+<section class="dau-trang-menu">
+    <div class="noi-dung-dau-trang">
+        <h1 class="tieu-de-menu">Thực đơn</h1>
+        <p class="gioi-thieu-menu">Hương vị quê nhà, chọn món và đặt ngay hôm nay.</p>
+    </div>
+</section>
 
 <section class="khu-noi-dung">
-    <div class="luoi-mon">
-        @foreach (var p in Model)
+    <form method="get" class="thanh-tim-mon">
+        <input type="text" name="keyword" value="@ViewBag.Keyword" placeholder="Tìm món ăn..." class="o-tim" />
+        <button type="submit" class="btn-dau btn-tim">Tìm</button>
+        <a asp-action="AdvancedSearch" class="lien-ket-nang-cao">Tìm nâng cao →</a>
+    </form>
+
+    <div class="the-loc-danh-muc">
+        <a asp-action="Index" class="the-danh-muc @(ViewBag.CategoryId == null ? "dang-chon" : "")">Tất cả</a>
+        @foreach (var c in (List<Category>)ViewBag.Categories)
         {
-            <partial name="_ProductCard" model="p" />
+            <a asp-action="Index" asp-route-categoryId="@c.Id"
+               class="the-danh-muc @(ViewBag.CategoryId == c.Id ? "dang-chon" : "")">@c.Name</a>
         }
     </div>
+
+    @if (Model.Any())
+    {
+        <p class="dem-so-mon">@Model.Count món được tìm thấy</p>
+
+        <div class="luoi-mon">
+            @foreach (var p in Model)
+            {
+                <partial name="_ProductCard" model="p" />
+            }
+        </div>
+    }
+    else
+    {
+        <div class="trang-thai-rong">
+            <p class="trang-thai-rong-tieu-de">Không tìm thấy món ăn nào</p>
+            <p class="trang-thai-rong-mo-ta">Thử từ khóa khác hoặc xem tất cả món trong thực đơn.</p>
+            <a asp-action="Index" class="btn-dau">Xem tất cả món</a>
+        </div>
+    }
 </section>
