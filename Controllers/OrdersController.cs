@@ -11,7 +11,7 @@ using HuongQueViet.Services; // [Thêm] Cần thiết để gọi dịch vụ g�
 
 namespace HuongQueViet.Controllers
 {
-	[Authorize]
+	
 	public class OrdersController : Controller
 	{
 		private readonly AppDbContext _context;
