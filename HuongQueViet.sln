@@ -5,7 +5,14 @@ VisualStudioVersion = 17.14.36915.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HuongQueViet", "HuongQueViet.csproj", "{88D73012-2B9A-4BD3-8414-47DCEFA0B395}"
 EndProject
+<<<<<<< Updated upstream
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuongQueViet.Tests", "..\HuongQueViet.Tests\HuongQueViet.Tests.csproj", "{7A566B4D-15D9-4B1F-965B-4606C17AB8DF}"
+=======
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E97EAD33-41B7-474E-A637-8958783758D1}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
