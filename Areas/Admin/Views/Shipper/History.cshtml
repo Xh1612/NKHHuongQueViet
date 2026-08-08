@@ -1,0 +1,10 @@
+﻿@model List<Order>
+<h3>Lịch sử giao hàng</h3>
+<a asp-action="Index">← Quay lại đơn cần giao</a>
+@foreach (var o in Model)
+{
+    <div style="margin-bottom:0.5rem;">
+        Đơn #@o.Id — <span class="badge @(o.Status == OrderStatus.Completed ? "bg-success" : "bg-danger")">@o.Status</span>
+        — @o.Address?.Street, @o.Address?.District — @o.OrderDate.ToString("dd/MM HH:mm")
+    </div>
+}

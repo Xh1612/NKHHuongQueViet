@@ -1,0 +1,17 @@
+﻿@model List<Order>
+<h3>Lịch sử đơn hàng</h3>
+<a asp-action="Index">← Quay lại đơn đang xử lý</a>
+<table class="table mt-3">
+    <thead><tr><th>Order ID</th><th>Ngày đặt</th><th>Trạng thái</th><th>Tổng tiền</th></tr></thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.OrderDate.ToString("dd/MM/yyyy HH:mm")</td>
+                <td><span class="badge @(o.Status == OrderStatus.Completed ? "bg-success" : "bg-danger")">@o.Status</span></td>
+                <td>@o.TotalAmount.ToString("N0") đ</td>
+            </tr>
+        }
+    </tbody>
+</table>

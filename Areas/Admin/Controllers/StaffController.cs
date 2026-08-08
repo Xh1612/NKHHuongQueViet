@@ -24,6 +24,11 @@ public class StaffController : Controller
         _context = context; _hub = hub; _userManager = userManager; _notificationService = notificationService;
     }
 
+    //Them History
+    public async Task<IActionResult> History() => View(await _context.Orders
+    .Include(o => o.OrderItems).ThenInclude(oi => oi.Product)
+    .Where(o => o.Status == OrderStatus.Completed || o.Status == OrderStatus.Cancelled)
+    .OrderByDescending(o => o.OrderDate).ToListAsync());
     public async Task<IActionResult> Index()
     {
         var orders = await _context.Orders

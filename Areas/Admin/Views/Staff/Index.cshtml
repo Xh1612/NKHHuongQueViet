@@ -2,6 +2,9 @@
 @model List<StaffOrderViewModel>
 <h3>Đơn hàng cần xử lý</h3>
 
+<!--Historry-->
+<a asp-action="History">Xem lịch sử đơn đã hoàn thành →</a>
+
 @if (TempData["Error"] != null)
 {
     <div class="alert alert-danger">@TempData["Error"]</div>

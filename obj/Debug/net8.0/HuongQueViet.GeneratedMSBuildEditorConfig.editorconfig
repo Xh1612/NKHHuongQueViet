@@ -68,8 +68,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Shipper/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hpcHBlclxIaXN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Shipper/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hpcHBlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Staff/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhZmZcSGlzdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Staff/Index.cshtml]
