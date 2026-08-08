@@ -23,6 +23,7 @@ namespace HuongQueViet.Controllers
         {
             ViewBag.Featured = await _context.Products.Where(p => p.IsActive && p.IsFeatured).Take(4).ToListAsync();
             ViewBag.Newest = await _context.Products.Where(p => p.IsActive).OrderByDescending(p => p.CreatedAt).Take(4).ToListAsync();
+            ViewBag.Categories = await _context.Categories.ToListAsync();
             return View();
         }
 

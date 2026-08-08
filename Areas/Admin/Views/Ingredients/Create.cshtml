@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Identity﻿
+@model HuongQueViet.Models.Ingredient
+
+@{
+    ViewData["Title"] = "Thêm nguyên liệu mới";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid mt-4">
+    <h2>Thêm nguyên liệu mới</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create" method="post">
+                <div class="form-group mb-3">
+                    <label asp-for="Name" class="control-label">Tên nguyên liệu</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Unit" class="control-label">Đơn vị tính</label>
+                    <input asp-for="Unit" class="form-control" />
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="StockQuantity" class="control-label">Số lượng tồn</label>
+                    <input asp-for="StockQuantity" class="form-control" />
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="LowStockThreshold" class="control-label">Mức cảnh báo tồn kho thấp</label>
+                    <input asp-for="LowStockThreshold" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

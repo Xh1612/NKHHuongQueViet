@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HuongQueViet.Models.Ingredient>
+
+@{
+    ViewData["Title"] = "Quản lý nguyên liệu";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid mt-4">
+    <h2>Danh sách nguyên liệu</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">Thêm nguyên liệu mới</a>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên nguyên liệu</th>
+                <th>Đơn vị tính</th>
+                <th>Số lượng tồn</th>
+                <th>Mức cảnh báo</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                var isLow = item.StockQuantity <= item.LowStockThreshold;
+                <tr class="@(isLow ? "table-danger" : "")">
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Unit</td>
+                    <td><strong>@item.StockQuantity</strong></td>
+                    <td>@item.LowStockThreshold</td>
+                    <td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa nguyên liệu này không?');">Xóa</a>
+                    </td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
