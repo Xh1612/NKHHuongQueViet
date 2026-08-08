@@ -1,26 +1,19 @@
 ﻿@model List<CartItem>
-
 <link rel="stylesheet" href="~/css/theme.css" />
 <link rel="stylesheet" href="~/css/checkout.css" />
-
 <div class="checkout-wrapper">
-
     <h1>Xác nhận đơn hàng</h1>
-
     @if (TempData["Error"] != null)
     {
         <div class="checkout-alert">⚠ @TempData["Error"]</div>
     }
-
     @if (!ViewData.ModelState.IsValid)
     {
         <div class="checkout-validation">
             @Html.ValidationSummary()
         </div>
     }
-
     <form method="post" asp-action="Checkout">
-
         <div class="checkout-section">
             <h4>Giao đến</h4>
             <div class="dia-chi-list">
@@ -34,7 +27,6 @@
             </div>
             <a class="them-dia-chi" asp-controller="Addresses" asp-action="Create">+ Thêm địa chỉ mới</a>
         </div>
-
         <div class="checkout-section">
             <h4>Thanh toán</h4>
             <div class="thanh-toan-list">
@@ -48,7 +40,10 @@
                 </label>
             </div>
         </div>
-
+        <div class="checkout-section">
+            <h4>Mã giảm giá</h4>
+            <input type="text" name="couponCode" placeholder="Mã giảm giá (nếu có)" class="coupon-input" />
+        </div>
         <div class="checkout-summary">
             <div class="checkout-summary-left">
                 <span class="checkout-summary-label">Tạm tính</span>
@@ -56,8 +51,6 @@
             </div>
             <span class="checkout-summary-total">@Model.Sum(i => i.SubTotal).ToString("N0") đ</span>
         </div>
-
         <button type="submit" class="btn-dau checkout-submit">Đặt hàng ngay</button>
     </form>
-
 </div>
