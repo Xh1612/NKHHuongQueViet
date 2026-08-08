@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HuongQueViet.Data;
 using HuongQueViet.Models;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace HuongQueViet.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -18,7 +18,8 @@ namespace HuongQueViet.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Categories = _context.Categories.ToList();
+            //ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
 
@@ -35,7 +36,9 @@ namespace HuongQueViet.Areas.Admin.Controllers
         {
             var product = await _context.Products.FindAsync(id);
             if (product == null) return NotFound();
-            ViewBag.Categories = _context.Categories.ToList();
+            //ViewBag.Categories = _context.Categories.ToList();
+
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 

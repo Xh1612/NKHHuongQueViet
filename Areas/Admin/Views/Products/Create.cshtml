@@ -7,13 +7,12 @@
     <div class="mb-2"><label>Giá</label><input asp-for="Price" type="number" class="form-control" required /></div>
     <div class="mb-2"><label>Tồn kho</label><input asp-for="StockQuantity" type="number" class="form-control" required /></div>
     <div class="mb-2">
-        <label>Danh mục</label>
-        <select asp-for="CategoryId" class="form-control">
-            @foreach (var c in (List<Category>)ViewBag.Categories)
-            {
-                <option value="@c.Id">@c.Name</option>
-            }
-        </select>
+        <div class="mb-2">
+            <label>Danh mục</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                <option value="">-- Chọn danh mục --</option>
+            </select>
+        </div>
     </div>
     <div class="mb-2 form-check"><input asp-for="IsSpicy" class="form-check-input" /> <label>Món cay</label></div>
     <div class="mb-2 form-check"><input asp-for="IsFeatured" class="form-check-input" /> <label>Món nổi bật</label></div>
