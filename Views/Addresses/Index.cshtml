@@ -3,21 +3,47 @@
     ViewData["Title"] = "Địa chỉ giao hàng";
 }
 
-<h1>Địa chỉ giao hàng của tôi</h1>
-<a asp-action="Create" class="btn-dau">+ Thêm địa chỉ mới</a>
+<section class="dau-trang-menu">
+    <div class="noi-dung-dau-trang">
+        <h1 class="tieu-de-menu">Địa chỉ giao hàng</h1>
+        <p class="gioi-thieu-menu">Quản lý các địa chỉ nhận hàng của bạn.</p>
+    </div>
+</section>
 
-@if (!Model.Any())
-{
-    <p>Bạn chưa có địa chỉ nào.</p>
-}
-else
-{
-    @foreach (var a in Model)
+<section class="khu-noi-dung khu-dia-chi">
+    <div class="dau-dia-chi">
+        <a asp-action="Create" class="btn-dau">+ Thêm địa chỉ mới</a>
+    </div>
+
+    @if (!Model.Any())
     {
-        <div style="padding:0.6rem 0; border-bottom:1px solid #eee;">
-            @a.Street, @a.Ward, @a.District, @a.Province
+        <div class="trang-thai-rong">
+            <p class="trang-thai-rong-tieu-de">Bạn chưa có địa chỉ nào</p>
+            <p class="trang-thai-rong-mo-ta">Thêm địa chỉ để việc đặt hàng và giao hàng nhanh hơn.</p>
+            <a asp-action="Create" class="btn-dau">Thêm địa chỉ đầu tiên</a>
         </div>
     }
-}
-}
-}i
+    else
+    {
+        <div class="danh-sach-dia-chi">
+            @foreach (var a in Model)
+            {
+                <div class="the-dia-chi">
+                    <div class="chi-tiet-dia-chi">
+                        <span class="chi-dau-dia-chi">📍</span>
+                        <div class="dong-chi-tiet-dia-chi">
+                            <span class="duong-dia-chi">@a.Street</span>
+                            <span class="khu-vuc-dia-chi">@a.Ward, @a.District, @a.Province</span>
+                        </div>
+                    </div>
+                    <div class="hanh-dong-dia-chi">
+                        @* <a asp-action="Edit" asp-route-id="@a.Id" class="nut-hanh-dong-dia-chi">Sửa</a> *@
+                        <form method="post" asp-action="Delete" asp-route-id="@a.Id" style="display:inline">
+                            <button type="submit" class="nut-hanh-dong-dia-chi xoa">Xóa</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</section>

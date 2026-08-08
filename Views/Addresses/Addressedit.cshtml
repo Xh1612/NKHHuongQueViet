@@ -1,0 +1,41 @@
+﻿@model Address
+@{
+    ViewData["Title"] = "Sửa địa chỉ";
+}
+
+<section class="dau-trang-menu">
+    <div class="noi-dung-dau-trang">
+        <h1 class="tieu-de-menu">Sửa địa chỉ</h1>
+        <p class="gioi-thieu-menu">Cập nhật thông tin địa chỉ nhận hàng.</p>
+    </div>
+</section>
+
+<section class="khu-noi-dung khu-dia-chi">
+    <form method="post" asp-action="Edit" class="khung-loc-nang-cao khung-form-dia-chi">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="truong-loc truong-rong">
+            <label class="nhan-loc">Số nhà, tên đường</label>
+            <input asp-for="Street" class="o-tim" />
+        </div>
+
+        <div class="truong-loc">
+            <label class="nhan-loc">Phường/Xã</label>
+            <input asp-for="Ward" class="o-tim" />
+        </div>
+
+        <div class="truong-loc">
+            <label class="nhan-loc">Quận/Huyện</label>
+            <input asp-for="District" class="o-tim" />
+        </div>
+
+        <div class="truong-loc truong-rong">
+            <label class="nhan-loc">Tỉnh/Thành phố</label>
+            <input asp-for="Province" class="o-tim" />
+        </div>
+
+        <div class="truong-loc truong-nut">
+            <button type="submit" class="btn-dau btn-loc">Lưu thay đổi</button>
+        </div>
+    </form>
+</section>
