@@ -1,17 +1,16 @@
 ﻿@model List<Order>
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HuongQueViet.Resources.SharedResources> Localizer
 
 <link rel="stylesheet" href="~/css/theme.css" />
 <link rel="stylesheet" href="~/css/orders-list.css" />
-
 <div class="orders-wrapper">
-
-    <h1>Đơn hàng của tôi</h1>
-
+    <h1>@Localizer["MyOrdersTitle"]</h1>
     @if (!Model.Any())
     {
         <div class="orders-empty">
-            <p>Bạn chưa có đơn hàng nào.</p>
-            <a asp-controller="Menu" asp-action="Index">Xem thực đơn →</a>
+            <p>@Localizer["OrdersEmpty"]</p>
+            <a asp-controller="Menu" asp-action="Index">@Localizer["ViewMenuLink"]</a>
         </div>
     }
     else
@@ -29,11 +28,11 @@
                     OrderStatus.Cancelled => "status-cancelled",
                     _ => "status-pending"
                 };
-
+                var statusText = Localizer[$"Status_{o.Status}"];
                 <a class="order-card" asp-action="Confirmation" asp-route-id="@o.Id">
                     <div class="order-card-left">
-                        <span class="order-card-id">Đơn #@o.Id</span>
-                        <span class="order-card-status @statusClass">@o.Status</span>
+                        <span class="order-card-id">@Localizer["OrderIdLabel", o.Id]</span>
+                        <span class="order-card-status @statusClass">@statusText</span>
                     </div>
                     <div class="order-card-right">
                         <span class="order-card-total">@o.TotalAmount.ToString("N0") đ</span>
@@ -43,5 +42,4 @@
             }
         </div>
     }
-
 </div>

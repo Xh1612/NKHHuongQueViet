@@ -20,7 +20,9 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<AppDbContext>();
 
 builder.Services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(30));
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization();
 
 //DKSer
 builder.Services.AddScoped<IVnPayService, VnPayService>();
@@ -74,11 +76,11 @@ builder.Services.AddAuthentication()
     };
 });
 //thêm đoạn này
-builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.AddLocalization();
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    var cultures = new[] { new CultureInfo("vi-VN"), new CultureInfo("en-US") };
-    options.DefaultRequestCulture = new RequestCulture("vi-VN");
+    var cultures = new[] { new CultureInfo("vi"), new CultureInfo("en") };
+    options.DefaultRequestCulture = new RequestCulture("vi");
     options.SupportedCultures = cultures;
     options.SupportedUICultures = cultures;
 });

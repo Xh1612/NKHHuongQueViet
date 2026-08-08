@@ -117,10 +117,121 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="OrderConfirmed" xml:space="preserve">
-    <value>Order confirmed</value>
+  <data name="Account" xml:space="preserve">
+    <value>Tài khoản</value>
   </data>
-  <data name="WelcomeMessage" xml:space="preserve">
-    <value>Welcome to Huong Que Viet</value>
+  <data name="Address" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Quản trị</value>
+  </data>
+  <data name="AdvancedSearchLink" xml:space="preserve">
+    <value>Tìm nâng cao →</value>
+  </data>
+  <data name="CartCheckout" xml:space="preserve">
+    <value>Tiến hành đặt hàng</value>
+  </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>Giỏ hàng đang trống.</value>
+  </data>
+  <data name="CartItemsCount" xml:space="preserve">
+    <value>{0} món</value>
+  </data>
+  <data name="CartQuantity" xml:space="preserve">
+    <value>Số lượng: {0}</value>
+  </data>
+  <data name="CartRemove" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="CartSubtotal" xml:space="preserve">
+    <value>Tạm tính</value>
+  </data>
+  <data name="CartTitle" xml:space="preserve">
+    <value>Giỏ hàng</value>
+  </data>
+  <data name="CategoryAll" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="EmptyStateDesc" xml:space="preserve">
+    <value>Thử từ khóa khác hoặc xem tất cả món trong thực đơn.</value>
+  </data>
+  <data name="EmptyStateTitle" xml:space="preserve">
+    <value>Không tìm thấy món ăn nào</value>
+  </data>
+  <data name="FeaturedDishes" xml:space="preserve">
+    <value>Món nổi bật</value>
+  </data>
+  <data name="HeroDesc" xml:space="preserve">
+    <value>Phở, bún, cơm, gỏi cuốn nấu mỗi sáng theo công thức gia truyền.</value>
+  </data>
+  <data name="HeroTitle" xml:space="preserve">
+    <value>Hương vị quê nhà,&lt;br&gt;giao tận cửa nhà bạn</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Thực đơn</value>
+  </data>
+  <data name="MenuIntro" xml:space="preserve">
+    <value>Hương vị quê nhà, chọn món và đặt ngay hôm nay.</value>
+  </data>
+  <data name="MenuTitle" xml:space="preserve">
+    <value>Thực đơn</value>
+  </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>Đơn hàng của tôi</value>
+  </data>
+  <data name="MyOrdersTitle" xml:space="preserve">
+    <value>Đơn hàng của tôi</value>
+  </data>
+  <data name="NewDishes" xml:space="preserve">
+    <value>Món mới trong tuần</value>
+  </data>
+  <data name="OrderIdLabel" xml:space="preserve">
+    <value>Đơn #{0}</value>
+  </data>
+  <data name="OrdersEmpty" xml:space="preserve">
+    <value>Bạn chưa có đơn hàng nào.</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="ProductsFoundCount" xml:space="preserve">
+    <value>{0} món được tìm thấy</value>
+  </data>
+  <data name="SearchButton" xml:space="preserve">
+    <value>Tìm</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Tìm món ăn...</value>
+  </data>
+  <data name="Status_Cancelled" xml:space="preserve">
+    <value>Đã hủy</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Hoàn thành</value>
+  </data>
+  <data name="Status_Confirmed" xml:space="preserve">
+    <value>Đã xác nhận</value>
+  </data>
+  <data name="Status_Delivering" xml:space="preserve">
+    <value>Đang giao</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>Chờ xác nhận</value>
+  </data>
+  <data name="Status_Preparing" xml:space="preserve">
+    <value>Đang chuẩn bị</value>
+  </data>
+  <data name="ViewAllDishes" xml:space="preserve">
+    <value>Xem tất cả món</value>
+  </data>
+  <data name="ViewMenu" xml:space="preserve">
+    <value>Xem thực đơn</value>
+  </data>
+  <data name="ViewMenuLink" xml:space="preserve">
+    <value>Xem thực đơn →</value>
   </data>
 </root>

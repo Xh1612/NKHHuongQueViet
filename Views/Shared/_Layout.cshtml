@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HuongQueViet.Resources.SharedResources> Localizer
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,52 +16,56 @@
     <link href="~/css/theme.css" rel="stylesheet" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<!-- 1. Thêm class d-flex flex-column min-vh-100 vào thẻ body -->
 <body class="d-flex flex-column min-vh-100">
     <header class="vung-toi">
         <nav class="navbar-hqv">
             <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
             <div class="nav-links">
-                <a asp-area="" asp-controller="Menu" asp-action="Index">Thực đơn</a>
+                <a asp-area="" asp-controller="Menu" asp-action="Index">@Localizer["Menu"]</a>
                 <vc:cart-summary></vc:cart-summary>
                 @if (User.Identity?.IsAuthenticated == true)
                 {
-                    <a asp-area="" asp-controller="Orders" asp-action="Index">Đơn hàng của tôi</a>
-                    <a asp-area="" asp-controller="Addresses" asp-action="Index">Địa chỉ</a>
-                    <a asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản</a>
+                    <a asp-area="" asp-controller="Orders" asp-action="Index">@Localizer["MyOrders"]</a>
+                    <a asp-area="" asp-controller="Addresses" asp-action="Index">@Localizer["Address"]</a>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index">@Localizer["Account"]</a>
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Quản trị</a>
+                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">@Localizer["Admin"]</a>
                     }
                     else if (User.IsInRole("Staff"))
                     {
-                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Đơn hàng cần xử lý</a>
+                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">@Localizer["StaffOrders"]</a>
                     }
                     else if (User.IsInRole("Shipper"))
                     {
-                        <a asp-area="Admin" asp-controller="Shipper" asp-action="Index">Đơn hàng cần giao</a>
+                        <a asp-area="Admin" asp-controller="Shipper" asp-action="Index">@Localizer["ShipperOrders"]</a>
                     }
                     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" style="display:inline">
                         <button type="submit" class="btn-dau" style="padding:0.4rem 1rem; font-size:0.8rem; margin-left:0.5rem;">
-                            Đăng xuất
+                            @Localizer["Logout"]
                         </button>
                     </form>
-                    //style="padding:0.4rem 1rem; font-size:0.8rem; margin-left:0.5rem;"
-
                 }
                 else
                 {
-                    <a asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
+                    <a asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
                 }
+                <form asp-controller="Culture" asp-action="SetCulture" asp-route-returnUrl="@Context.Request.Path"
+                      method="post" class="d-inline ms-3">
+                    <select name="culture" onchange="this.form.submit()"
+                            class="form-select form-select-sm d-inline-block w-auto"
+                            style="padding: 0.3rem 2rem 0.3rem 0.8rem; border-radius: 4px; min-width: 120px;">
+                        <option value="vi" selected="@(System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("vi"))">Tiếng Việt</option>
+                        <option value="en" selected="@(System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("en"))">English</option>
+                    </select>
+                </form>
             </div>
         </nav>
     </header>
-    <!-- 2. Thêm class flex-grow-1 vào thẻ main -->
     <main class="flex-grow-1">@RenderBody()</main>
-    <!-- 3. Thêm class mt-auto vào thẻ footer -->
     <footer class="vung-toi mt-auto" style="padding: 2.5rem 2rem; text-align:center; margin-top: 4rem;">
         <p style="font-family:'Fraunces',serif; font-size:1.2rem;">Hương Quê Việt</p>
-        <p style="opacity:0.7; font-size:0.85rem;">Vị quê trong từng món ăn — © 2026</p>
+        <p style="opacity:0.7; font-size:0.85rem;">@Localizer["FooterSlogan"] — © 2026</p>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

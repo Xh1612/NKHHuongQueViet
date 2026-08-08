@@ -117,10 +117,121 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="OrderConfirmed" xml:space="preserve">
-    <value>Đơn hàng đã được xác nhận</value>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
   </data>
-  <data name="WelcomeMessage" xml:space="preserve">
-    <value>Chào mừng bạn đến với Hương Quê Việt</value>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="AdvancedSearchLink" xml:space="preserve">
+    <value>Advanced search →</value>
+  </data>
+  <data name="CartCheckout" xml:space="preserve">
+    <value>Proceed to checkout</value>
+  </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>Your cart is empty.</value>
+  </data>
+  <data name="CartItemsCount" xml:space="preserve">
+    <value>{0} item(s)</value>
+  </data>
+  <data name="CartQuantity" xml:space="preserve">
+    <value>Quantity: {0}</value>
+  </data>
+  <data name="CartRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="CartSubtotal" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
+  <data name="CartTitle" xml:space="preserve">
+    <value>Shopping Cart</value>
+  </data>
+  <data name="CategoryAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="EmptyStateDesc" xml:space="preserve">
+    <value>Try a different keyword or view all dishes in the menu</value>
+  </data>
+  <data name="EmptyStateTitle" xml:space="preserve">
+    <value>No dishes found</value>
+  </data>
+  <data name="FeaturedDishes" xml:space="preserve">
+    <value>Featured Dishes</value>
+  </data>
+  <data name="HeroDesc" xml:space="preserve">
+    <value>Pho, noodles, rice, spring rolls cooked every morning with a family recipe.</value>
+  </data>
+  <data name="HeroTitle" xml:space="preserve">
+    <value>Hometown flavors,&lt;br&gt;delivered to your door</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MenuIntro" xml:space="preserve">
+    <value>Hometown flavors — pick your dish and order now.</value>
+  </data>
+  <data name="MenuTitle" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
+  <data name="MyOrdersTitle" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
+  <data name="NewDishes" xml:space="preserve">
+    <value>New This Week</value>
+  </data>
+  <data name="OrderIdLabel" xml:space="preserve">
+    <value>Order #{0}</value>
+  </data>
+  <data name="OrdersEmpty" xml:space="preserve">
+    <value>You have no orders yet.</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+  <data name="ProductsFoundCount" xml:space="preserve">
+    <value>{0} dishes found</value>
+  </data>
+  <data name="SearchButton" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search dishes...</value>
+  </data>
+  <data name="Status_Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Status_Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="Status_Delivering" xml:space="preserve">
+    <value>Delivering</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Status_Preparing" xml:space="preserve">
+    <value>Preparing</value>
+  </data>
+  <data name="ViewAllDishes" xml:space="preserve">
+    <value>View all dishes</value>
+  </data>
+  <data name="ViewMenu" xml:space="preserve">
+    <value>View Menu</value>
+  </data>
+  <data name="ViewMenuLink" xml:space="preserve">
+    <value>View menu →</value>
   </data>
 </root>

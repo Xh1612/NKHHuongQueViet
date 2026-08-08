@@ -4,7 +4,7 @@ using HuongQueViet.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HuongQueViet.Data;
-
+using Microsoft.AspNetCore.Localization;
 
 namespace HuongQueViet.Controllers
 {
@@ -37,5 +37,6 @@ namespace HuongQueViet.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        
     }
 }

@@ -17,233 +17,231 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HuongQueViet
 build_property.RootNamespace = HuongQueViet
-build_property.ProjectDir = D:\Menu\School\Couse\V\MVC\FInal\Test3\NKHHuongQueViet\
+build_property.ProjectDir = C:\new file\NKHHuongQueViet\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Menu\School\Couse\V\MVC\FInal\Test3\NKHHuongQueViet
+build_property.MSBuildProjectDirectory = C:\new file\NKHHuongQueViet
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Categories/Create.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Categories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Categories/Edit.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Categories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Categories/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Categories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Ingredients/Create.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Ingredients/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW5ncmVkaWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Ingredients/Edit.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Ingredients/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW5ncmVkaWVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Ingredients/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Ingredients/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW5ncmVkaWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Products/Create.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Products/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Products/Edit.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Products/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Products/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Products/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Shipper/History.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Shipper/History.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hpcHBlclxIaXN0b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Shipper/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Shipper/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hpcHBlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Staff/History.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Staff/History.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhZmZcSGlzdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Staff/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Staff/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhZmZcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Statistics/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Statistics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhdGlzdGljc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/Users/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Admin/Views/_ViewStart.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/new file/NKHHuongQueViet/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Addresses/Addressedit.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Addresses/Addressedit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc2VzXEFkZHJlc3NlZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Addresses/Create.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Addresses/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc2VzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Addresses/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Addresses/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Cart/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Home/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Home/Privacy.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Menu/AdvancedSearch.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Menu/AdvancedSearch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxBZHZhbmNlZFNlYXJjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Menu/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Menu/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Orders/Checkout.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Orders/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENoZWNrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Orders/Confirmation.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Orders/Confirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Orders/Index.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Orders/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Payment/Failed.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Payment/Failed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxGYWlsZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Payment/Success.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Payment/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxTdWNjZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Products/Details.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Products/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Shared/Components/CartSummary/Default.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Shared/Components/CartSummary/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2FydFN1bW1hcnlcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Shared/Error.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Shared/_LoginPartial.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Shared/_ProductCard.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Shared/_ProductCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0Q2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/_ViewImports.cshtml]
+[C:/new file/NKHHuongQueViet/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/_ViewStart.cshtml]
+[C:/new file/NKHHuongQueViet/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Menu/School/Couse/V/MVC/FInal/Test3/NKHHuongQueViet/Views/Shared/_Layout.cshtml]
+[C:/new file/NKHHuongQueViet/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-c7w64hqaz3

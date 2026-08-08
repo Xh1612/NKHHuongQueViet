@@ -1,17 +1,20 @@
-﻿@{
-    ViewData["Title"] = "Trang chủ";
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HuongQueViet.Resources.SharedResources> Localizer
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
 }
 
 <section class="hero-hqv vung-toi">
     <div>
-        <h1>Hương vị quê nhà,<br>giao tận cửa nhà bạn</h1>
-        <p>Phở, bún, cơm, gỏi cuốn nấu mỗi sáng theo công thức gia truyền.</p>
-        <a asp-controller="Menu" asp-action="Index" class="btn-dau">Xem thực đơn</a>
+        <h1>@Html.Raw(Localizer["HeroTitle"])</h1>
+        <p>@Localizer["HeroDesc"]</p>
+        <a asp-controller="Menu" asp-action="Index" class="btn-dau">@Localizer["ViewMenu"]</a>
     </div>
 </section>
 
 <section class="khu-noi-dung">
-    <h2>Món nổi bật</h2>
+    <h2>@Localizer["FeaturedDishes"]</h2>
     <div class="luoi-mon">
         @foreach (var p in (List<Product>)ViewBag.Featured)
         {
@@ -21,7 +24,7 @@
 </section>
 
 <section class="khu-noi-dung">
-    <h2>Món mới trong tuần</h2>
+    <h2>@Localizer["NewDishes"]</h2>
     <div class="luoi-mon">
         @foreach (var p in (List<Product>)ViewBag.Newest)
         {
