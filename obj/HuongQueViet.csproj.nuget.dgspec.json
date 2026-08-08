@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\new file\\NKHHuongQueViet\\HuongQueViet.csproj": {}
+    "D:\\test\\NKHHuongQueViet\\HuongQueViet.csproj": {}
   },
   "projects": {
-    "C:\\new file\\NKHHuongQueViet\\HuongQueViet.csproj": {
+    "D:\\test\\NKHHuongQueViet\\HuongQueViet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\new file\\NKHHuongQueViet\\HuongQueViet.csproj",
+        "projectUniqueName": "D:\\test\\NKHHuongQueViet\\HuongQueViet.csproj",
         "projectName": "HuongQueViet",
-        "projectPath": "C:\\new file\\NKHHuongQueViet\\HuongQueViet.csproj",
-        "packagesPath": "C:\\Users\\Gigabyte\\.nuget\\packages\\",
-        "outputPath": "C:\\new file\\NKHHuongQueViet\\obj\\",
+        "projectPath": "D:\\test\\NKHHuongQueViet\\HuongQueViet.csproj",
+        "packagesPath": "C:\\Users\\Phi Hung\\.nuget\\packages\\",
+        "outputPath": "D:\\test\\NKHHuongQueViet\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Gigabyte\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Phi Hung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

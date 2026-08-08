@@ -21,6 +21,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HuongQueViet.Controllers.CouponController",
+    "Method": "CheckCoupon",
+    "RelativePath": "api/Coupon/check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "orderValue",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HuongQueViet.Controllers.ProductsApiController",
     "Method": "GetAll",
     "RelativePath": "api/ProductsApi",
