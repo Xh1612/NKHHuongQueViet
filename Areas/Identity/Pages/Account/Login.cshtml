@@ -1,0 +1,49 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<section class="khu-noi-dung" style="max-width: 420px;">
+    <div style="background:#fff; border-radius:16px; padding:2.5rem 2rem; box-shadow:var(--bong-do);">
+        <h1 style="text-align:center; font-size:1.8rem; margin-bottom:0.3rem;">Đăng nhập</h1>
+        <p style="text-align:center; opacity:0.65; margin-bottom:1.8rem;">Chào mừng quay lại Hương Quê Việt</p>
+
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <div style="margin-bottom:1rem;">
+                <label asp-for="Input.Email" style="display:block; margin-bottom:0.3rem; font-weight:500;">Email</label>
+                <input asp-for="Input.Email" autocomplete="username" placeholder="[email protected]"
+                       style="width:100%; padding:0.7rem; border-radius:8px; border:1px solid var(--giay-do-toi); box-sizing:border-box;" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div style="margin-bottom:1rem;">
+                <label asp-for="Input.Password" style="display:block; margin-bottom:0.3rem; font-weight:500;">Mật khẩu</label>
+                <input asp-for="Input.Password" autocomplete="current-password" placeholder="••••••••"
+                       style="width:100%; padding:0.7rem; border-radius:8px; border:1px solid var(--giay-do-toi); box-sizing:border-box;" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <label style="display:flex; align-items:center; gap:0.4rem; font-size:0.9rem;">
+                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                    Ghi nhớ đăng nhập
+                </label>
+                <a asp-page="./ForgotPassword" style="font-size:0.9rem; color:var(--la-tre);">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" class="btn-dau" style="width:100%; border:none; font-size:1rem; cursor:pointer;">Đăng nhập</button>
+        </form>
+
+        <p style="text-align:center; margin-top:1.5rem; font-size:0.9rem;">
+            Chưa có tài khoản? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="color:var(--gach-non); font-weight:600;">Đăng ký ngay</a>
+        </p>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

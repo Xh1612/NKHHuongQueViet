@@ -1,4 +1,4 @@
-﻿using HuongQueViet.Data;
+using HuongQueViet.Data;
 using HuongQueViet.Hubs;
 using HuongQueViet.Models;
 using HuongQueViet.Services;

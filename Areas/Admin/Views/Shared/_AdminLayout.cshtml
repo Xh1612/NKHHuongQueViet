@@ -7,6 +7,9 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark px-3">
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post" style="display:inline">
+            <button type="submit" class="btn btn-sm btn-outline-light ms-2">Đăng xuất</button>
+        </form>
         <span class="navbar-brand">Hương Quê Việt — Quản trị</span>
         <div>
             <a class="text-white me-3" asp-area="Admin" asp-controller="Staff" asp-action="Index">Đơn hàng</a>

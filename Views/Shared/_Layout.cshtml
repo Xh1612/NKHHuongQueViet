@@ -11,18 +11,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:wght@600;700;900&display=swap" rel="stylesheet">
     <link href="~/css/theme.css" rel="stylesheet" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <!-- 1. Thêm class d-flex flex-column min-vh-100 vào thẻ body -->
 <body class="d-flex flex-column min-vh-100">
     <header class="vung-toi">
         <nav class="navbar-hqv">
-            <a class="logo" asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
+            <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
             <div class="nav-links">
-                <a asp-controller="Menu" asp-action="Index">Thực đơn</a>
+                <a asp-area="" asp-controller="Menu" asp-action="Index">Thực đơn</a>
                 <vc:cart-summary></vc:cart-summary>
                 @if (User.Identity?.IsAuthenticated == true)
                 {
-                    <a asp-controller="Orders" asp-action="Index">Đơn hàng của tôi</a>
+                    <a asp-area="" asp-controller="Orders" asp-action="Index">Đơn hàng của tôi</a>
+                    <a asp-area="" asp-controller="Addresses" asp-action="Index">Địa chỉ</a>
                     <a asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản</a>
                     @if (User.IsInRole("Admin"))
                     {
@@ -36,6 +38,9 @@
                     {
                         <a asp-area="Admin" asp-controller="Shipper" asp-action="Index">Đơn hàng cần giao</a>
                     }
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" style="display:inline">
+                        <button type="submit" class="btn-dau" style="padding:0.4rem 1rem; font-size:0.85rem;">Đăng xuất</button>
+                    </form>
                 }
                 else
                 {
