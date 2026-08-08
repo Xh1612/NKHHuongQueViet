@@ -1,22 +1,104 @@
+﻿/* 1. IMPORT FONT CHỮ CỔ ĐIỂN (SERIF) CHO TIÊU ĐỀ & FONT SANS-SERIF CHO NỘI DUNG */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+/* --- CODE CỦA DỰ ÁN --- */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #F8F4E9 !important; /* Màu nền kem nhạt giống Ảnh 1 */
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
+
+/* --- TÙY CHỈNH THEO GIAO DIỆN MẪU (ẢNH 1) --- */
+
+/* Font Serif cho các tiêu đề */
+h1, h2, h3, .heading-serif, .profile-heading {
+    font-family: 'Merriweather', Georgia, serif !important;
+    font-weight: 700;
+}
+
+/* Tiêu đề "Manage your account" */
+.manage-title {
+    font-family: 'Merriweather', serif !important;
+    color: #A82323 !important; /* Màu đỏ đô */
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* Tiêu đề "Change your account settings" */
+.manage-subtitle {
+    font-family: 'Merriweather', serif !important;
+    color: #2D2D2D !important;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* 3.2: CSS MENU BÊN TRÁI (Profile, Email, Password...) */
+.custom-manage-nav .nav-link {
+    background-color: #FAF6ED !important;
+    color: #2D2D2D !important;
+    border: 1px solid #E2D9C8 !important;
+    border-radius: 12px !important;
+    margin-bottom: 10px;
+    padding: 12px 20px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+    /* Hover vào tab menu */
+    .custom-manage-nav .nav-link:hover {
+        background-color: #F3EBDD !important;
+        color: #A82323 !important;
+    }
+
+    /* Tab đang được chọn (Active) -> Đổi sang đỏ đô đè màu xanh Bootstrap */
+    .custom-manage-nav .nav-link.active,
+    .custom-manage-nav .nav-pills .nav-link.active {
+        background-color: #A82323 !important;
+        color: #FFFFFF !important;
+        border: 2px solid #851B1B !important;
+        box-shadow: 0 0 0 1px #A82323 !important;
+    }
+
+/* Ô nhập liệu (Input) */
+.form-floating > .form-control {
+    background-color: #FDFBF7 !important;
+    border: 1px solid #E5DEC9 !important;
+    border-radius: 10px !important;
+}
+
+    .form-floating > .form-control:focus {
+        border-color: #A82323 !important;
+        box-shadow: 0 0 0 0.2rem rgba(168, 35, 35, 0.25) !important;
+    }
+
+/* Nút Save */
+.btn-save-custom {
+    background-color: #A82323 !important;
+    color: #FFFFFF !important;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 10px !important;
+    border: none !important;
+    width: 100%;
+}
+
+    .btn-save-custom:hover {
+        background-color: #881B1B !important;
+        color: #FFFFFF !important;
+    }

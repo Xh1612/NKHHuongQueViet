@@ -4,7 +4,7 @@ using HuongQueViet.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HuongQueViet.Data;
-using Microsoft.AspNetCore.Localization;
+
 
 namespace HuongQueViet.Controllers
 {
@@ -13,7 +13,7 @@ namespace HuongQueViet.Controllers
         private readonly AppDbContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(AppDbContext context,ILogger<HomeController> logger)
+        public HomeController(AppDbContext context, ILogger<HomeController> logger)
         {
             _context = context;
             _logger = logger;
@@ -37,6 +37,5 @@ namespace HuongQueViet.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
     }
 }

@@ -1,32 +1,42 @@
 ﻿@model List<CartItem>
 <link rel="stylesheet" href="~/css/theme.css" />
 <link rel="stylesheet" href="~/css/checkout.css" />
+
 <div class="checkout-wrapper">
     <h1>Xác nhận đơn hàng</h1>
+
     @if (TempData["Error"] != null)
     {
         <div class="checkout-alert">⚠ @TempData["Error"]</div>
     }
+
     @if (!ViewData.ModelState.IsValid)
     {
         <div class="checkout-validation">
             @Html.ValidationSummary()
         </div>
     }
+
     <form method="post" asp-action="Checkout">
+        <!-- 1. GIAO ĐẾN -->
         <div class="checkout-section">
             <h4>Giao đến</h4>
             <div class="dia-chi-list">
-                @foreach (var a in (List<Address>)ViewBag.Addresses)
+                @if (ViewBag.Addresses != null)
                 {
-                    <label class="dia-chi-item">
-                        <input type="radio" name="addressId" value="@a.Id" required />
-                        <span>@a.Street, @a.Ward, @a.District, @a.Province</span>
-                    </label>
+                    @foreach (var a in (List<Address>)ViewBag.Addresses)
+                    {
+                        <label class="dia-chi-item">
+                            <input type="radio" name="addressId" value="@a.Id" required />
+                            <span>@a.Street, @a.Ward, @a.District, @a.Province</span>
+                        </label>
+                    }
                 }
             </div>
             <a class="them-dia-chi" asp-controller="Addresses" asp-action="Create">+ Thêm địa chỉ mới</a>
         </div>
+
+        <!-- 2. THANH TOÁN -->
         <div class="checkout-section">
             <h4>Thanh toán</h4>
             <div class="thanh-toan-list">
@@ -40,17 +50,103 @@
                 </label>
             </div>
         </div>
+
+        <!-- 3. MÃ GIẢM GIÁ (Đoạn A - Thêm nút Áp dụng và ô thông báo) -->
         <div class="checkout-section">
             <h4>Mã giảm giá</h4>
-            <input type="text" name="couponCode" placeholder="Mã giảm giá (nếu có)" class="coupon-input" />
-        </div>
-        <div class="checkout-summary">
-            <div class="checkout-summary-left">
-                <span class="checkout-summary-label">Tạm tính</span>
-                <span class="checkout-summary-note">Chưa gồm phí ship, tính sau khi chọn địa chỉ</span>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="couponCode" name="couponCode" placeholder="Mã giảm giá (nếu có)" class="coupon-input" style="flex: 1;" />
+                <button type="button" id="btnApplyCoupon" class="btn-dau" style="padding: 0 15px; cursor: pointer;">Áp dụng</button>
             </div>
-            <span class="checkout-summary-total">@Model.Sum(i => i.SubTotal).ToString("N0") đ</span>
+            <div id="couponMessage" style="margin-top: 8px; font-weight: 500;"></div>
         </div>
-        <button type="submit" class="btn-dau checkout-submit">Đặt hàng ngay</button>
+
+        <!-- 4. KHUNG TỔNG TIỀN & CHI TIẾT CÁC KHOẢN TÍNH -->
+        @{
+            var subTotal = Model.Sum(i => i.SubTotal);
+        }
+        <div class="checkout-summary" style="flex-direction: column; gap: 10px; padding: 15px; background: #222; color: #fff; border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; width: 100%;">
+                <span>Tạm tính (Tiền món):</span>
+                <span id="subTotal" data-value="@subTotal">@subTotal.ToString("N0") đ</span>
+            </div>
+
+            <div id="rowDiscount" style="display: none; justify-content: space-between; width: 100%; color: #4caf50;">
+                <span>Giảm giá:</span>
+                <span id="discountAmount">-0 đ</span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; width: 100%; color: #ffca28;">
+                <span>Phí giao hàng:</span>
+                <span id="shippingFee">0 đ</span>
+            </div>
+
+            <hr style="width: 100%; border: 0.5px solid #444; margin: 5px 0;" />
+
+            <div style="display: flex; justify-content: space-between; width: 100%; font-size: 1.2rem; font-weight: bold;">
+                <span>Tổng thanh toán:</span>
+                <span id="finalTotal" style="color: #ffca28;">@subTotal.ToString("N0") đ</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-dau checkout-submit" style="margin-top: 15px;">Đặt hàng ngay</button>
     </form>
 </div>
+
+<!-- 5. SCRIPT XỬ LÝ SỰ KIỆN (Đoạn B) -->
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy giá trị tạm tính từ C# Model
+            let subTotal = parseFloat(document.getElementById('subTotal').getAttribute('data-value')) || 0;
+            let discountAmount = 0;
+            let shippingFee = 25000; // Phí ship mặc định (có thể điều chỉnh)
+
+            document.getElementById('btnApplyCoupon').addEventListener('click', function () {
+                let code = document.getElementById('couponCode').value.trim();
+                let msgBox = document.getElementById('couponMessage');
+
+                if (!code) {
+                    msgBox.style.color = "#f44336";
+                    msgBox.innerText = "Vui lòng nhập mã giảm giá!";
+                    return;
+                }
+
+                // Gọi API kiểm tra mã giảm giá với Backend
+                fetch(`/api/coupon/check?code=${code}&orderValue=${subTotal}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            discountAmount = data.discountAmount;
+                            msgBox.style.color = "#4caf50";
+                            msgBox.innerText = `Áp dụng thành công! Được giảm ${discountAmount.toLocaleString('vi-VN')} đ`;
+
+                            document.getElementById('rowDiscount').style.display = 'flex';
+                            document.getElementById('discountAmount').innerText = `-${discountAmount.toLocaleString('vi-VN')} đ`;
+                        } else {
+                            discountAmount = 0;
+                            msgBox.style.color = "#f44336";
+                            msgBox.innerText = data.message || "Mã giảm giá không hợp lệ!";
+                            document.getElementById('rowDiscount').style.display = 'none';
+                        }
+                        updateTotal();
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        msgBox.style.color = "#f44336";
+                        msgBox.innerText = "Lỗi khi kiểm tra mã giảm giá!";
+                    });
+            });
+
+            function updateTotal() {
+                let total = subTotal + shippingFee - discountAmount;
+                if (total < 0) total = 0;
+                document.getElementById('shippingFee').innerText = `${shippingFee.toLocaleString('vi-VN')} đ`;
+                document.getElementById('finalTotal').innerText = `${total.toLocaleString('vi-VN')} đ`;
+            }
+
+            // Chạy lần đầu khi load trang
+            updateTotal();
+        });
+    </script>
+}

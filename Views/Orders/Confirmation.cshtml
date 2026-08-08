@@ -1,7 +1,7 @@
 ﻿@using Microsoft.Extensions.Localization
 @using HuongQueViet.Resources
 @inject IStringLocalizer<SharedResources> Localizer
-@model Order
+@model HuongQueViet.Models.Order
 
 <link rel="stylesheet" href="~/css/theme.css" />
 <link rel="stylesheet" href="~/css/confirmation.css" />
@@ -17,6 +17,9 @@
         OrderStatus.Cancelled => "status-cancelled",
         _ => "status-pending"
     };
+
+    // Tính tổng tiền món ăn (Tạm tính)
+    var subTotal = Model.OrderItems?.Sum(item => item.UnitPrice * item.Quantity) ?? 0;
 }
 
 <div class="confirm-wrapper">
@@ -29,20 +32,46 @@
         </div>
     </div>
 
+    <!-- 1. CHI TIẾT ĐƠN HÀNG (DANH SÁCH MÓN) -->
     <div class="confirm-section">
         <h4>Chi tiết đơn hàng</h4>
-        @foreach (var item in Model.OrderItems)
+        @if (Model.OrderItems != null)
         {
-            <div class="confirm-item">
-                <div class="confirm-item-info">
-                    <span class="confirm-item-name">@item.Product?.Name</span>
-                    <span class="confirm-item-qty">Số lượng: @item.Quantity</span>
+            @foreach (var item in Model.OrderItems)
+            {
+                <div class="confirm-item">
+                    <div class="confirm-item-info">
+                        <span class="confirm-item-name">@item.Product?.Name</span>
+                        <span class="confirm-item-qty">Số lượng: @item.Quantity</span>
+                    </div>
+                    <span class="confirm-item-price">@((item.UnitPrice * item.Quantity).ToString("N0")) đ</span>
                 </div>
-                <span class="confirm-item-price">@((item.UnitPrice * item.Quantity).ToString("N0")) đ</span>
-            </div>
+            }
         }
     </div>
 
+    <!-- 2. KHUNG CHI TIẾT CÁC KHOẢN TIỀN (BƯỚC 3: MÓN + SHIP - GIẢM GIÁ) -->
+    <div class="confirm-section" style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; margin: 15px 0;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span style="opacity: 0.8;">Tạm tính (Tiền món):</span>
+            <span style="font-weight: 600;">@subTotal.ToString("N0") đ</span>
+        </div>
+
+        @if (Model.DiscountAmount > 0)
+        {
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px; color: #4caf50;">
+                <span>Mã giảm giá (@(string.IsNullOrEmpty(Model.CouponCode) ? "Áp dụng" : Model.CouponCode)):</span>
+                <span style="font-weight: 600;">-@Model.DiscountAmount.ToString("N0") đ</span>
+            </div>
+        }
+
+        <div style="display: flex; justify-content: space-between; color: #ffca28;">
+            <span style="opacity: 0.8;">Phí giao hàng:</span>
+            <span style="font-weight: 600;">@Model.ShippingFee.ToString("N0") đ</span>
+        </div>
+    </div>
+
+    <!-- 3. TỔNG CỘNG -->
     <div class="confirm-total">
         <span class="confirm-total-label">Tổng cộng</span>
         <span class="confirm-total-value">@Model.TotalAmount.ToString("N0") đ</span>
