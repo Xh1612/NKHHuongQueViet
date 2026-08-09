@@ -21,5 +21,9 @@ namespace HuongQueViet.Models
         public string? CouponCode { get; set; }
         public decimal DiscountAmount { get; set; }
         public List<OrderItem> OrderItems { get; set; } = new();
+
+        // Bổ sung cho Shipper (Giai đoạn 2)
+        public string? ProofImageUrl { get; set; } // Ảnh xác nhận giao hàng thành công
+        public string? FailureReason { get; set; } // Lý do nếu giao thất bại
     }
 }

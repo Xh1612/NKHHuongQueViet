@@ -1,0 +1,100 @@
+﻿@using HuongQueViet.Models
+@model Address
+@{
+    ViewData["Title"] = "Sửa địa chỉ";
+}
+
+<style>
+    /* Fix triệt để lỗi tràn khung input và vỡ nút bấm ở Ảnh 1 */
+    .dia-chi-box *, .dia-chi-box *::before, .dia-chi-box *::after {
+        box-sizing: border-box !important;
+    }
+
+    .dia-chi-input {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 10px 12px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 6px !important;
+        outline: none !important;
+        font-size: 14px !important;
+        background-color: #fff !important;
+    }
+
+        .dia-chi-input:focus {
+            border-color: #b31217 !important;
+            box-shadow: 0 0 0 0.2rem rgba(179, 18, 23, 0.15) !important;
+        }
+</style>
+
+<section class="dau-trang-menu">
+    <div class="noi-dung-dau-trang">
+        <h1 class="tieu-de-menu">Sửa địa chỉ giao hàng</h1>
+        <p class="gioi-thieu-menu">Cập nhật thông tin địa chỉ nhận hàng của bạn.</p>
+    </div>
+</section>
+
+<section class="khu-noi-dung khu-dia-chi dia-chi-box" style="max-width: 650px; margin: 20px auto; padding: 0 15px;">
+    <form method="post" asp-action="Edit" style="background: #ffffff; padding: 25px 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #f0f0f0;">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="UserId" />
+
+        <!-- Số điện thoại -->
+        <div style="margin-bottom: 15px;">
+            <label style="font-weight: 600; display: block; margin-bottom: 6px; color: #333;">Số điện thoại nhận hàng</label>
+            <input asp-for="PhoneNumber" class="dia-chi-input" placeholder="VD: 0912345678" />
+            <span asp-validation-for="PhoneNumber" class="text-danger" style="font-size: 13px;"></span>
+        </div>
+
+        <!-- Tỉnh / Thành phố & Quận / Huyện -->
+        <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 240px;">
+                <label style="font-weight: 600; display: block; margin-bottom: 6px; color: #333;">Tỉnh / Thành phố</label>
+                <input asp-for="Province" class="dia-chi-input" placeholder="Tỉnh / Thành phố" required />
+                <span asp-validation-for="Province" class="text-danger" style="font-size: 13px;"></span>
+            </div>
+            <div style="flex: 1; min-width: 240px;">
+                <label style="font-weight: 600; display: block; margin-bottom: 6px; color: #333;">Quận / Huyện</label>
+                <input asp-for="District" class="dia-chi-input" placeholder="Quận / Huyện" required />
+                <span asp-validation-for="District" class="text-danger" style="font-size: 13px;"></span>
+            </div>
+        </div>
+
+        <!-- Phường / Xã & Số nhà -->
+        <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 240px;">
+                <label style="font-weight: 600; display: block; margin-bottom: 6px; color: #333;">Phường / Xã</label>
+                <input asp-for="Ward" class="dia-chi-input" placeholder="Phường / Xã" required />
+                <span asp-validation-for="Ward" class="text-danger" style="font-size: 13px;"></span>
+            </div>
+            <div style="flex: 1; min-width: 240px;">
+                <label style="font-weight: 600; display: block; margin-bottom: 6px; color: #333;">Số nhà, tên đường</label>
+                <input asp-for="Street" class="dia-chi-input" placeholder="Số nhà, tên đường..." required />
+                <span asp-validation-for="Street" class="text-danger" style="font-size: 13px;"></span>
+            </div>
+        </div>
+
+        <!-- Ghi chú tọa độ -->
+        <div style="background-color: #fdf8f0; border-left: 4px solid #f0ad4e; padding: 10px 14px; border-radius: 4px; margin-bottom: 15px;">
+            <small style="color: #8a6d3b; font-size: 13px;">📍 Tọa độ giúp tài xế định vị chính xác điểm giao hàng.</small>
+        </div>
+
+        <!-- Tọa độ Lat / Lng -->
+        <div style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 240px;">
+                <label style="font-weight: 600; display: block; margin-bottom: 6px; color: #333;">Vĩ độ (Lat)</label>
+                <input asp-for="Lat" type="number" step="any" class="dia-chi-input" placeholder="VD: 10.7769" />
+            </div>
+            <div style="flex: 1; min-width: 240px;">
+                <label style="font-weight: 600; display: block; margin-bottom: 6px; color: #333;">Kinh độ (Lng)</label>
+                <input asp-for="Lng" type="number" step="any" class="dia-chi-input" placeholder="VD: 106.7009" />
+            </div>
+        </div>
+
+        <!-- 2 NÚT BẤM CÂN ĐỐI, THẲNG HÀNG -->
+        <div style="display: flex; gap: 15px; justify-content: flex-end; align-items: center;">
+            <a asp-action="Index" style="flex: 1; text-align: center; padding: 10px 20px; background-color: #6c757d; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">Hủy bỏ</a>
+            <button type="submit" style="flex: 1; padding: 10px 20px; background-color: #b31217; color: #ffffff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Lưu thay đổi</button>
+        </div>
+    </form>
+</section>
