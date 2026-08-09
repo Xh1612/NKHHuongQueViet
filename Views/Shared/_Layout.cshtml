@@ -1,5 +1,23 @@
 ﻿@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Http
+@using System.Text.Json
+@using HuongQueViet.Models
 @inject IStringLocalizer<HuongQueViet.Resources.SharedResources> Localizer
+
+@{
+    // Đọc số lượng sản phẩm thực tế từ Session ngay khi Server render trang
+    int initialCartCount = 0;
+    var cartSessionJson = Context.Session.GetString("Cart");
+    if (!string.IsNullOrEmpty(cartSessionJson))
+    {
+        try
+        {
+            var cartItems = JsonSerializer.Deserialize<List<CartItem>>(cartSessionJson);
+            initialCartCount = cartItems?.Sum(i => i.Quantity) ?? 0;
+        }
+        catch { }
+    }
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +97,7 @@
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
         </svg>
         <span id="floating-cart-badge" style="position: absolute; top: -4px; right: -4px; background: #FFC107; color: #111; font-weight: 700; border-radius: 50%; width: 24px; height: 24px; font-size: 13px; display: flex; align-items: center; justify-content: center; border: 2px solid #8B1E10;">
-            0
+            @initialCartCount
         </span>
     </a>
 
@@ -100,34 +118,57 @@
 
     <!-- Script xử lý Ajax cho Nút Giỏ Hàng Nổi -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        // Hàm cập nhật Badge trên giao diện và ghi đè localStorage
+        window.updateCartBadge = function (count) {
             let badge = document.getElementById("floating-cart-badge");
-            // Lấy số lượng giỏ hàng hiện tại (nếu có lưu trong localStorage)
-            let currentCount = parseInt(localStorage.getItem("cartCount")) || 0;
-            badge.innerText = currentCount;
-            // Bắt sự kiện bấm các nút 'Thêm vào giỏ' trên toàn bộ ứng dụng
+            if (badge) {
+                let validCount = Math.max(0, parseInt(count) || 0);
+                badge.innerText = validCount;
+                localStorage.setItem("cartCount", validCount);
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Đồng bộ localStorage bằng số lượng chuẩn từ Session do Razor render
+            localStorage.setItem("cartCount", "@initialCartCount");
+
+            // Bắt sự kiện bấm nút "Thêm vào giỏ" trên toàn bộ trang
             document.addEventListener("submit", function (e) {
                 let form = e.target;
-                if (form && form.action && form.action.toLowerCase().includes("cart/add")) {
+                if (!form || !form.action) return;
+
+                let action = form.action.toLowerCase();
+
+                if (action.includes("cart/add")) {
                     e.preventDefault();
+
+                    // Đọc số lượng nhập từ form (nếu có input quantity, mặc định là 1)
+                    let qtyInput = form.querySelector('input[name="quantity"]');
+                    let addedQty = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
+
                     fetch(form.action, {
                         method: form.method || "POST",
                         body: new FormData(form)
-                    }).then(response => {
-                        // Tăng số lượng giỏ hàng
-                        let updatedCount = (parseInt(badge.innerText) || 0) + 1;
-                        badge.innerText = updatedCount;
-                        localStorage.setItem("cartCount", updatedCount);
-                        // Hiệu ứng nhún nút giỏ hàng khi thêm món
-                        let cartBtn = document.getElementById("floating-cart-btn");
-                        cartBtn.style.transform = "scale(1.25)";
-                        setTimeout(() => {
-                            cartBtn.style.transform = "scale(1)";
-                        }, 200);
-                    }).catch(err => {
-                        // Nếu fetch lỗi thì submit form bình thường
-                        form.submit();
-                    });
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            let badge = document.getElementById("floating-cart-badge");
+                            let current = parseInt(badge ? badge.innerText : 0) || 0;
+
+                            // Cập nhật tăng số lượng tức thì
+                            window.updateCartBadge(current + addedQty);
+
+                            // Hiệu ứng nhún nút giỏ hàng
+                            let cartBtn = document.getElementById("floating-cart-btn");
+                            if (cartBtn) {
+                                cartBtn.style.transform = "scale(1.25)";
+                                setTimeout(() => { cartBtn.style.transform = "scale(1)"; }, 200);
+                            }
+                        } else {
+                            form.submit();
+                        }
+                    })
+                    .catch(() => form.submit());
                 }
             });
         });

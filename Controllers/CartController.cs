@@ -17,12 +17,22 @@ namespace HuongQueViet.Controllers
             var json = HttpContext.Session.GetString(CartSessionKey);
             return json == null ? new List<CartItem>() : JsonSerializer.Deserialize<List<CartItem>>(json)!;
         }
+
         private void SaveCart(List<CartItem> cart) => HttpContext.Session.SetString(CartSessionKey, JsonSerializer.Serialize(cart));
 
         public IActionResult Index() => View(GetCart());
 
+        // API lấy tổng số lượng sản phẩm trong giỏ hàng
+        [HttpGet]
+        public IActionResult GetCartCount()
+        {
+            var cart = GetCart();
+            int count = cart.Sum(c => c.Quantity);
+            return Json(new { count = count });
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Add(int productId, int quantity)
+        public async Task<IActionResult> Add(int productId, int quantity = 1)
         {
             var product = await _context.Products.FindAsync(productId);
             if (product == null) return NotFound();
@@ -31,6 +41,15 @@ namespace HuongQueViet.Controllers
             if (existing != null) existing.Quantity += quantity;
             else cart.Add(new CartItem { ProductId = product.Id, ProductName = product.Name, UnitPrice = product.Price, Quantity = quantity });
             SaveCart(cart);
+
+            int totalCount = cart.Sum(c => c.Quantity);
+
+            // Trả về JSON nếu là request AJAX/Fetch
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(new { count = totalCount });
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -40,6 +59,28 @@ namespace HuongQueViet.Controllers
             var cart = GetCart();
             cart.RemoveAll(c => c.ProductId == productId);
             SaveCart(cart);
+
+            int totalCount = cart.Sum(c => c.Quantity);
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(new { count = totalCount });
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        // Action hỗ trợ xóa sạch giỏ hàng
+        [HttpPost]
+        public IActionResult Clear()
+        {
+            HttpContext.Session.Remove(CartSessionKey);
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(new { count = 0 });
+            }
+
             return RedirectToAction("Index");
         }
     }
