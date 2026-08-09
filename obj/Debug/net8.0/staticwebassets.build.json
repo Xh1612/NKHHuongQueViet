@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pGxA32X1KQhkt36HbS2Tj+VkwNxT+hV74OqhEJuZgY8=",
+  "Hash": "SxldZrTwHhsxfqVDFPoBD6lhHgSQAkBt68Ayh+/1HKk=",
   "Source": "HuongQueViet",
   "BasePath": "_content/HuongQueViet",
   "Mode": "Default",
@@ -2371,6 +2371,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\cd845bc1-a50c-4b4b-8947-23111ebe66cb.png"
+    },
+    {
+      "Identity": "D:\\test\\NKHHuongQueViet\\wwwroot\\uploads\\proofs\\proof_order_1010_c642bf42.jpg",
+      "SourceId": "HuongQueViet",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\test\\NKHHuongQueViet\\wwwroot\\",
+      "BasePath": "_content/HuongQueViet",
+      "RelativePath": "uploads/proofs/proof_order_1010_c642bf42.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\proofs\\proof_order_1010_c642bf42.jpg"
     }
   ]
 }

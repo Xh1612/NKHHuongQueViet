@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using HuongQueViet.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Linq;
 namespace HuongQueViet.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin, Staff")] // Chặn Shipper, chỉ cho Admin và Staff vào
     public class IngredientsController : Controller
     {
         // Tạo một danh sách static để lưu dữ liệu tạm thời không bị mất khi chuyển trang

@@ -27,6 +27,9 @@
         public bool IsPaid { get; set; }
         public string? CouponCode { get; set; }
 
+        // Bổ sung thuộc tính lưu lý do giao thất bại (Sửa lỗi CS0117)
+        public string? FailureReason { get; set; }
+
         public List<ShipperOrderItemViewModel> Items { get; set; } = new();
     }
 

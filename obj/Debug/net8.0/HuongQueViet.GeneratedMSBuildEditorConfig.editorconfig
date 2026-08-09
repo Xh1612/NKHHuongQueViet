@@ -66,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/test/NKHHuongQueViet/Areas/Admin/Views/Shared/_ShipperLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9TaGlwcGVyTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/test/NKHHuongQueViet/Areas/Admin/Views/Shipper/History.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hpcHBlclxIaXN0b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -158,12 +162,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/test/NKHHuongQueViet/Views/Addresses/Addressedit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc2VzXEFkZHJlc3NlZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/test/NKHHuongQueViet/Views/Addresses/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/test/NKHHuongQueViet/Views/Addresses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc2VzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/test/NKHHuongQueViet/Views/Addresses/Index.cshtml]
@@ -204,6 +208,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/test/NKHHuongQueViet/Views/Payment/Failed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxGYWlsZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/test/NKHHuongQueViet/Views/Payment/FakeVnPay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxGYWtlVm5QYXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/test/NKHHuongQueViet/Views/Payment/Success.cshtml]

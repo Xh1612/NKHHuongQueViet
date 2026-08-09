@@ -1,10 +1,91 @@
-﻿@model List<Order>
-<h3>Lịch sử giao hàng</h3>
-<a asp-action="Index">← Quay lại đơn cần giao</a>
-@foreach (var o in Model)
+﻿@using HuongQueViet.Models
+@model List<ShipperOrderViewModel>
+@{
+    ViewData["Title"] = "Lịch sử giao hàng";
+    Layout = "_ShipperLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h6 class="fw-bold text-secondary mb-0"><i class="bi bi-clock-history"></i> LỊCH SỬ ĐÃ GIAO (@Model.Count)</h6>
+    <a asp-action="Index" class="btn btn-sm btn-outline-primary fw-bold">← Quay lại đơn cần giao</a>
+</div>
+
+@if (!Model.Any())
 {
-    <div style="margin-bottom:0.5rem;">
-        Đơn #@o.Id — <span class="badge @(o.Status == OrderStatus.Completed ? "bg-success" : "bg-danger")">@o.Status</span>
-        — @o.Address?.Street, @o.Address?.District — @o.OrderDate.ToString("dd/MM HH:mm")
+    <div class="text-center py-5 bg-white rounded-3 shadow-sm">
+        <div class="fs-1 text-muted">📦</div>
+        <p class="fw-bold mt-2 text-secondary">Chưa có lịch sử giao hàng nào!</p>
     </div>
+}
+else
+{
+    @foreach (var o in Model)
+    {
+        <div class="order-card p-3 mb-3 bg-white rounded shadow-sm border">
+            <!-- Header Card -->
+            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                <div>
+                    <span class="fw-bold fs-6">Đơn hàng #@o.Id</span>
+                    <small class="text-muted d-block">⏱ @o.OrderDate.ToString("HH:mm dd/MM/yyyy")</small>
+                </div>
+                <span class="badge @(o.Status == OrderStatus.Completed ? "bg-success" : "bg-danger") fs-6">
+                    @(o.Status == OrderStatus.Completed ? "Đã hoàn thành" : "Thất bại / Hủy")
+                </span>
+            </div>
+
+            <!-- Khách hàng & SĐT -->
+            <div class="mb-2">
+                <div class="fw-bold text-dark"><i class="bi bi-person-fill"></i> @o.ReceiverName</div>
+                @if (!string.IsNullOrWhiteSpace(o.ReceiverPhone))
+                {
+                    <div class="small text-muted">
+                        📞 SĐT: <a href="tel:@o.ReceiverPhone" class="text-decoration-none fw-bold text-success">@o.ReceiverPhone</a>
+                    </div>
+                }
+            </div>
+
+            <!-- Địa chỉ giao hàng đầy đủ -->
+            <div class="text-muted small mb-2">
+                📍 <strong>@o.Street</strong>, @o.Ward, @o.District, @o.Province
+            </div>
+
+            <!-- Danh sách món ăn chi tiết -->
+            @if (o.Items != null && o.Items.Any())
+            {
+                <div class="bg-light p-2 rounded mb-3 small border">
+                    <div class="fw-bold text-secondary mb-1">Chi tiết món ăn (@o.Items.Count):</div>
+                    @foreach (var item in o.Items)
+                    {
+                        <div class="d-flex justify-content-between py-1 border-bottom border-light">
+                            <span>• @item.ProductName x<strong>@item.Quantity</strong></span>
+                            <span class="text-muted">@item.LineTotal.ToString("N0") đ</span>
+                        </div>
+                    }
+                    <div class="d-flex justify-content-between text-muted mt-1 pt-1">
+                        <span>Phí giao hàng:</span>
+                        <span>@o.ShippingFee.ToString("N0") đ</span>
+                    </div>
+                    @if (o.DiscountAmount > 0)
+                    {
+                        <div class="d-flex justify-content-between text-danger">
+                            <span>Giảm giá:</span>
+                            <span>-@o.DiscountAmount.ToString("N0") đ</span>
+                        </div>
+                    }
+                </div>
+            }
+
+            <!-- Tổng tiền & Hình thức thanh toán -->
+            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                <span class="small text-muted">
+                    Thanh toán: <span class="badge bg-light text-dark border">@o.PaymentMethod</span>
+                    @(o.IsPaid ? "(Đã TT)" : "(COD)")
+                </span>
+                <div>
+                    <small class="text-muted">Tổng tiền: </small>
+                    <span class="fs-6 fw-bold text-success">@o.TotalAmount.ToString("N0") đ</span>
+                </div>
+            </div>
+        </div>
+    }
 }

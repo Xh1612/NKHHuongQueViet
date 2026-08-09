@@ -27,12 +27,18 @@
         </a>
 
         <div>
+            <!-- Tất cả các quyền (Admin, Staff, Shipper) đều xem được Đơn hàng -->
             <a class="text-white me-3" asp-area="Admin" asp-controller="Staff" asp-action="Index">Đơn hàng</a>
-            <a class="text-white me-3" asp-area="Admin" asp-controller="Products" asp-action="Index">Sản phẩm</a>
-            <a class="text-white me-3" asp-area="Admin" asp-controller="Categories" asp-action="Index">Danh mục</a>
-            <a class="text-white me-3" asp-area="Admin" asp-controller="Users" asp-action="Index">Người dùng</a>
-            <a class="text-white me-3" asp-area="Admin" asp-controller="Ingredients" asp-action="Index">Nguyên liệu</a>
-            <a class="text-white" asp-area="Admin" asp-controller="Statistics" asp-action="Index">Thống kê</a>
+
+            <!-- Chỉ Admin và Staff mới thấy các mục quản lý này -->
+            @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+            {
+                <a class="text-white me-3" asp-area="Admin" asp-controller="Products" asp-action="Index">Sản phẩm</a>
+                <a class="text-white me-3" asp-area="Admin" asp-controller="Categories" asp-action="Index">Danh mục</a>
+                <a class="text-white me-3" asp-area="Admin" asp-controller="Users" asp-action="Index">Người dùng</a>
+                <a class="text-white me-3" asp-area="Admin" asp-controller="Ingredients" asp-action="Index">Nguyên liệu</a>
+                <a class="text-white" asp-area="Admin" asp-controller="Statistics" asp-action="Index">Thống kê</a>
+            }
         </div>
     </nav>
     <div class="container my-4">@RenderBody()</div>

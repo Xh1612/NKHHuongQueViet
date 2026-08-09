@@ -253,6 +253,10 @@
       "PackagePath": "staticwebassets\\uploads\\cd845bc1-a50c-4b4b-8947-23111ebe66cb.png"
     },
     {
+      "Id": "D:\\test\\NKHHuongQueViet\\wwwroot\\uploads\\proofs\\proof_order_1010_c642bf42.jpg",
+      "PackagePath": "staticwebassets\\uploads\\proofs\\proof_order_1010_c642bf42.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HuongQueViet.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

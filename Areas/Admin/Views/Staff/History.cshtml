@@ -1,17 +1,97 @@
-﻿@model List<Order>
-<h3>Lịch sử đơn hàng</h3>
-<a asp-action="Index">← Quay lại đơn đang xử lý</a>
-<table class="table mt-3">
-    <thead><tr><th>Order ID</th><th>Ngày đặt</th><th>Trạng thái</th><th>Tổng tiền</th></tr></thead>
-    <tbody>
-        @foreach (var o in Model)
-        {
-            <tr>
-                <td>@o.Id</td>
-                <td>@o.OrderDate.ToString("dd/MM/yyyy HH:mm")</td>
-                <td><span class="badge @(o.Status == OrderStatus.Completed ? "bg-success" : "bg-danger")">@o.Status</span></td>
-                <td>@o.TotalAmount.ToString("N0") đ</td>
-            </tr>
-        }
-    </tbody>
-</table>
+﻿@model List<HuongQueViet.Models.StaffOrderViewModel>
+
+@{
+    ViewData["Title"] = "Lịch sử đơn hàng";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-fluid mt-3">
+    <h3 class="fw-bold mb-2">Lịch sử đơn hàng</h3>
+    <a asp-action="Index" class="btn btn-sm btn-link p-0 mb-3 text-decoration-none">← Quay lại đơn đang xử lý</a>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 120px;">Order ID</th>
+                        <th>Ngày đặt</th>
+                        <th>Trạng thái</th>
+                        <th class="text-end">Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var o in Model)
+                    {
+                        <tr>
+                            <td><strong>#@o.Id</strong></td>
+                            <td>@o.OrderDate.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>
+                                <span class="badge @(o.Status == OrderStatus.Completed ? "bg-success" : "bg-danger")">
+                                    @o.Status
+                                </span>
+                            </td>
+                            <td class="text-end fw-bold">@o.TotalAmount.ToString("N0") đ</td>
+                        </tr>
+                        <!-- Dòng hiển thị nút thả xuống chi tiết đơn hàng -->
+                        <tr>
+                            <td colspan="4" class="pt-0 border-0">
+                                <details class="ms-2">
+                                    <summary class="text-primary cursor-pointer my-1" style="cursor: pointer; font-size: 0.9rem;">
+                                        ▼ Xem chi tiết đơn #@o.Id
+                                    </summary>
+                                    <div class="bg-light p-3 rounded border my-2">
+                                        @if (!string.IsNullOrEmpty(o.CustomerName))
+                                        {
+                                            <p class="mb-1">👤 <strong>Khách hàng:</strong> @o.CustomerName @(!string.IsNullOrEmpty(o.CustomerPhone) ? $"({o.CustomerPhone})" : "")</p>
+                                        }
+                                        @if (!string.IsNullOrEmpty(o.Street))
+                                        {
+                                            <p class="mb-1">📍 <strong>Địa chỉ:</strong> @o.Street, @o.Ward, @o.District, @o.Province</p>
+                                        }
+                                        @if (o.ShippingFee > 0)
+                                        {
+                                            <p class="mb-2">💰 <strong>Phí ship:</strong> @o.ShippingFee.ToString("N0") đ</p>
+                                        }
+
+                                        <!-- Bảng danh sách các món -->
+                                        <table class="table table-sm table-bordered bg-white mb-0 mt-2">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Món</th>
+                                                    <th class="text-center" style="width: 80px;">SL</th>
+                                                    <th class="text-end" style="width: 120px;">Đơn giá</th>
+                                                    <th class="text-end" style="width: 140px;">Thành tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (o.Items != null && o.Items.Any())
+                                                {
+                                                    @foreach (var item in o.Items)
+                                                    {
+                                                        <tr>
+                                                            <td>@item.ProductName</td>
+                                                            <td class="text-center">@item.Quantity</td>
+                                                            <td class="text-end">@item.UnitPrice.ToString("N0") đ</td>
+                                                            <td class="text-end">@((item.Quantity * item.UnitPrice).ToString("N0")) đ</td>
+                                                        </tr>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td colspan="4" class="text-center text-muted">Không có thông tin món ăn.</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </details>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

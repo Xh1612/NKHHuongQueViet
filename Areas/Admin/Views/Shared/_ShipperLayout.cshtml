@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hương Quê Việt Shipper</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f4f6f8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding-bottom: 30px;
+        }
+
+        .shipper-navbar {
+            background-color: #00b14f;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+            .shipper-navbar .navbar-brand {
+                color: white;
+                font-weight: 700;
+                font-size: 1.2rem;
+            }
+
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+
+        .order-card {
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: #fff;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border-left: 5px solid #00b14f;
+        }
+
+            .order-card.delivering {
+                border-left-color: #ff9800;
+            }
+
+        .badge-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar shipper-navbar sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand d-flex align-items-center gap-2" asp-area="Admin" asp-controller="Shipper" asp-action="Index">
+                🛵 Hương Quê Việt - Shipper
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <a asp-area="Admin" asp-controller="Shipper" asp-action="History" class="btn btn-sm btn-light fw-bold text-success">
+                    <i class="bi bi-clock-history"></i> Lịch sử
+                </a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-sm btn-outline-light fw-bold">
+                    <i class="bi bi-house-door"></i> Trang chủ
+                </a>
+                <!-- Sửa nút Đăng xuất tại đây -->
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-sm btn-danger fw-bold">
+                        <i class="bi bi-box-arrow-right"></i> Đăng xuất
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

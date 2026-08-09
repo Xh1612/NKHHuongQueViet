@@ -11,6 +11,11 @@
     <form method="post" class="address-form">
 
         <div class="address-group">
+            <label class="address-label" for="PhoneNumber">Số điện thoại nhận hàng</label>
+            <input class="address-input" id="PhoneNumber" name="PhoneNumber" placeholder="VD: 0912345678" required />
+        </div>
+
+        <div class="address-group">
             <label class="address-label" for="Province">Tỉnh / Thành phố</label>
             <input class="address-input" id="Province" name="Province" placeholder="VD: TP. Hồ Chí Minh" required />
         </div>
@@ -47,7 +52,7 @@
         </div>
 
         <div class="address-actions">
-            <a class="address-cancel" asp-controller="Cart" asp-action="Index">Hủy</a>
+            <a class="address-cancel" asp-controller="Addresses" asp-action="Index">Hủy</a>
             <button type="submit" class="btn-dau address-submit">Lưu địa chỉ</button>
         </div>
 

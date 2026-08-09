@@ -1,4 +1,5 @@
-﻿@model List<Address>
+﻿@using HuongQueViet.Models
+@model List<Address>
 @{
     ViewData["Title"] = "Địa chỉ giao hàng";
 }
@@ -34,11 +35,17 @@
                         <div class="dong-chi-tiet-dia-chi">
                             <span class="duong-dia-chi">@a.Street</span>
                             <span class="khu-vuc-dia-chi">@a.Ward, @a.District, @a.Province</span>
+                            @if (!string.IsNullOrEmpty(a.PhoneNumber))
+                            {
+                                <span class="khu-vuc-dia-chi" style="margin-top: 4px; color: #555;">
+                                    📞 <strong>SĐT:</strong> @a.PhoneNumber
+                                </span>
+                            }
                         </div>
                     </div>
                     <div class="hanh-dong-dia-chi">
-                        @* <a asp-action="Edit" asp-route-id="@a.Id" class="nut-hanh-dong-dia-chi">Sửa</a> *@
-                        <form method="post" asp-action="Delete" asp-route-id="@a.Id" style="display:inline">
+                        <a asp-action="Edit" asp-route-id="@a.Id" class="nut-hanh-dong-dia-chi">Sửa</a>
+                        <form method="post" asp-action="Delete" asp-route-id="@a.Id" style="display:inline" onsubmit="return confirm('Bạn có chắc chắn muốn xóa địa chỉ này?');">
                             <button type="submit" class="nut-hanh-dong-dia-chi xoa">Xóa</button>
                         </form>
                     </div>

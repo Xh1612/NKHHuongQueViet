@@ -3,32 +3,37 @@
 
 @{
     ViewData["Title"] = "Thêm nguyên liệu mới";
-    Layout = "_Layout";
+    Layout = "_AdminLayout"; // Đã đổi sang _AdminLayout để đồng bộ giao diện Admin
 }
 
-<div class="container-fluid mt-4">
-    <h2>Thêm nguyên liệu mới</h2>
-    <hr />
-    <div class="row">
-        <div class="col-md-6">
+<div class="container-fluid mt-2">
+    <div class="card shadow-sm col-md-8 mx-auto">
+        <div class="card-header bg-dark text-white fw-bold">
+            Thêm nguyên liệu mới
+        </div>
+        <div class="card-body">
             <form asp-action="Create" method="post">
                 <div class="form-group mb-3">
-                    <label asp-for="Name" class="control-label">Tên nguyên liệu</label>
-                    <input asp-for="Name" class="form-control" />
+                    <label asp-for="Name" class="control-label fw-bold mb-1">Tên nguyên liệu</label>
+                    <input asp-for="Name" class="form-control" required />
                 </div>
+
                 <div class="form-group mb-3">
-                    <label asp-for="Unit" class="control-label">Đơn vị tính</label>
-                    <input asp-for="Unit" class="form-control" />
+                    <label asp-for="Unit" class="control-label fw-bold mb-1">Đơn vị tính</label>
+                    <input asp-for="Unit" class="form-control" required />
                 </div>
+
                 <div class="form-group mb-3">
-                    <label asp-for="StockQuantity" class="control-label">Số lượng tồn</label>
-                    <input asp-for="StockQuantity" class="form-control" />
+                    <label asp-for="StockQuantity" class="control-label fw-bold mb-1">Số lượng tồn</label>
+                    <input asp-for="StockQuantity" type="number" step="any" class="form-control" required />
                 </div>
+
                 <div class="form-group mb-3">
-                    <label asp-for="LowStockThreshold" class="control-label">Mức cảnh báo tồn kho thấp</label>
-                    <input asp-for="LowStockThreshold" class="form-control" />
+                    <label asp-for="LowStockThreshold" class="control-label fw-bold mb-1">Mức cảnh báo tồn kho thấp</label>
+                    <input asp-for="LowStockThreshold" type="number" step="any" class="form-control" required />
                 </div>
-                <div class="form-group">
+
+                <div class="form-group d-flex gap-2 mt-4">
                     <button type="submit" class="btn btn-success">Lưu</button>
                     <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
                 </div>
