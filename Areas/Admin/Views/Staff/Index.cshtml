@@ -1,8 +1,9 @@
 ﻿@using HuongQueViet.Models
 @model List<StaffOrderViewModel>
+
 <h3>Đơn hàng cần xử lý</h3>
 
-<!--Historry-->
+<!-- History -->
 <a asp-action="History">Xem lịch sử đơn đã hoàn thành →</a>
 
 @if (TempData["Error"] != null)
@@ -19,7 +20,7 @@
             <th>Tổng tiền</th>
             <th>Thanh toán</th>
             <th>Trạng thái</th>
-            <th></th>
+            <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +34,6 @@
                     @if (!string.IsNullOrWhiteSpace(o.CustomerPhone))
                     {
                         <br />
-                
                         <small>📞 @o.CustomerPhone</small>
                     }
                 </td>
@@ -53,17 +53,31 @@
                 <td>
                     @if (o.Status == OrderStatus.Pending)
                     {
-                        <form method="post" asp-action="Advance" style="display:inline">
-                            <input type="hidden" name="orderId" value="@o.Id" /><input type="hidden" name="toStatus" value="Confirmed" />
-                            <button class="btn btn-sm btn-success">Xác nhận</button>
-                        </form>
+                        @* Chỉ hiển thị nút 'Xác nhận' nếu KHÔNG PHẢI VNPay HOẶC VNPay ĐÃ THANH TOÁN *@
+                        @if (o.PaymentMethod != "VNPay" || o.IsPaid)
+                        {
+                            <form method="post" asp-action="Advance" style="display:inline">
+                                <input type="hidden" name="orderId" value="@o.Id" />
+                                <input type="hidden" name="toStatus" value="Confirmed" />
+                                <button class="btn btn-sm btn-success">Xác nhận</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span class="text-muted small fst-italic">Chờ thanh toán...</span>
+                        }
                     }
-                    @if (o.Status == OrderStatus.Confirmed)
+                    else if (o.Status == OrderStatus.Confirmed)
                     {
                         <form method="post" asp-action="Advance" style="display:inline">
-                            <input type="hidden" name="orderId" value="@o.Id" /><input type="hidden" name="toStatus" value="Preparing" />
+                            <input type="hidden" name="orderId" value="@o.Id" />
+                            <input type="hidden" name="toStatus" value="Preparing" />
                             <button class="btn btn-sm btn-warning">Bắt đầu chuẩn bị</button>
                         </form>
+                    }
+                    else if (o.Status == OrderStatus.Cancelled)
+                    {
+                        <span class="badge bg-danger">Đã hủy</span>
                     }
                 </td>
             </tr>

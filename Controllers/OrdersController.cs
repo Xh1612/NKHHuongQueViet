@@ -42,8 +42,6 @@ public class OrdersController : Controller
         return View(orders);
     }
 
-
-
     [HttpGet]
     public async Task<IActionResult> Checkout()
     {
@@ -99,23 +97,19 @@ public class OrdersController : Controller
 
                 if (recipe.Any())
                 {
+                    // Chỉ KIỂM TRA số lượng nguyên liệu xem có đủ không (Không trừ kho ở đây nữa)
                     foreach (var pi in recipe)
                     {
                         var needed = pi.QuantityNeeded * item.Quantity;
                         if (pi.Ingredient!.StockQuantity < needed)
                             throw new InvalidOperationException($"Nguyên liệu '{pi.Ingredient.Name}' không đủ để làm {item.ProductName}");
                     }
-                    foreach (var pi in recipe)
-                    {
-                        var used = pi.QuantityNeeded * item.Quantity;
-                        pi.Ingredient!.StockQuantity -= used;
-                        _context.InventoryLogs.Add(new InventoryLog { IngredientId = pi.IngredientId, Change = -used, Reason = $"Chế biến {item.ProductName}" });
-                    }
                 }
                 else
                 {
-                    if (product.StockQuantity < item.Quantity) throw new InvalidOperationException($"Sản phẩm {item.ProductName} không đủ tồn kho");
-                    product.StockQuantity -= item.Quantity;
+                    // Chỉ KIỂM TRA tồn kho xem có đủ không (Không trừ kho ở đây nữa)
+                    if (product.StockQuantity < item.Quantity)
+                        throw new InvalidOperationException($"Sản phẩm {item.ProductName} không đủ tồn kho");
                 }
 
                 order.OrderItems.Add(new OrderItem { ProductId = item.ProductId, Quantity = item.Quantity, UnitPrice = item.UnitPrice });
@@ -144,8 +138,6 @@ public class OrdersController : Controller
             await transaction.CommitAsync();
             HttpContext.Session.Remove(CartSessionKey);
 
-            // Đơn đã commit xong ở trên rồi — lỗi gửi thông báo (email sai định dạng, SMTP chưa cấu hình...)
-            // chỉ ghi log, KHÔNG được ném lại, nếu không sẽ làm đơn đã thành công bị báo nhầm là thất bại.
             try
             {
                 var currentUser = await _userManager.FindByIdAsync(userId!);
@@ -164,7 +156,7 @@ public class OrdersController : Controller
         }
         catch (Exception ex)
         {
-            try { await transaction.RollbackAsync(); } catch { /* transaction có thể đã tự đóng do lỗi trước đó, bỏ qua */ }
+            try { await transaction.RollbackAsync(); } catch { /* bỏ qua lỗi rollback */ }
             TempData["Error"] = ex.Message;
             return RedirectToAction("Checkout");
         }
@@ -179,13 +171,31 @@ public class OrdersController : Controller
     [HttpPost]
     public async Task<IActionResult> Cancel(int id)
     {
-        var order = await _context.Orders.FindAsync(id);
+        var order = await _context.Orders
+            .Include(o => o.OrderItems)
+            .FirstOrDefaultAsync(o => o.Id == id);
+
         if (order == null) return NotFound();
+
         if (!OrderStatusMachine.CanTransition(order.Status, OrderStatus.Cancelled))
         {
             TempData["Error"] = "Đơn hàng đã được chuẩn bị/giao, không thể hủy";
             return RedirectToAction("Confirmation", new { id });
         }
+
+        // Hoàn lại kho nếu khách tự hủy đơn sau khi đã thanh toán VNPay thành công
+        if (order.IsPaid)
+        {
+            foreach (var item in order.OrderItems)
+            {
+                var product = await _context.Products.FindAsync(item.ProductId);
+                if (product != null)
+                {
+                    product.StockQuantity += item.Quantity;
+                }
+            }
+        }
+
         order.Status = OrderStatus.Cancelled;
         await _context.SaveChangesAsync();
         return RedirectToAction("Confirmation", new { id });
