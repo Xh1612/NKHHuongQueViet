@@ -123,6 +123,9 @@
   <data name="Address" xml:space="preserve">
     <value>Địa chỉ</value>
   </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Thêm vào giỏ</value>
+  </data>
   <data name="Admin" xml:space="preserve">
     <value>Quản trị</value>
   </data>
@@ -206,6 +209,9 @@
   </data>
   <data name="SearchPlaceholder" xml:space="preserve">
     <value>Tìm món ăn...</value>
+  </data>
+  <data name="Spicy" xml:space="preserve">
+    <value>Vị cay</value>
   </data>
   <data name="Status_Cancelled" xml:space="preserve">
     <value>Đã hủy</value>

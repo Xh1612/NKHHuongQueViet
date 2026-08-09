@@ -123,6 +123,9 @@
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Add To Cart</value>
+  </data>
   <data name="Admin" xml:space="preserve">
     <value>Admin</value>
   </data>
@@ -206,6 +209,9 @@
   </data>
   <data name="SearchPlaceholder" xml:space="preserve">
     <value>Search dishes...</value>
+  </data>
+  <data name="Spicy" xml:space="preserve">
+    <value>Spicy</value>
   </data>
   <data name="Status_Cancelled" xml:space="preserve">
     <value>Cancelled</value>

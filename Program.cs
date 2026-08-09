@@ -83,6 +83,7 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.DefaultRequestCulture = new RequestCulture("vi");
     options.SupportedCultures = cultures;
     options.SupportedUICultures = cultures;
+
 });
 
 var app = builder.Build();
@@ -103,8 +104,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseRouting();
 app.UseRequestLocalization();
+app.UseRouting();
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
