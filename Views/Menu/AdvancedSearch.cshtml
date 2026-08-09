@@ -12,11 +12,13 @@
 
 <section class="khu-noi-dung">
     <form method="get" class="khung-loc-nang-cao">
+        <!-- 1. Từ khóa (Nằm hàng trên cùng, chiếm trọn chiều ngang) -->
         <div class="truong-loc truong-rong">
             <label class="nhan-loc">Từ khóa</label>
-            <input type="text" name="keyword" placeholder="Tên món ăn..." class="o-tim" />
+            <input type="text" name="keyword" value="@ViewBag.Keyword" placeholder="Tên món ăn..." class="o-tim" />
         </div>
 
+        <!-- 2. Danh mục -->
         <div class="truong-loc">
             <label class="nhan-loc">Danh mục</label>
             <select name="categoryId" class="o-chon">
@@ -28,16 +30,19 @@
             </select>
         </div>
 
+        <!-- 3. Giá từ (Nằm chung một hàng với Giá đến) -->
         <div class="truong-loc">
             <label class="nhan-loc">Giá từ</label>
             <input type="number" name="minPrice" placeholder="0" class="o-tim" />
         </div>
 
+        <!-- 4. Giá đến (Nằm ngay cạnh Giá từ) -->
         <div class="truong-loc">
             <label class="nhan-loc">Giá đến</label>
             <input type="number" name="maxPrice" placeholder="Không giới hạn" class="o-tim" />
         </div>
 
+        <!-- 5. Checkbox món cay -->
         <div class="truong-loc truong-checkbox">
             <label class="nhan-checkbox">
                 <input type="checkbox" name="isSpicy" value="true" />
@@ -45,12 +50,13 @@
             </label>
         </div>
 
+        <!-- 6. Nút Lọc kết quả -->
         <div class="truong-loc truong-nut">
             <button type="submit" class="btn-dau btn-loc">Lọc kết quả</button>
         </div>
     </form>
 
-    @if (Model.Any())
+    @if (Model != null && Model.Any())
     {
         <p class="dem-so-mon">@Model.Count món phù hợp</p>
 
@@ -61,7 +67,7 @@
             }
         </div>
     }
-    else
+    else if (Model != null)
     {
         <div class="trang-thai-rong">
             <p class="trang-thai-rong-tieu-de">Không tìm thấy món ăn phù hợp</p>

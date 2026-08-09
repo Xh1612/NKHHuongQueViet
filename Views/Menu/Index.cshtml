@@ -1,32 +1,43 @@
 ﻿@model List<Product>
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<HuongQueViet.Resources.SharedResources> Localizer
 @{
-    ViewData["Title"] = Localizer["MenuTitle"];
+    ViewData["Title"] = "Thực đơn";
 }
+
 <section class="dau-trang-menu">
     <div class="noi-dung-dau-trang">
-        <h1 class="tieu-de-menu">@Localizer["MenuTitle"]</h1>
-        <p class="gioi-thieu-menu">@Localizer["MenuIntro"]</p>
+        <h1 class="tieu-de-menu">Thực đơn</h1>
+        <p class="gioi-thieu-menu">Hương vị quê nhà, chọn món và đặt ngay hôm nay.</p>
     </div>
 </section>
+
 <section class="khu-noi-dung">
     <form method="get" class="thanh-tim-mon">
-        <input type="text" name="keyword" value="@ViewBag.Keyword" placeholder="@Localizer["SearchPlaceholder"]" class="o-tim" />
-        <button type="submit" class="btn-dau btn-tim">@Localizer["SearchButton"]</button>
-        <a asp-action="AdvancedSearch" class="lien-ket-nang-cao">@Localizer["AdvancedSearchLink"]</a>
+        <!-- Khung chứa ô input và nút tìm nhanh -->
+        <div class="khung-input-tim">
+            <input type="text" name="keyword" value="@ViewBag.Keyword" placeholder="Tìm món ăn..." class="o-tim" />
+            <button type="submit" class="btn-dau btn-tim">Tìm</button>
+
+            <!-- Đưa nút tìm nâng cao vào đây để nằm ngay cạnh nút Tìm với khoảng cách chuẩn -->
+            <a asp-action="AdvancedSearch" class="btn-dau btn-nang-cao">Tìm nâng cao →</a>
+        </div>
     </form>
+
     <div class="the-loc-danh-muc">
-        <a asp-action="Index" class="the-danh-muc @(ViewBag.CategoryId == null ? "dang-chon" : "")">@Localizer["CategoryAll"]</a>
+        <!-- Nút Tất cả -->
+        <a href="/Menu/Index" class="the-danh-muc @(ViewBag.CategoryId == null ? "dang-chon" : "")">Tất cả</a>
+
+        <!-- Các danh mục khác -->
         @foreach (var c in (List<Category>)ViewBag.Categories)
         {
-            <a asp-action="Index" asp-route-categoryId="@c.Id"
+            <a href="/Menu/Index?categoryId=@c.Id"
                class="the-danh-muc @(ViewBag.CategoryId == c.Id ? "dang-chon" : "")">@c.Name</a>
         }
     </div>
+
     @if (Model.Any())
     {
-        <p class="dem-so-mon">@Localizer["ProductsFoundCount", Model.Count]</p>
+        <p class="dem-so-mon">@Model.Count món được tìm thấy</p>
+
         <div class="luoi-mon">
             @foreach (var p in Model)
             {
@@ -37,9 +48,9 @@
     else
     {
         <div class="trang-thai-rong">
-            <p class="trang-thai-rong-tieu-de">@Localizer["EmptyStateTitle"]</p>
-            <p class="trang-thai-rong-mo-ta">@Localizer["EmptyStateDesc"]</p>
-            <a asp-action="Index" class="btn-dau">@Localizer["ViewAllDishes"]</a>
+            <p class="trang-thai-rong-tieu-de">Không tìm thấy món ăn nào</p>
+            <p class="trang-thai-rong-mo-ta">Thử từ khóa khác hoặc xem tất cả món trong thực đơn.</p>
+            <a asp-action="Index" class="btn-dau">Xem tất cả món</a>
         </div>
     }
 </section>
