@@ -1,1 +1,53 @@
-﻿<p>Thanh toán thành công cho đơn hàng #@ViewBag.OrderId!</p>
+﻿@model HuongQueViet.Models.Order
+@{
+    ViewData["Title"] = "Thanh toán thành công";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 text-center">
+            <div class="card shadow-sm border-0 rounded-4 p-4">
+                <div class="card-body">
+                    <!-- Icon Thành công -->
+                    <div class="mb-3 text-success">
+                        <i class="bi bi-check-circle-fill" style="font-size: 4.5rem;"></i>
+                    </div>
+
+                    <h2 class="fw-bold text-success mb-2">Thanh toán thành công!</h2>
+                    <p class="text-muted fs-6">Cảm ơn bạn đã đặt hàng tại <strong>Hương Quê Việt</strong>.</p>
+
+                    <!-- Khung thông tin đơn hàng -->
+                    <div class="bg-light rounded-3 p-3 text-start my-4 border">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Mã đơn hàng:</span>
+                            <strong class="text-dark">#@Model.Id</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Phương thức thanh toán:</span>
+                            <span class="badge bg-success">VNPay (Đã thanh toán)</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Mã giao dịch VNPay:</span>
+                            <code class="text-primary">@Model.TransactionId</code>
+                        </div>
+                        <hr />
+                        <div class="d-flex justify-content-between fs-5 fw-bold">
+                            <span>Tổng tiền:</span>
+                            <span class="text-danger">@Model.TotalAmount.ToString("N0") đ</span>
+                        </div>
+                    </div>
+
+                    <!-- Các nút điều hướng -->
+                    <div class="d-flex gap-2 justify-content-center mt-4">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary px-4 py-2 fw-bold">
+                            <i class="bi bi-house-door-fill"></i> Trang chủ
+                        </a>
+                        <a asp-controller="Orders" asp-action="Index" class="btn btn-primary px-4 py-2 fw-bold">
+                            <i class="bi bi-receipt"></i> Đơn hàng của tôi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

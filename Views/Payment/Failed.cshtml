@@ -1,1 +1,50 @@
-﻿<p>Thanh toán thất bại hoặc bị hủy.</p>
+﻿@{
+    ViewData["Title"] = "Thanh toán không thành công";
+    var order = ViewBag.Order as HuongQueViet.Models.Order;
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 text-center">
+            <div class="card shadow-sm border-0 rounded-4 p-4">
+                <div class="card-body">
+                    <!-- Icon Thất bại -->
+                    <div class="mb-3 text-danger">
+                        <i class="bi bi-x-circle-fill" style="font-size: 4.5rem;"></i>
+                    </div>
+
+                    <h2 class="fw-bold text-danger mb-2">Thanh toán thất bại hoặc bị hủy!</h2>
+                    <p class="text-muted fs-6">Giao dịch VNPay không hoàn tất. Đơn hàng chưa được hệ thống xử lý.</p>
+
+                    @if (order != null)
+                    {
+                        <div class="bg-light rounded-3 p-3 text-start my-4 border">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Mã đơn hàng:</span>
+                                <strong>#@order.Id</strong>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted">Trạng thái đơn:</span>
+                                <span class="badge bg-danger">Đã hủy</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Số tiền:</span>
+                                <span class="fw-bold text-danger">@order.TotalAmount.ToString("N0") đ</span>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Nút quay lại Checkout (Ảnh 5) -->
+                    <div class="d-flex gap-2 justify-content-center mt-4">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary px-4 py-2">
+                            <i class="bi bi-house-door"></i> Về trang chủ
+                        </a>
+                        <a asp-controller="Orders" asp-action="Checkout" class="btn btn-danger px-4 py-2 fw-bold">
+                            <i class="bi bi-arrow-counterclockwise"></i> Tiến hành đặt lại
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

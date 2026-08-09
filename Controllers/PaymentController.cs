@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HuongQueViet.Data;
 using HuongQueViet.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System;
 
@@ -15,18 +16,15 @@ namespace HuongQueViet.Controllers
             _context = context;
         }
 
-        // 1. Khi nhấn "Đặt hàng ngay" với phương thức VNPay
         [HttpGet]
         public async Task<IActionResult> Create(int orderId)
         {
             var order = await _context.Orders.FindAsync(orderId);
             if (order == null) return NotFound();
 
-            // Điều hướng sang trang giả lập VNPay
             return RedirectToAction("FakeVnPay", new { orderId = order.Id });
         }
 
-        // 2. Hiển thị giao diện giả lập Cổng thanh toán VNPay
         [HttpGet]
         public async Task<IActionResult> FakeVnPay(int orderId)
         {
@@ -36,36 +34,65 @@ namespace HuongQueViet.Controllers
             return View(order);
         }
 
-        // 3. Xử lý khi bấm nút "Thanh toán thành công" hoặc "Hủy thanh toán"
         [HttpPost]
         public async Task<IActionResult> ProcessFakePayment(int orderId, bool isSuccess)
         {
-            var order = await _context.Orders.FindAsync(orderId);
+            var order = await _context.Orders
+                .Include(o => o.OrderItems)
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+
             if (order == null) return RedirectToAction("Failed");
 
             if (isSuccess)
             {
-                // Cập nhật trạng thái đã thanh toán
                 order.IsPaid = true;
                 order.TransactionId = "VNPAY_SIM_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+
+                // Trừ kho khi thanh toán thành công qua VNPay
+                foreach (var item in order.OrderItems)
+                {
+                    var product = await _context.Products.FindAsync(item.ProductId);
+                    if (product != null)
+                    {
+                        product.StockQuantity -= item.Quantity;
+                        if (product.StockQuantity < 0) product.StockQuantity = 0;
+                    }
+                }
+
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("Success", new { orderId = order.Id });
             }
+            else
+            {
+                order.Status = OrderStatus.Cancelled;
+                await _context.SaveChangesAsync();
 
-            return RedirectToAction("Failed", new { orderId = order.Id });
+                return RedirectToAction("Failed", new { orderId = order.Id });
+            }
         }
 
-        // 4. Trang thông báo kết quả
-        public IActionResult Success(int orderId)
+        [HttpGet]
+        public async Task<IActionResult> Success(int orderId)
         {
-            ViewBag.OrderId = orderId;
-            return View();
+            var order = await _context.Orders
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Product)
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+
+            if (order == null) return RedirectToAction("Index", "Home");
+
+            return View(order);
         }
 
-        public IActionResult Failed(int? orderId)
+        [HttpGet]
+        public async Task<IActionResult> Failed(int? orderId)
         {
-            ViewBag.OrderId = orderId;
+            if (orderId.HasValue)
+            {
+                var order = await _context.Orders.FindAsync(orderId.Value);
+                ViewBag.Order = order;
+            }
             return View();
         }
     }

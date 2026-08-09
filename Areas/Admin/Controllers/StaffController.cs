@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 [Area("Admin")]
 [Authorize(Roles = "Staff,Admin")]
@@ -27,7 +30,6 @@ public class StaffController : Controller
         _notificationService = notificationService;
     }
 
-    // Action Lịch sử đơn hàng: Cập nhật mapping ViewModel giống Index để hiện đầy đủ chi tiết món & địa chỉ
     public async Task<IActionResult> History()
     {
         var orders = await _context.Orders
@@ -37,7 +39,6 @@ public class StaffController : Controller
             .OrderByDescending(o => o.OrderDate)
             .ToListAsync();
 
-        // Lấy thông tin khách hàng theo lô
         var userIds = orders.Select(o => o.UserId).Distinct().ToList();
         var users = await _context.Users
             .Where(u => userIds.Contains(u.Id))
@@ -88,7 +89,6 @@ public class StaffController : Controller
             .OrderBy(o => o.OrderDate)
             .ToListAsync();
 
-        // Lấy thông tin khách hàng theo lô, tránh N+1 query
         var userIds = orders.Select(o => o.UserId).Distinct().ToList();
         var users = await _context.Users
             .Where(u => userIds.Contains(u.Id))
@@ -133,16 +133,56 @@ public class StaffController : Controller
     [HttpPost]
     public async Task<IActionResult> Advance(int orderId, OrderStatus toStatus)
     {
-        var order = await _context.Orders.FindAsync(orderId);
+        var order = await _context.Orders
+            .Include(o => o.OrderItems)
+            .FirstOrDefaultAsync(o => o.Id == orderId);
+
         if (order == null) return NotFound();
+
         if (!OrderStatusMachine.CanTransition(order.Status, toStatus))
         {
             TempData["Error"] = $"Không thể chuyển từ {order.Status} sang {toStatus}";
             return RedirectToAction("Index");
         }
+
+        // 1. Trừ kho khi chuyển từ Pending sang Confirmed (Cho đơn COD)
+        if (toStatus == OrderStatus.Confirmed && order.Status == OrderStatus.Pending)
+        {
+            if (order.PaymentMethod != "VNPay" || !order.IsPaid)
+            {
+                foreach (var item in order.OrderItems)
+                {
+                    var product = await _context.Products.FindAsync(item.ProductId);
+                    if (product != null)
+                    {
+                        product.StockQuantity -= item.Quantity;
+                        if (product.StockQuantity < 0) product.StockQuantity = 0;
+                    }
+                }
+            }
+        }
+
+        // 2. Hoàn kho khi đơn bị hủy
+        if (toStatus == OrderStatus.Cancelled && order.Status != OrderStatus.Cancelled)
+        {
+            if (order.IsPaid || order.Status == OrderStatus.Confirmed || order.Status == OrderStatus.Preparing)
+            {
+                foreach (var item in order.OrderItems)
+                {
+                    var product = await _context.Products.FindAsync(item.ProductId);
+                    if (product != null)
+                    {
+                        product.StockQuantity += item.Quantity;
+                    }
+                }
+            }
+        }
+
         order.Status = toStatus;
         await _context.SaveChangesAsync();
+
         await _hub.Clients.Group($"order-{order.Id}").SendAsync("StatusUpdated", order.Status.ToString());
+
         try
         {
             var user = await _userManager.FindByIdAsync(order.UserId);
@@ -155,6 +195,7 @@ public class StaffController : Controller
         {
             Console.WriteLine($"[Cảnh báo] Gửi thông báo cho đơn #{order.Id} thất bại: {notifyEx.Message}");
         }
+
         return RedirectToAction("Index");
     }
 }
