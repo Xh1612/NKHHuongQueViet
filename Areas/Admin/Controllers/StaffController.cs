@@ -181,6 +181,7 @@ public class StaffController : Controller
         order.Status = toStatus;
         await _context.SaveChangesAsync();
 
+
         await _hub.Clients.Group($"order-{order.Id}").SendAsync("StatusUpdated", order.Status.ToString());
 
         try

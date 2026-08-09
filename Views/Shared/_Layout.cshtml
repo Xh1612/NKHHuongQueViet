@@ -17,6 +17,10 @@
         }
         catch { }
     }
+
+    // Kiểm tra xem URL hiện tại có chứa đoạn đường dẫn trang Account Manage hay không
+    var currentPath = Context.Request.Path.Value ?? "";
+    bool isManagePage = currentPath.Contains("/Identity/Account/Manage", StringComparison.OrdinalIgnoreCase);
 }
 
 <!DOCTYPE html>
@@ -89,17 +93,20 @@
     </header>
     <main class="flex-grow-1">@RenderBody()</main>
 
-    <!-- Nút Giỏ Hàng Nổi (Floating Cart) -->
-    <a asp-controller="Cart" asp-action="Index" id="floating-cart-btn" style="position: fixed; bottom: 35px; right: 35px; z-index: 9999; background-color: #8B1E10; color: #fff; width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.35); text-decoration: none; transition: transform 0.2s ease, background-color 0.2s ease;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-        <span id="floating-cart-badge" style="position: absolute; top: -4px; right: -4px; background: #FFC107; color: #111; font-weight: 700; border-radius: 50%; width: 24px; height: 24px; font-size: 13px; display: flex; align-items: center; justify-content: center; border: 2px solid #8B1E10;">
-            @initialCartCount
-        </span>
-    </a>
+    @if (!isManagePage)
+    {
+        <!-- Nút Giỏ Hàng Nổi (Floating Cart) -->
+        <a asp-controller="Cart" asp-action="Index" id="floating-cart-btn" style="position: fixed; bottom: 35px; right: 35px; z-index: 9999; background-color: #8B1E10; color: #fff; width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.35); text-decoration: none; transition: transform 0.2s ease, background-color 0.2s ease;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="floating-cart-badge" style="position: absolute; top: -4px; right: -4px; background: #FFC107; color: #111; font-weight: 700; border-radius: 50%; width: 24px; height: 24px; font-size: 13px; display: flex; align-items: center; justify-content: center; border: 2px solid #8B1E10;">
+                @initialCartCount
+            </span>
+        </a>
+    }
 
     <style>
         #floating-cart-btn:hover {
