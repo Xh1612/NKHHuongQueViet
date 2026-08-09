@@ -15,12 +15,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:wght@600;700;900&display=swap" rel="stylesheet">
     <link href="~/css/theme.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/theme.css" asp-append-version="true" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="~/images/logo.png" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" style="position: relative;">
     <header class="vung-toi">
-        <nav class="navbar-hqv">
-            <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
+        <nav class="navbar-hqv d-flex align-items-center justify-content-between">
+            <!-- Logo & Thương hiệu -->
+            <a class="logo d-flex align-items-center gap-2 text-decoration-none" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/images/logo.png" alt="Logo" style="height: 38px; width: auto; object-fit: contain;" />
+                <span>Hương Quê Việt</span>
+            </a>
             <div class="nav-links">
                 <a asp-area="" asp-controller="Menu" asp-action="Index">@Localizer["Menu"]</a>
                 <vc:cart-summary></vc:cart-summary>
@@ -64,6 +70,26 @@
         </nav>
     </header>
     <main class="flex-grow-1">@RenderBody()</main>
+
+    <!-- Nút Giỏ Hàng Nổi (Floating Cart) -->
+    <a asp-controller="Cart" asp-action="Index" id="floating-cart-btn" style="position: fixed; bottom: 35px; right: 35px; z-index: 9999; background-color: #8B1E10; color: #fff; width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.35); text-decoration: none; transition: transform 0.2s ease, background-color 0.2s ease;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span id="floating-cart-badge" style="position: absolute; top: -4px; right: -4px; background: #FFC107; color: #111; font-weight: 700; border-radius: 50%; width: 24px; height: 24px; font-size: 13px; display: flex; align-items: center; justify-content: center; border: 2px solid #8B1E10;">
+            0
+        </span>
+    </a>
+
+    <style>
+        #floating-cart-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            background-color: #A32314 !important;
+        }
+    </style>
+
     <footer class="vung-toi mt-auto" style="padding: 2.5rem 2rem; text-align:center; margin-top: 4rem;">
         <p style="font-family:'Fraunces',serif; font-size:1.2rem;">Hương Quê Việt</p>
         <p style="opacity:0.7; font-size:0.85rem;">@Localizer["FooterSlogan"] — © 2026</p>
@@ -71,6 +97,42 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Script xử lý Ajax cho Nút Giỏ Hàng Nổi -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let badge = document.getElementById("floating-cart-badge");
+            // Lấy số lượng giỏ hàng hiện tại (nếu có lưu trong localStorage)
+            let currentCount = parseInt(localStorage.getItem("cartCount")) || 0;
+            badge.innerText = currentCount;
+            // Bắt sự kiện bấm các nút 'Thêm vào giỏ' trên toàn bộ ứng dụng
+            document.addEventListener("submit", function (e) {
+                let form = e.target;
+                if (form && form.action && form.action.toLowerCase().includes("cart/add")) {
+                    e.preventDefault();
+                    fetch(form.action, {
+                        method: form.method || "POST",
+                        body: new FormData(form)
+                    }).then(response => {
+                        // Tăng số lượng giỏ hàng
+                        let updatedCount = (parseInt(badge.innerText) || 0) + 1;
+                        badge.innerText = updatedCount;
+                        localStorage.setItem("cartCount", updatedCount);
+                        // Hiệu ứng nhún nút giỏ hàng khi thêm món
+                        let cartBtn = document.getElementById("floating-cart-btn");
+                        cartBtn.style.transform = "scale(1.25)";
+                        setTimeout(() => {
+                            cartBtn.style.transform = "scale(1)";
+                        }, 200);
+                    }).catch(err => {
+                        // Nếu fetch lỗi thì submit form bình thường
+                        form.submit();
+                    });
+                }
+            });
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
