@@ -14,7 +14,7 @@
     <form method="get" class="thanh-tim-mon">
         <input type="text" name="keyword" value="@ViewBag.Keyword" placeholder="@Localizer["SearchPlaceholder"]" class="o-tim" />
         <button type="submit" class="btn-dau btn-tim">@Localizer["SearchButton"]</button>
-        <a asp-action="AdvancedSearch" class="lien-ket-nang-cao">@Localizer["AdvancedSearchLink"]</a>
+        <a asp-action="AdvancedSearch" class="btn-dau btn-nang-cao">@Localizer["AdvancedSearchLink"]</a>
     </form>
     <div class="the-loc-danh-muc">
         <a asp-action="Index" class="the-danh-muc @(ViewBag.CategoryId == null ? "dang-chon" : "")">@Localizer["CategoryAll"]</a>

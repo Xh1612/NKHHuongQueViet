@@ -2043,3 +2043,118 @@ a {
         justify-content: flex-end;
     }
 }
+
+/* ==========================================
+   1. DÙNG CHUNG: LƯỚI HIỂN THỊ MÓN ĂN (4 MÓN / HÀNG)
+   ================================---------- */
+.luoi-mon {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* ==========================================
+   2. TRANG TÌM KIẾM NÂNG CAO
+   ================================---------- */
+.khung-loc-nang-cao {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: end;
+}
+
+    .khung-loc-nang-cao .truong-rong {
+        grid-column: span 3;
+    }
+
+    .khung-loc-nang-cao .truong-nut {
+        grid-column: span 1;
+    }
+
+/* ==========================================
+   3. TRANG THỰC ĐƠN (MENU)
+   ================================---------- */
+.khung-input-tim {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.thanh-tim-mon .o-tim {
+    flex-grow: 1;
+}
+
+.btn-nang-cao {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    background-color: #ffffff;
+    color: #a94423 !important;
+    border: 2px solid #a94423;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .btn-nang-cao:hover {
+        background-color: #a94423;
+        color: #ffffff !important;
+    }
+
+.the-loc-danh-muc {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.the-danh-muc {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .the-danh-muc.dang-chon,
+    .the-danh-muc:hover {
+        background-color: #a94423;
+        color: #fff;
+    }
+
+/* ==========================================
+   4. RESPONSIVE CHUNG (TABLET & MOBILE)
+   ================================---------- */
+@media (max-width: 992px) {
+    .khung-loc-nang-cao {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+        .khung-loc-nang-cao .truong-rong {
+            grid-column: span 2;
+        }
+
+    .luoi-mon {
+        grid-template-columns: repeat(3, 1fr); /* Tablet: 3 món / hàng */
+    }
+}
+
+@media (max-width: 768px) {
+    .khung-loc-nang-cao {
+        grid-template-columns: 1fr;
+    }
+
+        .khung-loc-nang-cao .truong-rong {
+            grid-column: span 1;
+        }
+
+    .luoi-mon {
+        grid-template-columns: repeat(2, 1fr); /* Mobile: 2 món / hàng */
+    }
+}

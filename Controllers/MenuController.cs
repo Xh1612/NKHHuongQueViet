@@ -17,7 +17,12 @@ namespace HuongQueViet.Controllers
 
             ViewBag.Categories = await _context.Categories.ToListAsync();
             ViewBag.Keyword = keyword;
+
+
+            // --- BỔ SUNG DÒNG NÀY ĐỂ TRUYỀN ID RA VIEW ---
+            ViewBag.CategoryId = categoryId;
             return View(await query.ToListAsync());
+
         }
 
         [HttpGet]
