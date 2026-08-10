@@ -189,7 +189,8 @@ public class StaffController : Controller
             var user = await _userManager.FindByIdAsync(order.UserId);
             if (user != null)
             {
-                await _notificationService.NotifyStatusChanged(order, user.Email!, user.PhoneNumber ?? "");
+                // Use customer's email as From
+                await _notificationService.NotifyStatusChanged(order, user.Email!, user.PhoneNumber ?? "", user.Email!);
             }
         }
         catch (Exception notifyEx)

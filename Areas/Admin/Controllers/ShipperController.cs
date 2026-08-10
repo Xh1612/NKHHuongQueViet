@@ -146,7 +146,8 @@ namespace HuongQueViet.Areas.Admin.Controllers
                     var user = await _userManager.FindByIdAsync(order.UserId);
                     if (user != null)
                     {
-                        await _notificationService.NotifyStatusChanged(order, user.Email!, user.PhoneNumber ?? "");
+                        // Use customer's email as From so Mailtrap inbox groups by that address if desired
+                        await _notificationService.NotifyStatusChanged(order, user.Email!, user.PhoneNumber ?? "", user.Email!);
                     }
                 }
                 catch (Exception notifyEx)

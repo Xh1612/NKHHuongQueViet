@@ -141,9 +141,14 @@ public class OrdersController : Controller
             try
             {
                 var currentUser = await _userManager.FindByIdAsync(userId!);
-                if (currentUser != null)
+                var emailToNotify = currentUser?.Email ?? HttpContext.Session.GetString("CurrentUserEmail") ?? User.Identity?.Name;
+                var phone = currentUser?.PhoneNumber ?? string.Empty;
+                if (!string.IsNullOrEmpty(emailToNotify))
                 {
-                    await _notificationService.NotifyOrderPlaced(order, currentUser.Email!, currentUser.PhoneNumber ?? "");
+                    // If configured, use user email as From
+                    var useUserAsFrom = bool.TryParse(_config["Smtp:UseUserAsFrom"], out var useVal) && useVal;
+                    var fromAddress = useUserAsFrom ? emailToNotify : null;
+                    await _notificationService.NotifyOrderPlaced(order, emailToNotify, phone, fromAddress);
                 }
             }
             catch (Exception notifyEx)

@@ -22,11 +22,13 @@ namespace HuongQueViet.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly HuongQueViet.Services.EmailService _emailService;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, HuongQueViet.Services.EmailService emailService)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _emailService = emailService;
         }
 
         /// <summary>
@@ -99,6 +101,11 @@ namespace HuongQueViet.Areas.Identity.Pages.Account
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
+            // Prefill email from a cookie (if user previously logged in) so the login form
+            // shows the last used email address. This does NOT store user credentials.
+            var lastEmail = Request.Cookies["LastEmail"];
+            Input = new InputModel { Email = lastEmail ?? string.Empty };
+
             ReturnUrl = returnUrl;
         }
 
@@ -116,6 +123,37 @@ namespace HuongQueViet.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    // Save last used email to a cookie so we can prefill it next time
+                    try
+                    {
+                        var cookieOptions = new CookieOptions { Expires = DateTimeOffset.UtcNow.AddDays(30), HttpOnly = true };
+                        Response.Cookies.Append("LastEmail", Input.Email ?? string.Empty, cookieOptions);
+                    }
+                    catch { /* ignore cookie errors */ }
+
+                    // Store current user's email in session so other parts of app can use it
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(Input.Email))
+                        {
+                            HttpContext.Session.SetString("CurrentUserEmail", Input.Email);
+                        }
+                    }
+                    catch { /* ignore session errors */ }
+
+                    // Gửi email thử (sử dụng cấu hình SMTP / Mailtrap) tới email người dùng vừa đăng nhập
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(Input.Email))
+                        {
+                            await _emailService.SendAsync(Input.Email, "Đăng nhập thành công - HuongQueViet", "Bạn vừa đăng nhập vào hệ thống HuongQueViet.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogWarning(ex, "Gửi email xác nhận đăng nhập tới {Email} thất bại", Input.Email);
+                    }
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
