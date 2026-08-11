@@ -30,6 +30,20 @@
         <div class="confirm-status-row">
             <span id="orderStatusBadge" class="order-card-status @statusClass" data-status="@statusClass">@Model.Status</span>
         </div>
+
+    <!-- 1b. THÔNG TIN GIAO HÀNG & THANH TOÁN -->
+    <div class="confirm-section">
+        <h4>Thông tin giao hàng & thanh toán</h4>
+        <div style="display:flex; gap:12px; flex-direction:column;">
+            <div><strong>Địa chỉ:</strong> @Model.Address?.Street, @Model.Address?.Ward, @Model.Address?.District, @Model.Address?.Province</div>
+            <div><strong>SDT nhận hàng:</strong> @Model.Address?.PhoneNumber</div>
+            <div><strong>Phương thức thanh toán:</strong> @Model.PaymentMethod</div>
+            @if (!string.IsNullOrEmpty(Model.CouponCode))
+            {
+                <div><strong>Mã giảm giá:</strong> @Model.CouponCode (Giảm @Model.DiscountAmount.ToString("N0") đ)</div>
+            }
+        </div>
+    </div>
     </div>
 
     <!-- 1. CHI TIẾT ĐƠN HÀNG (DANH SÁCH MÓN) -->

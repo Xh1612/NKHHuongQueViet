@@ -11,6 +11,7 @@
             <span class="badge-cay">@Localizer["Spicy"]</span>
         }
         <p class="gia">@Model.Price.ToString("N0") đ</p>
+        <p class="mo-ta" style="display:none; margin-top:0.5rem;">@Model.Description</p>
         <form method="post" asp-controller="Cart" asp-action="Add">
             <input type="hidden" name="productId" value="@Model.Id" />
             <input type="hidden" name="quantity" value="1" />

@@ -86,6 +86,7 @@ public class OrdersController : Controller
                 ETA = DateTime.Now.AddMinutes(45)
             };
 
+
             decimal itemsTotal = 0;
             foreach (var item in cart)
             {
@@ -169,7 +170,10 @@ public class OrdersController : Controller
 
     public async Task<IActionResult> Confirmation(int id)
     {
-        var order = await _context.Orders.Include(o => o.OrderItems).ThenInclude(oi => oi.Product).FirstOrDefaultAsync(o => o.Id == id);
+        var order = await _context.Orders
+            .Include(o => o.OrderItems).ThenInclude(oi => oi.Product)
+            .Include(o => o.Address)
+            .FirstOrDefaultAsync(o => o.Id == id);
         return View(order);
     }
 
